@@ -37,7 +37,7 @@ function PricePredict(){
         console.log(isTrue);
     }
     if (isTrue){ 
-        const ans = 20;
+        const ans = data.brand_name + data.ram + data.rom + data.camera;
         return(
                 <Redirect to={{
                     pathname: '/predict',
