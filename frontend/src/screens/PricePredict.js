@@ -26,7 +26,14 @@ function PricePredict(){
         console.log(data.ram)
         console.log(data.rom)
         console.log(data.camera)
-        setTrue(true); 
+         
+        if(data.brand_name == "")
+        {
+            setTrue(false);
+        }
+        else{
+            setTrue(true);
+        }
         console.log(isTrue);
     }
     if (isTrue){ 
@@ -34,7 +41,8 @@ function PricePredict(){
         return(
                 <Redirect to={{
                     pathname: '/predict',
-                    state: { value: ans } 
+                    state: {data:data,
+                            value:ans}
                 
                 }}
                 />
