@@ -3,10 +3,15 @@ import PricePredictShow from './PricePredictShow';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
+import axios from "axios";
+
+
+const baseURL = "http://127.0.0.1:8000/api/predict";
 
 function PricePredict(){
     
     var [isTrue, setTrue] = useState(false);
+    const [post, setPost] = React.useState(null);
     const [data, setData] = useState(
         {
             brand_name: "",
@@ -37,7 +42,13 @@ function PricePredict(){
         console.log(isTrue);
     }
     if (isTrue){ 
-        const ans = data.brand_name + data.ram + data.rom + data.camera;
+        const ans = 1000;
+        axios.get(baseURL).then((response) => {
+            console.log(response.data)
+            setPost(response.data);
+        });
+        console.log(post);
+
         return(
                 <Redirect to={{
                     pathname: '/predict',
