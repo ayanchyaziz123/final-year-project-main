@@ -27,10 +27,6 @@ function PricePredict(){
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(data.brand_name)
-        console.log(data.ram)
-        console.log(data.rom)
-        console.log(data.camera)
          
         if(data.brand_name == "")
         {
