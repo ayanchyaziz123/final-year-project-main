@@ -11,7 +11,8 @@ from rest_framework import status
 from datetime import datetime
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def getPredict(request):
-    data = 1099
+    print(request.title)
+    data = 12321
     return Response(data)

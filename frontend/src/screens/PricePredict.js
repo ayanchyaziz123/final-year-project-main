@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 
-
-const baseURL = "http://127.0.0.1:8000/api/predict";
+const baseURL = "http://127.0.0.1:8000/api/predict/";
 
 function PricePredict(){
     
@@ -19,8 +18,18 @@ function PricePredict(){
             rom: "",
             camera: ""
         }
-
     );
+function createPost() {
+        axios.post(baseURL, {
+                title: "Hello World!",
+                body: "This is a new post."
+            })
+            .then((response) => {
+                setPost(response.data);
+        });
+    }
+  
+
     const handleChange = e => {
         setData({ ...data, [e.target.name]: e.target.value })
     }
@@ -35,24 +44,15 @@ function PricePredict(){
         else{
             setTrue(true);
         }
-        console.log(isTrue);
     }
-    if (isTrue){ 
-        const ans = 1000;
-        axios.get(baseURL).then((response) => {
-            console.log(response.data)
-            setPost(response.data);
-        });
-        console.log(post);
 
+
+    if (isTrue){ 
+        createPost();
         return(
-                <Redirect to={{
-                    pathname: '/predict',
-                    state: {data:data,
-                            value:ans}
-                
-                }}
-                />
+                <div>
+                    <h1>Hello world {post}</h1>
+                </div>
        
     )
     }
