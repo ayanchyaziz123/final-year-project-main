@@ -19,6 +19,6 @@ def getPredict(request):
     if request.method == 'POST':
         data = request.data
         data = data['datas']
-        b_name = data['brand_name']
+        b_name = data['car_name']
         print(b_name)
         return Response(10101)    

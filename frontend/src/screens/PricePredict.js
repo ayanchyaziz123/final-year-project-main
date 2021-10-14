@@ -13,10 +13,14 @@ function PricePredict(){
     const [post, setPost] = React.useState(null);
     const [datas, setDatas] = useState(
         {
-            brand_name: "",
-            ram: "",
-            rom: "",
-            camera: ""
+            car_name: "",
+            company: "",
+            year: "",
+            kms_driven: "",
+            fuel_type: "",
+            price: "",
+
+
         }
     );
 
@@ -26,8 +30,9 @@ const handleChange = e => {
     }
 const handleSubmit = (event) => {
         event.preventDefault();
-        if(datas.brand_name == "")
+        if(datas.car_name == "" || datas.company == "" || datas.year == "" || datas.kms_driven == "")
         {
+            window.alert("You Did not fill all informations")
             setTrue(false);
         }
         else{
@@ -55,34 +60,41 @@ if (isTrue){
     console.log(isTrue);
     return (
         <form onSubmit={handleSubmit}>
-            <label for="exampleFormControlSelect1">Brand Name</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="brand_name" onChange={handleChange} >
-                <option value="iphone">Iphone</option>
-                <option value="samsung">Samsung</option>
-                <option value="oppo">Oppo</option>
+            <label for="exampleFormControlSelect1">Car Name</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="car_name" onChange={handleChange} >
+                <option value="">none</option>
+                <option value="honda">Hyundai Santro Xing XO eRLX Euro III</option>
+                <option value="rools">Mahindra Jeep CL550 MDI</option>
+                <option value="ford">Ford EcoSport Titanium 1.5L TDCi</option>
             </select>
-            <label for="exampleFormControlSelect1">RAM</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="ram" onChange={handleChange} >
-                <option value="2">2gb</option>
-                <option value="4">4gb</option>
-                <option value="6">6gb</option>
-                <option value="8">8gb</option>
-                <option value="10">10gb</option>
+            <label for="exampleFormControlSelect1">Company Name</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="company" onChange={handleChange} >
+                <option value="">none</option>
+                <option value="honda">	Hyundai</option>
+                <option value="rools">Mahindra</option>
+                <option value="ford">Maruti</option>
             </select>
-            <label for="exampleFormControlSelect1">ROM</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="rom" onChange={handleChange}>
-                <option value="16">16gb</option>
-                <option value="32">32gb</option>
-                <option value="64">64gb</option>
-                <option value="128">128gb</option>
+            <label for="exampleFormControlSelect1">Year</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="year" onChange={handleChange} >
+                <option value="">none</option>
+                <option value="2">2007</option>
+                <option value="4">2008</option>
+                <option value="6">2009</option>
+                <option value="8">2010</option>
             </select>
-            <label for="exampleFormControlSelect1"  >Camera</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="camera" onChange={handleChange}>
-                <option value="10">10px</option>
-                <option value="20">20px</option>
-                <option value="30">30px</option>
-                <option value="40">40px</option>
-                <option value="50">50px</option>
+            <label for="exampleFormControlSelect1">	kms_driven</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="kms_driven" onChange={handleChange}>
+                <option value="">none</option>
+                <option value="16">45,000 kms</option>
+                <option value="32">	22,000 kms</option>
+                <option value="64">40 kmps</option>
+                <option value="128">80 kmps</option>
+            </select>
+            <label for="exampleFormControlSelect1"  >fuel_type</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="	fuel_type" onChange={handleChange}>
+                <option value="">none</option>
+                <option value="10">Petrol</option>
+                <option value="20">Disel</option>
             </select>
             <br></br>
             <button className="btn btn-dark" type="submit">Predict</button>
