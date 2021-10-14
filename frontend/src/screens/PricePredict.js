@@ -11,7 +11,7 @@ function PricePredict(){
     
     var [isTrue, setTrue] = useState(false);
     const [post, setPost] = React.useState(null);
-    const [data, setData] = useState(
+    const [datas, setDatas] = useState(
         {
             brand_name: "",
             ram: "",
@@ -19,36 +19,31 @@ function PricePredict(){
             camera: ""
         }
     );
-function createPost() {
-        axios.post(baseURL, {
-                title: "Hello World!",
-                body: "This is a new post."
-            })
-            .then((response) => {
-                setPost(response.data);
-        });
-    }
-  
 
-    const handleChange = e => {
-        setData({ ...data, [e.target.name]: e.target.value })
+
+const handleChange = e => {
+        setDatas({ ...datas, [e.target.name]: e.target.value })
     }
-    
-    const handleSubmit = (event) => {
+const handleSubmit = (event) => {
         event.preventDefault();
-         
-        if(data.brand_name == "")
+        if(datas.brand_name == "")
         {
             setTrue(false);
         }
         else{
             setTrue(true);
+            axios.post(baseURL, {
+                datas
+                })
+                .then((response) => {
+                    setPost(response.data);
+                });
         }
+
     }
 
 
-    if (isTrue){ 
-        createPost();
+if (isTrue){ 
         return(
                 <div>
                     <h1>Hello world {post}</h1>
