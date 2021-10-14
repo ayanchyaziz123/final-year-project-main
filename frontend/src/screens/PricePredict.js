@@ -47,7 +47,7 @@ const handleSubmit = (event) => {
         event.preventDefault();
     if (datas.car_name == "" || datas.company == "" || datas.year == "" || datas.kms_driven == "")
         {
-            window.alert("You Did not fill all informations")
+            window.alert("Fill up all informations")
             setTrue(false);
         }
         else{
