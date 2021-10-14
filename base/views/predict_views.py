@@ -19,12 +19,12 @@ def getPredict(request):
     if request.method == 'GET':
         df = pd.read_csv('static/data_set/quikr_car.csv')
         carName = df['name'].unique()
-        carCompany = df['company']
-        carYear = df['year']
+        carCompany = df['company'].unique()
+        carYear = df['year'].unique()
         carKms_driven = df['kms_driven']
         carFuel_type = df['fuel_type']
-        return Response(carName)
-        
+        return Response({'cn': carName, 'cc': carCompany, 'cy' : carYear})
+
     if request.method == 'POST':
         data = request.data
         data = data['datas']
