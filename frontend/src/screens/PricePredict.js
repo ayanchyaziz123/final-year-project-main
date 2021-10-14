@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 
+
 const baseURL = "http://127.0.0.1:8000/api/predict/";
 
 function PricePredict(){
     
     var [isTrue, setTrue] = useState(false);
     const [post, setPost] = React.useState(null);
+    const [carName, setCarName] = React.useState(null);
     const [datas, setDatas] = useState(
         {
             car_name: "",
@@ -23,6 +25,14 @@ function PricePredict(){
 
         }
     );
+
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            setCarName(response.data);
+            console.log("hellow : ")
+            console.log(carName)
+        });
+    }, []);
 
 
 const handleChange = e => {
@@ -49,6 +59,7 @@ const handleSubmit = (event) => {
 
 
 if (isTrue){ 
+    
         return(
                 <div>
                     <h1>Hello world {post}</h1>
