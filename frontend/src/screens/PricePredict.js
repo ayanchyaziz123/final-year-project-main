@@ -12,7 +12,7 @@ function PricePredict(){
     
     var [isTrue, setTrue] = useState(false);
     const [post, setPost] = React.useState(null);
-    const [carName, setCarName] = React.useState(null);
+    const [carName, setCarName] = React.useState([]);
     const [datas, setDatas] = useState(
         {
             car_name: "",
@@ -29,8 +29,6 @@ function PricePredict(){
     React.useEffect(() => {
         axios.get(baseURL).then((response) => {
             setCarName(response.data);
-            console.log("hellow : ")
-            console.log(carName)
         });
     }, []);
 
@@ -63,6 +61,7 @@ if (isTrue){
         return(
                 <div>
                     <h1>Hello world {post}</h1>
+                    {carName[0]}
                 </div>
        
     )
@@ -74,6 +73,9 @@ if (isTrue){
             <label for="exampleFormControlSelect1">Car Name</label>
             <select class="form-control" id="exampleFormControlSelect1" name="car_name" onChange={handleChange} >
                 <option value="">none</option>
+                {carName.map((carName) => (
+                    <option value="{carName}">{carName}</option>
+                ))}
                 <option value="honda">Hyundai Santro Xing XO eRLX Euro III</option>
                 <option value="rools">Mahindra Jeep CL550 MDI</option>
                 <option value="ford">Ford EcoSport Titanium 1.5L TDCi</option>
