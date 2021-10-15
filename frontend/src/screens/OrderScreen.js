@@ -183,6 +183,13 @@ function OrderScreen({ match, history }) {
                                         </Row>
                                     </ListGroup.Item>
 
+                                    <ListGroup.Item>
+                                        <Row>
+                                            <Col>Online Pay:</Col>
+                                            <Col>${(order.totalPrice * 2) / 100}</Col>
+                                        </Row>
+                                    </ListGroup.Item>
+
 
                                     {!order.isPaid && (
                                         <ListGroup.Item>

@@ -70,7 +70,7 @@ function ProductScreen({ match, history }) {
 
                                 <Col md={3}>
                                     <ListGroup variant="flush">
-                                        <ListGroup.Item>
+                                    <ListGroup.Item>
                                             <h3>{product.name}</h3>
                                         </ListGroup.Item>
 
@@ -80,6 +80,9 @@ function ProductScreen({ match, history }) {
 
                                         <ListGroup.Item>
                                             Price: ${product.price}
+                                        </ListGroup.Item>
+                                        <ListGroup.Item>
+                                            You have to pay 2% online for booking: ${(product.price * 2) / 100}
                                         </ListGroup.Item>
 
                                         <ListGroup.Item>
@@ -97,6 +100,16 @@ function ProductScreen({ match, history }) {
                                                     <Col>Price:</Col>
                                                     <Col>
                                                         <strong>${product.price}</strong>
+                                
+                                                    </Col>
+                                                </Row>
+                                            </ListGroup.Item>
+                                            <ListGroup.Item>
+                                                <Row>
+                                                    <Col>Online Pay:</Col>
+                                                    <Col>
+                                                        <strong>${(product.price * 2) / 100}</strong>
+
                                                     </Col>
                                                 </Row>
                                             </ListGroup.Item>
