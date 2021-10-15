@@ -81,9 +81,7 @@ function ProductScreen({ match, history }) {
                                         <ListGroup.Item>
                                             Price: ${product.price}
                                         </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            You have to pay 2% online for booking: ${(product.price * 2) / 100}
-                                        </ListGroup.Item>
+                                    
 
                                         <ListGroup.Item>
                                             Description: {product.description}
@@ -104,15 +102,7 @@ function ProductScreen({ match, history }) {
                                                     </Col>
                                                 </Row>
                                             </ListGroup.Item>
-                                            <ListGroup.Item>
-                                                <Row>
-                                                    <Col>Online Pay:</Col>
-                                                    <Col>
-                                                        <strong>${(product.price * 2) / 100}</strong>
-
-                                                    </Col>
-                                                </Row>
-                                            </ListGroup.Item>
+                                        
                                             <ListGroup.Item>
                                                 <Row>
                                                     <Col>Status:</Col>
