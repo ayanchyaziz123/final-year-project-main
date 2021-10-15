@@ -94,6 +94,8 @@ if (isTrue){
     
         return(
                 <div>
+                    <p>Company : {datas.lep_company}</p>
+                    <p>Type : {datas.lep_name}</p>
                 <h1>Predicted Price &#36;{predict}</h1>
                 </div>
        
