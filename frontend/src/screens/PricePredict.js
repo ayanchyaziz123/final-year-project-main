@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
+import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 
 
 const baseURL = "http://127.0.0.1:8000/api/predict/";
@@ -11,7 +12,7 @@ const baseURL = "http://127.0.0.1:8000/api/predict/";
 function PricePredict(){
     
     var [isTrue, setTrue] = useState(false);
-    const [post, setPost] = React.useState(null);
+    const [predict, setPredict] = React.useState(null);
     const [lepName, setLepName] = React.useState([]);
     const [lepCompany, setLepCompany] = React.useState([]);
     const [lepInches, setLepInches] = React.useState([]);
@@ -40,6 +41,7 @@ function PricePredict(){
             lep_gpu: "",
             lep_opSys: "",
             lep_weight: "",
+            lep_touchscreen: "",
 
         }
     );
@@ -66,7 +68,7 @@ const handleChange = e => {
     }
 const handleSubmit = (event) => {
         event.preventDefault();
-    if (datas.lep_name == "" || datas.lep_company)
+    if (datas.lep_name == "" || datas.lep_company == "")
         {
             window.alert("Fill up all informations")
             setTrue(false);
@@ -77,7 +79,7 @@ const handleSubmit = (event) => {
                 datas
                 })
                 .then((response) => {
-                    setPost(response.data);
+                    setPredict(response.data);
                 });
         }
 
@@ -88,7 +90,7 @@ if (isTrue){
     
         return(
                 <div>
-                    <h1>Hello world {post}</h1>
+                <h1>Predicted Price &#36;{predict}</h1>
                 </div>
        
     )
@@ -98,17 +100,20 @@ if (isTrue){
     return (
         <form onSubmit={handleSubmit}>
 
-
+            <Row>
+                <Col md={6}>
             <label for="exampleFormControlSelect1">Company</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_company" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
                     lepCompany.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+            </Col>
+            <Col md={6}>
 
 
             <label for="exampleFormControlSelect1">Name</label>
@@ -117,10 +122,15 @@ if (isTrue){
 
                 {
                 lepName.map((p) =>
-                    <option value="{p}">{p}</option>
+                    <option value={p}>{p}</option>
                 )
                 }
             </select>
+            </Col>
+            </Row>
+
+            <Row>
+                <Col md={6}>
 
             <label for="exampleFormControlSelect1">Size</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_inches" onChange={handleChange} >
@@ -128,33 +138,41 @@ if (isTrue){
 
                 {
                     lepInches.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+            </Col>
            
-
+        <Col md={6}>
             <label for="exampleFormControlSelect1">Screen Resolution</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_screenResolution" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
                     lepSR.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+            </Col>
+            </Row>
+            
 
+            <Row>
+                <Col md={6}>
             <label for="exampleFormControlSelect1">CPU</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_cpu" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
                     lepCpu.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+            </Col>
+            <Col md={6}>
 
             <label for="exampleFormControlSelect1">Ram</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_ram" onChange={handleChange} >
@@ -162,21 +180,27 @@ if (isTrue){
 
                 {
                     lepRam.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+            </Col>
+            </Row>
             
+            <Row>
+                <Col md={6}>
             <label for="exampleFormControlSelect1">Memory</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_memory" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
                     lepMemory.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+                </Col>
+                <Col md={6}>
 
             <label for="exampleFormControlSelect1">Gpu</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_gpu" onChange={handleChange} >
@@ -184,19 +208,30 @@ if (isTrue){
 
                 {
                     lepGpu.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
+                </Col>
+            </Row>
             <label for="exampleFormControlSelect1">OS</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_opSys" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
                     lepOS.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
+            </select>
+
+            <label for="exampleFormControlSelect1">Touch Screen</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_touchscreen" onChange={handleChange} >
+                <option value="">none</option>
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+
+
             </select>
 
             <label for="exampleFormControlSelect1">Weight</label>
@@ -205,7 +240,7 @@ if (isTrue){
 
                 {
                     lepWeight.map((p) =>
-                        <option value="{p}">{p}</option>
+                        <option value={p}>{p}</option>
                     )
                 }
             </select>
