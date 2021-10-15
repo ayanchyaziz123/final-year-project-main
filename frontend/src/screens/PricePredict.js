@@ -193,7 +193,19 @@ if (isTrue){
             
             <Row>
                 <Col md={6}>
-            <label for="exampleFormControlSelect1">Memory</label>
+                    <label for="exampleFormControlSelect1">SSD Size(in GBs)</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="lep_ssd" onChange={handleChange} >
+                        <option value="">none</option>
+
+                        {
+                            lepSSD.map((p) =>
+                                <option value={p}>{p}</option>
+                            )
+                        }
+                    </select>
+                </Col>
+                <Col md={6}>
+            <label for="exampleFormControlSelect1">HDD Size(in GBs)</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_memory" onChange={handleChange} >
                 <option value="">none</option>
 
@@ -204,25 +216,13 @@ if (isTrue){
                 }
             </select>
                 </Col>
-                <Col md={6}>
-
-            <label for="exampleFormControlSelect1">Gpu</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="lep_gpu" onChange={handleChange} >
-                <option value="">none</option>
-
-                {
-                    lepGpu.map((p) =>
-                        <option value={p}>{p}</option>
-                    )
-                }
-            </select>
-                </Col>
+                
             </Row>
 
 
             <Row>
                 <Col md={6}>
-            <label for="exampleFormControlSelect1">OS</label>
+            <label for="exampleFormControlSelect1">Operating System</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_opSys" onChange={handleChange} >
                 <option value="">none</option>
 
@@ -235,18 +235,23 @@ if (isTrue){
 
             </Col>
 
-                <Col md={6}>
-            <label for="exampleFormControlSelect1">SSD</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="lep_ssd" onChange={handleChange} >
-                <option value="">none</option>
 
-                {
-                    lepSSD.map((p) =>
-                        <option value={p}>{p}</option>
-                    )
-                }
-            </select>
+                <Col md={6}>
+
+                    <label for="exampleFormControlSelect1">Gpu</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="lep_gpu" onChange={handleChange} >
+                        <option value="">none</option>
+
+                        {
+                            lepGpu.map((p) =>
+                                <option value={p}>{p}</option>
+                            )
+                        }
+                    </select>
                 </Col>
+
+
+              
             </Row>
 
             <Row>
@@ -272,6 +277,8 @@ if (isTrue){
 
             </select>
            </Col>
+
+    
             </Row >
 
             

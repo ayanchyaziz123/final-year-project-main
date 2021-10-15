@@ -26,7 +26,7 @@ def getPredict(request):
     if request.method == 'GET':
         company = df['Company'].unique()
         typeName = df['TypeName'].unique()
-        inches = [15.00, 14.00]
+        inches = [15.06, 14.06, 18.06, 21.60, 23.06]
         sr = ['1920x1080','1366x768','1600x900','3840x2160','3200x1800','2880x1800','2560x1600','2560x1440','2304x1440']
         cpu = df['Cpu brand'].unique()
         ram = df['Ram'].unique();
