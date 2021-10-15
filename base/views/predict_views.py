@@ -17,32 +17,24 @@ import pandas as pd
 @api_view(['GET', 'POST', 'DELETE'])
 def getPredict(request):
     if request.method == 'GET':
-        df = pd.read_csv('static/data_set/quikr_car.csv')
-        carName = df['name'].unique()
-        carCompany = df['company'].unique()
-        carYear = df['year'].unique()
-        carKms_driven = df['kms_driven']
-        carFuel_type = df['fuel_type']
-        return Response({'cn': carName, 'cc': carCompany, 'cy' : carYear})
+        df = pd.read_csv('static/data_set/laptop_data.csv')
+        company = df['Company'].unique()
+        typeName = df['TypeName'].unique()
+        inches = df['Inches'].unique();
+        sr = df['ScreenResolution'].unique()
+        cpu = df['Cpu'].unique();
+        ram = df['Ram'].unique();
+        gpu = df['Gpu'].unique()
+        ops = df['OpSys'].unique()
+        memory = df['Memory'].unique()
+        weight = df['Weight'].unique()
+        return Response({'lc': company, 'ltn': typeName, 'lsr': sr, 'lcpu': cpu,
+        'lram': ram, 'lgpu': gpu, 'lops': ops, 'lmr': memory, 'lw': weight, 'li': inches})
 
     if request.method == 'POST':
         data = request.data
         data = data['datas']
-        b_name = data['car_name']
+        b_name = data['lep_name']
         print(b_name)
         return Response(10101)   
 
-
-@api_view(['GET', 'POST', 'DELETE'])
-def getCarName(request):
-    if request.method == 'POST':
-        df = pd.read_csv('static/data_set/quikr_car.csv')
-        data = request.data
-        data = data['datas']
-        company = data['company']
-        prem = []
-        name = df['name'].unique()
-        for v in name:
-            if company in v:
-                prem.append(v)
-        return Response({'cc': prem})

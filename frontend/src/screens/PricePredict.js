@@ -12,29 +12,50 @@ function PricePredict(){
     
     var [isTrue, setTrue] = useState(false);
     const [post, setPost] = React.useState(null);
-    const [f_carName, f_setCarName] = React.useState([]);
-    const [f_carCompany, f_setCarCompany] = React.useState([]);
-    const [f_carYear, f_setCarYear] = React.useState([]);
-    const [f_carFuelType, f_setCarFuelType] = React.useState([]);
+    const [lepName, setLepName] = React.useState([]);
+    const [lepCompany, setLepCompany] = React.useState([]);
+    const [lepInches, setLepInches] = React.useState([]);
+    const [lepSR, setLepSR] = React.useState([]);
+    const [lepCpu, setLepCpu] = React.useState([]);
+    const [lepRam, setLepRam] = React.useState([]);
+    const [lepMemory, setLepMemory] = React.useState([]);
+    const [lepGpu, setLepGpu] = React.useState([]);
+    const [lepOS, setLepOS] = React.useState([]);
+    const [lepWeight, setLepWeight] = React.useState([]);
+
+
+
+
+
+
     const [datas, setDatas] = useState(
         {
-            car_name: "",
-            company: "",
-            year: "",
-            kms_driven: "",
-            fuel_type: "",
-            price: "",
-
+            lep_company: "",
+            lep_name: "",
+            lep_inches: "",
+            lep_screenResolution: "",
+            lep_cpu: "",
+            lep_ram: "",
+            lep_memory: "",
+            lep_gpu: "",
+            lep_opSys: "",
+            lep_weight: "",
 
         }
     );
 
     React.useEffect(() => {
         axios.get(baseURL).then((response) => {
-            f_setCarCompany(response.data.cc);
-            f_setCarName(response.data.cn);
-            f_setCarYear(response.data.cy);
-            console.log(response.data.cn);
+            setLepCompany(response.data.lc);
+            setLepName(response.data.ltn);
+            setLepInches(response.data.li);
+            setLepSR(response.data.lsr);
+            setLepCpu(response.data.lcpu);
+            setLepRam(response.data.lram);
+            setLepMemory(response.data.lmr);
+            setLepGpu(response.data.lgpu);
+            setLepOS(response.data.lops);
+            setLepWeight(response.data.lw);
 
         });
     }, []);
@@ -45,7 +66,7 @@ const handleChange = e => {
     }
 const handleSubmit = (event) => {
         event.preventDefault();
-    if (datas.car_name == "" || datas.company == "" || datas.year == "" || datas.kms_driven == "")
+    if (datas.lep_name == "" || datas.lep_company)
         {
             window.alert("Fill up all informations")
             setTrue(false);
@@ -78,48 +99,120 @@ if (isTrue){
         <form onSubmit={handleSubmit}>
 
 
-            <label for="exampleFormControlSelect1">Company Name</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="company" onChange={handleChange} >
+            <label for="exampleFormControlSelect1">Company</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_company" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
-                    f_carCompany.map((p) =>
+                    lepCompany.map((p) =>
                         <option value="{p}">{p}</option>
                     )
                 }
             </select>
 
 
-            <label for="exampleFormControlSelect1">Car Name</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="car_name" onChange={handleChange} >
+            <label for="exampleFormControlSelect1">Name</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_name" onChange={handleChange} >
                 <option value="">none</option>
 
                 {
-                f_carName.map((p) =>
+                lepName.map((p) =>
                     <option value="{p}">{p}</option>
                 )
                 }
             </select>
 
-            <label for="exampleFormControlSelect1">Year</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="year" onChange={handleChange} >
+            <label for="exampleFormControlSelect1">Size</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_inches" onChange={handleChange} >
                 <option value="">none</option>
+
                 {
-                    f_carYear.map((p) =>
+                    lepInches.map((p) =>
                         <option value="{p}">{p}</option>
                     )
                 }
             </select>
            
-            <label for="exampleFormControlSelect1"  >fuel_type</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="	fuel_type" onChange={handleChange}>
+
+            <label for="exampleFormControlSelect1">Screen Resolution</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_screenResolution" onChange={handleChange} >
                 <option value="">none</option>
-                <option value="10">Petrol</option>
-                <option value="20">Disel</option>
+
+                {
+                    lepSR.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
             </select>
-            <label for="exampleFormControlSelect1">kms_driven</label>
-            <input class="form-control" id="exampleFormControlSelect1" name="kms_driven" onChange={handleChange}></input>
-            <br></br>
+
+            <label for="exampleFormControlSelect1">CPU</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_cpu" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepCpu.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
+            </select>
+
+            <label for="exampleFormControlSelect1">Ram</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_ram" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepRam.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
+            </select>
+            
+            <label for="exampleFormControlSelect1">Memory</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_memory" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepMemory.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
+            </select>
+
+            <label for="exampleFormControlSelect1">Gpu</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_gpu" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepGpu.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
+            </select>
+            <label for="exampleFormControlSelect1">OS</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_opSys" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepOS.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
+            </select>
+
+            <label for="exampleFormControlSelect1">Weight</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_weight" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepWeight.map((p) =>
+                        <option value="{p}">{p}</option>
+                    )
+                }
+            </select>
+
+
+           <br></br>
+           
             <button className="btn btn-dark" type="submit">Predict</button>
         </form>
     )

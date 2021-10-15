@@ -22,7 +22,7 @@ function Header() {
             <Navbar className="navbar-dark bg-dark" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>Ayan&Nakib Store</Navbar.Brand>
+                        <Navbar.Brand>Leptop Store</Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
