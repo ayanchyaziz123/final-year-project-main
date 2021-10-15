@@ -23,6 +23,7 @@ function PricePredict(){
     const [lepGpu, setLepGpu] = React.useState([]);
     const [lepOS, setLepOS] = React.useState([]);
     const [lepWeight, setLepWeight] = React.useState([]);
+    const[lepSSD, setLepSSD] = React.useState([]);
 
 
 
@@ -42,6 +43,8 @@ function PricePredict(){
             lep_opSys: "",
             lep_weight: "",
             lep_touchscreen: "",
+            lep_ips: "",
+            lep_ssd: "",
 
         }
     );
@@ -58,6 +61,7 @@ function PricePredict(){
             setLepGpu(response.data.lgpu);
             setLepOS(response.data.lops);
             setLepWeight(response.data.lw);
+            setLepSSD(response.data.ssd);
 
         });
     }, []);
@@ -214,6 +218,10 @@ if (isTrue){
             </select>
                 </Col>
             </Row>
+
+
+            <Row>
+                <Col md={6}>
             <label for="exampleFormControlSelect1">OS</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_opSys" onChange={handleChange} >
                 <option value="">none</option>
@@ -225,14 +233,48 @@ if (isTrue){
                 }
             </select>
 
+            </Col>
+
+                <Col md={6}>
+            <label for="exampleFormControlSelect1">SSD</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_ssd" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                    lepSSD.map((p) =>
+                        <option value={p}>{p}</option>
+                    )
+                }
+            </select>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col md={6}>
+
             <label for="exampleFormControlSelect1">Touch Screen</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_touchscreen" onChange={handleChange} >
                 <option value="">none</option>
                 <option value="yes">yes</option>
                 <option value="no">no</option>
 
+            
+            </select>
+                </Col>
+                <Col md={6}>
+
+            <label for="exampleFormControlSelect1">IPS</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="lep_ips" onChange={handleChange} >
+                <option value="">none</option>
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+
 
             </select>
+           </Col>
+            </Row >
+
+            
 
             <label for="exampleFormControlSelect1">Weight</label>
             <select class="form-control" id="exampleFormControlSelect1" name="lep_weight" onChange={handleChange} >

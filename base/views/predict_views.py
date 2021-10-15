@@ -27,15 +27,16 @@ def getPredict(request):
         company = df['Company'].unique()
         typeName = df['TypeName'].unique()
         inches = [15.00, 14.00]
-        sr = ["1920x1080", "1920x1080"]
+        sr = ['1920x1080','1366x768','1600x900','3840x2160','3200x1800','2880x1800','2560x1600','2560x1440','2304x1440']
         cpu = df['Cpu brand'].unique()
         ram = df['Ram'].unique();
         gpu = df['Gpu brand'].unique()
         ops = df['os'].unique()
         memory = df['HDD'].unique()
         weight = df['Weight'].unique()
+        ssd = [0, 8, 128, 256, 512, 1024]
         return Response({'lc': company, 'ltn': typeName, 'lsr': sr, 'lcpu': cpu,
-        'lram': ram, 'lgpu': gpu, 'lops': ops, 'lmr': memory, 'lw': weight, 'li': inches})
+        'lram': ram, 'lgpu': gpu, 'lops': ops, 'lmr': memory, 'lw': weight, 'li': inches, 'ssd': ssd})
 
     if request.method == 'POST':
         data = request.data
@@ -47,18 +48,18 @@ def getPredict(request):
         cpu = data['lep_cpu']
         ram = data['lep_ram']
         hdd = data['lep_memory']
-        ssd = 20
+        ssd = data['lep_ssd']
         gpu = data['lep_gpu']
         os = data['lep_opSys']
         weight = data['lep_weight']
         touchscreen = data['lep_touchscreen']
-        ips = "yes"
-        if touchscreen == 'Yes':
+        ips = data['lep_ips']
+        if touchscreen == 'yes':
              touchscreen = 1
         else:
             touchscreen = 0
 
-        if ips == 'Yes':
+        if ips == 'yes':
            ips = 1
         else:
            ips = 0 
