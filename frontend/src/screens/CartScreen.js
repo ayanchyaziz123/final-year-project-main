@@ -49,7 +49,8 @@ function CartScreen({ match, location, history }) {
                                         </Col>
 
                                         <Col md={2}>
-                                            ${item.price}
+                                            ${item.price} <br></br>
+                                            you gotta pay 2% online for booking ${(item.price * 2) / 100}
                                         </Col>
 
                                         <Col md={3}>
@@ -91,7 +92,9 @@ function CartScreen({ match, location, history }) {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
-                            ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                            Total ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                            <br></br>
+                            Online Pay ${cartItems.reduce((acc, item) => acc +(item.qty * item.price * 2) / 100, 0).toFixed(2)}
                         </ListGroup.Item>
                     </ListGroup>
 

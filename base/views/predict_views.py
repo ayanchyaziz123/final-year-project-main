@@ -30,4 +30,19 @@ def getPredict(request):
         data = data['datas']
         b_name = data['car_name']
         print(b_name)
-        return Response(10101)    
+        return Response(10101)   
+
+
+@api_view(['GET', 'POST', 'DELETE'])
+def getCarName(request):
+    if request.method == 'POST':
+        df = pd.read_csv('static/data_set/quikr_car.csv')
+        data = request.data
+        data = data['datas']
+        company = data['company']
+        prem = []
+        name = df['name'].unique()
+        for v in name:
+            if company in v:
+                prem.append(v)
+        return Response({'cc': prem})

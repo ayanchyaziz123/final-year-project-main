@@ -31,8 +31,8 @@ function PricePredict(){
 
     React.useEffect(() => {
         axios.get(baseURL).then((response) => {
-            f_setCarName(response.data.cn);
             f_setCarCompany(response.data.cc);
+            f_setCarName(response.data.cn);
             f_setCarYear(response.data.cy);
             console.log(response.data.cn);
 
@@ -76,16 +76,7 @@ if (isTrue){
     console.log(isTrue);
     return (
         <form onSubmit={handleSubmit}>
-            <label for="exampleFormControlSelect1">Car Name</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="car_name" onChange={handleChange} >
-                <option value="">none</option>
 
-                {
-                f_carName.map((p) =>
-                    <option value="{p}">{p}</option>
-                )
-                }
-            </select>
 
             <label for="exampleFormControlSelect1">Company Name</label>
             <select class="form-control" id="exampleFormControlSelect1" name="company" onChange={handleChange} >
@@ -97,6 +88,19 @@ if (isTrue){
                     )
                 }
             </select>
+
+
+            <label for="exampleFormControlSelect1">Car Name</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="car_name" onChange={handleChange} >
+                <option value="">none</option>
+
+                {
+                f_carName.map((p) =>
+                    <option value="{p}">{p}</option>
+                )
+                }
+            </select>
+
             <label for="exampleFormControlSelect1">Year</label>
             <select class="form-control" id="exampleFormControlSelect1" name="year" onChange={handleChange} >
                 <option value="">none</option>
