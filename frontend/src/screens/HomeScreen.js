@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
 import { listProducts } from '../actions/productActions'
+import ProductOffer from '../components/ProductOffer'
 
 
 function HomeScreen({ history }) {
@@ -23,6 +24,9 @@ function HomeScreen({ history }) {
 
     return (
         <div>
+           
+            {!keyword && <ProductOffer />}
+            <br></br>
             {!keyword && <ProductCarousel />}
 
             <h1>Latest Leptops</h1>

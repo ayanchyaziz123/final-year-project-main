@@ -49,6 +49,16 @@ def getTopProducts(request):
 
 
 @api_view(['GET'])
+def getOfferProducts(request):
+    print("hello 1")
+    products = Product.objects.filter(is_offer=True)
+    print("Products :",products)
+    print("hello 2")
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)

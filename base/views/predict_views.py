@@ -62,8 +62,7 @@ def getPredict(request):
         if ips == 'yes':
            ips = 1
         else:
-           ips = 0 
-           
+           ips = 0          
         print("Res : ", resolution)   
         print("cpu : ", cpu)
         print("name : ", name)

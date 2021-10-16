@@ -29,6 +29,10 @@ import {
     PRODUCT_TOP_SUCCESS,
     PRODUCT_TOP_FAIL,
 
+    PRODUCT_OFFER_REQUEST,
+    PRODUCT_OFFER_SUCCESS,
+    PRODUCT_OFFER_FAIL,
+
 } from '../constants/productConstants'
 
 
@@ -67,6 +71,27 @@ export const listTopProducts = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_TOP_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+export const listOfferProducts = () => async (dispatch) => {
+    try {
+        dispatch({ type: PRODUCT_OFFER_REQUEST })
+
+        const { data } = await axios.get(`/api/products/offer/`)
+
+        dispatch({
+            type: PRODUCT_OFFER_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_OFFER_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,

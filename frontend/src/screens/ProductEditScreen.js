@@ -21,6 +21,8 @@ function ProductEditScreen({ match, history }) {
     const [category, setCategory] = useState('')
     const [countInStock, setCountInStock] = useState(0)
     const [description, setDescription] = useState('')
+    const[is_offer, setIsOffer] = useState('')
+    const[offer_percentage, setOfferPercentage] = useState(0)
     const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -48,6 +50,8 @@ function ProductEditScreen({ match, history }) {
                 setCategory(product.category)
                 setCountInStock(product.countInStock)
                 setDescription(product.description)
+                setIsOffer(product.is_offer)
+                setOfferPercentage(product.offer_percentage)
 
             }
         }
@@ -66,7 +70,9 @@ function ProductEditScreen({ match, history }) {
             brand,
             category,
             countInStock,
-            description
+            description,
+            is_offer,
+            offer_percentage,
         }))
     }
 
@@ -205,6 +211,30 @@ function ProductEditScreen({ match, history }) {
                                     placeholder='Enter description'
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
+                                >
+                                </Form.Control>
+                            </Form.Group>
+
+                            <Form.Group controlId='is_offer'>
+                                <Form.Label>Is Offer</Form.Label>
+                                <Form.Control
+
+                                    type='text'
+                                    placeholder='Enter '
+                                    value={is_offer}
+                                    onChange={(e) => setIsOffer(e.target.value)}
+                                >
+                                </Form.Control>
+                            </Form.Group>
+
+                            <Form.Group controlId='offerPercentage'>
+                                <Form.Label>Offer Percentage</Form.Label>
+                                <Form.Control
+
+                                    type='text'
+                                    placeholder='Enter '
+                                    value={offer_percentage}
+                                    onChange={(e) => setOfferPercentage(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>
