@@ -71,6 +71,6 @@ def getPredict(request):
         ppi = ((X_res**2) + (Y_res**2))**0.5/screen_size
         query = np.array([company, name, ram, weight, touchscreen,ips, ppi, cpu, hdd, ssd, gpu, os])
         query = query.reshape(1, 12)
-        predict = str(int(np.exp(pipe.predict(query)[0])))
+        predict = int(np.exp(pipe.predict(query)[0]))
         return Response(predict)   
 

@@ -18,7 +18,7 @@ import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import PricePredict from './screens/PricePredict'
-import PricePredictShow from './screens/PricePredictShow'
+
 
 
 function App() {
@@ -46,7 +46,6 @@ function App() {
 
           <Route path='/admin/orderlist' component={OrderListScreen} />
           <Route path='/pricePredict' component={PricePredict} />
-          <Route path='/Predict' component={PricePredictShow} />
         </Container>
       </main>
       <Footer />
