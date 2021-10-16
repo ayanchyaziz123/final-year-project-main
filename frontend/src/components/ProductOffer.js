@@ -19,14 +19,14 @@ function ProductOffer() {
     return (loading ? <Loader />
         : error
             ? <Message variant='danger'>{error}</Message>
-            : (
+            : (  
                 <Carousel pause='hover' className='bg-dark'>
                     {products.map(product => (
                         <Carousel.Item key={product._id}>
                             <Link to={`/product/${product._id}`}>
-                                <Image src={product.image} alt={product.name} fluid />
+                                <Image src={product.image} alt={product.name} fluid/>
                                 <Carousel.Caption className='carousel.caption'>
-                                    <h4>{product.name} (${product.price}) <br></br>offer ({product.offer_percentage}%) (${(product.price * product.offer_percentage) / 100}) </h4>
+                                    <h4>{product.name} real price (${product.price}) <br></br>offering price  ({product.offer_percentage}%) (${(product.price - (product.price * product.offer_percentage) / 100)}) </h4>
                                 </Carousel.Caption>
                             </Link>
                         </Carousel.Item>
