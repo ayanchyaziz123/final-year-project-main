@@ -79,7 +79,7 @@ function ProductScreen({ match, history }) {
                                         </ListGroup.Item>
 
                                         <ListGroup.Item>
-                                            Price: ${product.price}
+                                            Price: &#2547;{product.price}
                                         </ListGroup.Item>
                                     
 
