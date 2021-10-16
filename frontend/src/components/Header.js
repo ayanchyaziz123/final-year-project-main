@@ -17,6 +17,9 @@ function Header() {
         dispatch(logout())
     }
 
+    const cart = useSelector(state => state.cart)
+    const { cartItems } = cart
+
     return (
         <header>
             <Navbar className="navbar-dark bg-dark" expand="lg" collapseOnSelect>
@@ -30,7 +33,7 @@ function Header() {
                         <SearchBox />
                         <Nav className="ml-auto">
                             <LinkContainer to='/cart'>
-                                <Nav.Link ><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>
+                                <Nav.Link><i className="fas fa-shopping-cart ct"></i> <span class="badge badge-warning ct2">{cartItems.length}</span></Nav.Link>
                             </LinkContainer>
                             <LinkContainer to='/pricePredict'>
                                 <Nav.Link >Predict Price</Nav.Link>
