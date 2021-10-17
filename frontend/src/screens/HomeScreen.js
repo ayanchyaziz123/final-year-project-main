@@ -31,7 +31,7 @@ function HomeScreen({ history }) {
 
             <Navs/>
 
-            <h4>Latest Laptops</h4>
+            <h4 className="mt-5">Latest Laptops</h4>
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :
