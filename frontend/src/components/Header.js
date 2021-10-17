@@ -35,9 +35,7 @@ function Header() {
                             <LinkContainer to='/cart'>
                                 <Nav.Link><i className="fas fa-shopping-cart ct"></i> <span class="badge badge-warning ct2">{cartItems.length}</span></Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to='/pricePredict'>
-                                <Nav.Link >Predict Price</Nav.Link>
-                            </LinkContainer>
+                           
                             {userInfo ? (
                                 <NavDropdown title={userInfo.name} id='username'>
                                     <LinkContainer to='/profile'>

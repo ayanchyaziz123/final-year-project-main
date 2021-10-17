@@ -8,6 +8,7 @@ import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
 import { listProducts } from '../actions/productActions'
 import ProductOffer from '../components/ProductOffer'
+import Navs from '../components/Navs'
 
 
 function HomeScreen({ history }) {
@@ -27,9 +28,10 @@ function HomeScreen({ history }) {
            
             {!keyword && <ProductOffer />}
             <br></br>
-            {!keyword && <ProductCarousel />}
 
-            <h1>Latest Leptops</h1>
+            <Navs/>
+
+            <h4>Latest Laptops</h4>
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :
@@ -44,6 +46,8 @@ function HomeScreen({ history }) {
                         <Paginate page={page} pages={pages} keyword={keyword} />
                     </div>
             }
+            <h4 className="mt-5">High Rated Laptops</h4>
+            {!keyword && <ProductCarousel />}
         </div>
     )
 }
