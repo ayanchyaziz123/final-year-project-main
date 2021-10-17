@@ -10,6 +10,10 @@ function Navs() {
         {
             history.push("/pricePredict");
         }
+        if (eventKey == "topRatedProduct")
+        {
+            history.push("/topRatedProduct");
+        }
         
     }
 
@@ -19,7 +23,7 @@ function Navs() {
 
             <Nav className="justify-content-center" activeKey="/home" >
                 <Nav.Item>
-                    <Nav.Link href="/home" style={{ fontSize: "20px" }}><i class="fas fa-home text-dark"></i> HOME</Nav.Link>
+                    <Nav.Link eventKey="topRatedProduct" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-star"></i> Top Rated Product</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="pricePredict" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-laptop-medical text-dark"></i> PREDICT HOME PRICE</Nav.Link>
