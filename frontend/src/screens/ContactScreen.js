@@ -6,7 +6,7 @@ function Contact()
 
     return(
         <div>
-                <h1>This is contact</h1>
+                <h1>Contact</h1>
            <Row>
                 <Col md={6} className="bg-dark p-4 text-white">
                     <h5 className="text-white">Our Address</h5>

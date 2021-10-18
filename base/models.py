@@ -90,3 +90,13 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return str(self.address)
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    area_code = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    need_contact = models.BooleanField(default=False)
+    contact_media = models.CharField(max_length=20)
+    message = models.CharField(max_length=800)
