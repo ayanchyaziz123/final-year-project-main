@@ -17,13 +17,13 @@ function Footer() {
                     <Col md={4}>
                         <h5 className="text-white">Our Address</h5>
                         <address>
-                            121, Clear Water Bay Road<br></br>
-                            Clear Water Bay, Kowloon<br></br>
+                            121, Zindabazar Road<br></br>
+                            Sylhet, Bangladesh<br></br>
                             HONG KONG<br></br>
                             <i class="fa fa-phone"></i>: +852 1234 5678<br></br>
                             <i class="fa fa-fax"></i>: +852 8765 4321<br></br>
                             <i class="fa fa-envelope"></i>:
-                            <a href="mailto:confusion@food.net" className="text-white">aaziz9642@gmail.com</a>
+                            <a href="mailto:caaziz9642@gmail.com" className="text-white">aaziz9642@gmail.com</a>
                         </address>
 
                     </Col>
@@ -38,7 +38,7 @@ function Footer() {
                     
                 </Row>
                 <Row className="bg-dark text-white">
-                    <Col className="text-center py-3">Copyright &copy; Ayan&Nakib</Col>
+                    <Col className="text-center py-3">Copyright &copy; Laptop Store</Col>
                 </Row>
             </Container>
         </footer>
