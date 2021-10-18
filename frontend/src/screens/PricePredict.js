@@ -188,9 +188,11 @@ function PricePredict() {
     else {
         console.log(isTrue);
         return (
-            <form onSubmit={handleSubmit}>
-
-                <Row>
+            
+            <form onSubmit={handleSubmit} className="bg-dark text-white p-5">
+                <h4 className="text-white">Predict a Leptop Price</h4>
+                <br></br>
+                <Row >
                     <Col md={6}>
                         <label for="exampleFormControlSelect1">Company</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_company" onChange={handleChange} >
@@ -205,7 +207,7 @@ function PricePredict() {
                     </Col>
                     <Col md={6}>
 
-
+                        
                         <label for="exampleFormControlSelect1">Type</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_name" onChange={handleChange} >
                             <option value="">none</option>
@@ -221,7 +223,7 @@ function PricePredict() {
 
                 <Row>
                     <Col md={6}>
-
+                        <br></br>
                         <label for="exampleFormControlSelect1">Screen Size(in Inches)</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_inches" onChange={handleChange} >
                             <option value="">none</option>
@@ -235,6 +237,7 @@ function PricePredict() {
                     </Col>
 
                     <Col md={6}>
+                        <br></br>
                         <label for="exampleFormControlSelect1">Screen Resolution</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_screenResolution" onChange={handleChange} >
                             <option value="">none</option>
@@ -251,6 +254,7 @@ function PricePredict() {
 
                 <Row>
                     <Col md={6}>
+                        <br></br>
                         <label for="exampleFormControlSelect1">CPU</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_cpu" onChange={handleChange} >
                             <option value="">none</option>
@@ -263,7 +267,7 @@ function PricePredict() {
                         </select>
                     </Col>
                     <Col md={6}>
-
+                        <br></br>
                         <label for="exampleFormControlSelect1">Ram Size(in GBs)</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_ram" onChange={handleChange} >
                             <option value="">none</option>
@@ -279,6 +283,7 @@ function PricePredict() {
 
                 <Row>
                     <Col md={6}>
+                        <br></br>
                         <label for="exampleFormControlSelect1">SSD Size(in GBs)</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_ssd" onChange={handleChange} >
                             <option value="">none</option>
@@ -291,6 +296,7 @@ function PricePredict() {
                         </select>
                     </Col>
                     <Col md={6}>
+                        <br></br>
                         <label for="exampleFormControlSelect1">HDD Size(in GBs)</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_memory" onChange={handleChange} >
                             <option value="">none</option>
@@ -308,6 +314,7 @@ function PricePredict() {
 
                 <Row>
                     <Col md={6}>
+                        <br></br>
                         <label for="exampleFormControlSelect1">Operating System</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_opSys" onChange={handleChange} >
                             <option value="">none</option>
@@ -323,7 +330,7 @@ function PricePredict() {
 
 
                     <Col md={6}>
-
+                        <br></br>
                         <label for="exampleFormControlSelect1">Gpu</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_gpu" onChange={handleChange} >
                             <option value="">none</option>
@@ -342,7 +349,7 @@ function PricePredict() {
 
                 <Row>
                     <Col md={6}>
-
+                        <br></br>
                         <label for="exampleFormControlSelect1">Touch Screen</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_touchscreen" onChange={handleChange} >
                             <option value="">none</option>
@@ -353,7 +360,7 @@ function PricePredict() {
                         </select>
                     </Col>
                     <Col md={6}>
-
+                     <br></br>
                         <label for="exampleFormControlSelect1">IPS</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="lep_ips" onChange={handleChange} >
                             <option value="">none</option>
@@ -368,7 +375,7 @@ function PricePredict() {
                 </Row >
 
 
-
+                <br></br>
                 <label for="exampleFormControlSelect1">Weight(in kg)</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="lep_weight" onChange={handleChange} >
                     <option value="">none</option>
@@ -383,7 +390,7 @@ function PricePredict() {
 
                 <br></br>
 
-                <button className="btn btn-dark" type="submit">Predict</button>
+                <button className="btn btn-warning" type="submit">Predict</button>
             </form>
         )
     }
