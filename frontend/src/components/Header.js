@@ -33,7 +33,7 @@ function Header() {
                         <SearchBox />
                         <Nav className="ml-auto">
                             <LinkContainer to='/cart'>
-                                <Nav.Link><i className="fas fa-shopping-cart ct"></i> <span class="badge badge-warning ct2">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
+                                <Nav.Link><i className="fas fa-shopping-cart ct"></i> <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
                             </LinkContainer>
                            
                             {userInfo ? (
