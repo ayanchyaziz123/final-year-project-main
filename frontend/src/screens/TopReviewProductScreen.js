@@ -10,7 +10,7 @@ import ProductOffer from '../components/ProductOffer'
 import Navs from '../components/Navs'
 
 
-function CompanyProductScreen({ history }) {
+function TopReviewProductScreen({ history }) {
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const { error, loading, products, page, pages } = productList
@@ -50,4 +50,4 @@ function CompanyProductScreen({ history }) {
     )
 }
 
-export default CompanyProductScreen;
+export default TopReviewProductScreen;

@@ -10,9 +10,9 @@ function Navs() {
         {
             history.push("/pricePredict");
         }
-        if (eventKey == "companyProductScreen")
+        if (eventKey == "topReviewProductScreen")
         {
-            history.push("/companyProductScreen");
+            history.push("/topReviewProductScreen");
         }
         if (eventKey == "contact") {
             history.push("/contact");
@@ -26,10 +26,10 @@ function Navs() {
 
             <Nav className="justify-content-center" activeKey="/home" >
                 <Nav.Item>
-                    <Nav.Link eventKey="companyProductScreen" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-star"></i> MY STORE</Nav.Link>
+                    <Nav.Link eventKey="topReviewProductScreen" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-star"></i> TOP PRODUCT</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="pricePredict" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-laptop-medical text-dark"></i> PREDICT HOME PRICE</Nav.Link>
+                    <Nav.Link eventKey="pricePredict" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-laptop-medical text-dark"></i> PREDICT LAPTOP PRICE</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="contact" onSelect={handleSelect} style={{ fontSize: "20px" }}><b><i class="fas fa-id-card-alt"></i> CONTACT</b></Nav.Link>

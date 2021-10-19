@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 function Footer() {
     return (
@@ -9,7 +10,7 @@ function Footer() {
                     <Col md={4}>
 
                         <h4 className="text-white">Links</h4>
-                        <p>Home</p>
+                        <Link to="/home">About</Link>
                         <p>Predict</p>
                         <p>Top product</p>
 
