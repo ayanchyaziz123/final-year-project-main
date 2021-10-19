@@ -39,7 +39,7 @@ function Contact()
                         <a role="button" class="btn btn-success" href="mailto:aaziz9642@gmail.com"><i class="fa fa-envelope-o"></i> Email</a>
                     </div>
                 </Col>
-                <Col md={5} className="bg-dark p-4 ml-4">
+                <Col md={5} className="bg-dark p-4 ml-5">
                     <h4 className="text-white"> Location Information</h4>
                 </Col>
                

@@ -39,6 +39,8 @@ def getProducts(request):
     serializer = ProductSerializer(products, many=True)
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
+
+
 #for get top products
 
 @api_view(['GET'])

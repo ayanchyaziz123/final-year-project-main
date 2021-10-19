@@ -18,7 +18,7 @@ import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import PricePredict from './screens/PricePredict'
-import TopRatedProductScreen from './screens/TopRatedProductScreen'
+import CompanyProductScreen from './screens/CompanyProductScreen'
 import Contact from './screens/ContactScreen'
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
 
           <Route path='/admin/orderlist' component={OrderListScreen} />
           <Route path='/pricePredict' component={PricePredict} />
-          <Route path='/topRatedProduct' component={TopRatedProductScreen}/>
+          <Route path='/companyProductScreen' component={CompanyProductScreen}/>
           <Route path='/contact' component={Contact}/>
         </Container>
       </main>
