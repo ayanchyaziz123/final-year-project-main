@@ -10,7 +10,7 @@ function Footer() {
                     <Col md={4}>
 
                         <h4 className="text-white">Links</h4>
-                        <Link to="/home">About</Link>
+                        <Link to="/" className="text-white">About</Link>
                         <p>Predict</p>
                         <p>Top product</p>
 
