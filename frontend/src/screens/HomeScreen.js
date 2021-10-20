@@ -8,6 +8,7 @@ import Paginate from '../components/Paginate'
 import { listProducts } from '../actions/productActions'
 import ProductOffer from '../components/ProductOffer'
 import Navs from '../components/Navs'
+import CompareProduct from '../components/CompareProduct'
 
 
 function HomeScreen({ history }) {
@@ -25,7 +26,15 @@ function HomeScreen({ history }) {
     return (
         <div>
            
-            {!keyword && <ProductOffer />}
+            <Row>
+                <Col md={9}>
+                    {!keyword && <ProductOffer />}
+                </Col>
+                <Col md={3}>
+                    <CompareProduct/>
+
+                </Col>
+                </Row>
             <br></br>
 
             <Navs/>
