@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { React, useState, initialState, useEffect}from 'react';
+import { React, useState, initialState, useEffect, context}from 'react';
+import {Redirect} from 'react-router-dom';
 
 
 const baseURL = "http://127.0.0.1:8000/api/products/all/";
@@ -32,6 +33,7 @@ const CompareProduct = () =>{
        
     }
     const handleSubmit = (event) =>{
+        event.preventDefault();
         console.log("pro : ", productss)
         
         if(gt.laptop_1 == "" || gt.laptop_2 == "")
@@ -50,14 +52,13 @@ const CompareProduct = () =>{
     if(isPC)
     {
         return(
-                <div class="card bg-dark">
-
-                {
-                    productss.map((p) =>
-                        <option value={p.name}>{p.name}</option>
-                    )
-                }
-                </div>
+            <Redirect
+                to={{
+                    pathname: "/compare",
+                    state: { lep1: gt.laptop_1,
+                             lep2: gt.laptop_2 }
+                }}
+            />
             )
     }
     else{

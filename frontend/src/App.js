@@ -20,6 +20,7 @@ import OrderListScreen from './screens/OrderListScreen'
 import PricePredict from './screens/PricePredict'
 import TopReviewProductScreen from './screens/TopReviewProductScreen'
 import Contact from './screens/ContactScreen'
+import CompareScreen from './screens/CompareScreen'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
           <Route path='/profile' component={ProfileScreen} />
+          <Route path='/compare' component={CompareScreen} />
           <Route path='/shipping' component={ShippingScreen} />
           <Route path='/placeorder' component={PlaceOrderScreen} />
           <Route path='/order/:id' component={OrderScreen} />
@@ -48,6 +50,7 @@ function App() {
           <Route path='/pricePredict' component={PricePredict} />
           <Route path='/topReviewProductScreen' component={TopReviewProductScreen}/>
           <Route path='/contact' component={Contact}/>
+          
         </Container>
       </main>
       <Footer />
