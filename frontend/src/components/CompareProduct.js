@@ -56,7 +56,8 @@ const CompareProduct = () =>{
                 to={{
                     pathname: "/compare",
                     state: { lep1: gt.laptop_1,
-                             lep2: gt.laptop_2 }
+                             lep2: gt.laptop_2,
+                           }
                 }}
             />
             )
