@@ -21,7 +21,7 @@ function CompareScreen(props){
     return(
         
         <div>
-            <h4 className="mt-5 mb-5">Compare Btween {props.location.state.lep1} & {props.location.state.lep2}</h4>
+            <h4 className="mt-5 mb-5">Comparison Btween {props.location.state.lep1} & {props.location.state.lep2}</h4>
 
             {prod && (
                 <Row>
