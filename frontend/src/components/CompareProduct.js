@@ -9,12 +9,12 @@ const CompareProduct = () =>{
     const [productss, setProductss] = useState([])
     const [isPC, setIsPC] = useState(false);
     const [gt, setGt] = useState({
-        laptop_1: "1",
-        laptop_2: "2",
+        laptop_1: "",
+        laptop_2: "",
 
     });
     
-    useEffect(() => {
+    useEffect( async () => {
         try{
             axios.get(baseURL).then((response) => {
                 setProductss(response.data)
@@ -25,7 +25,7 @@ const CompareProduct = () =>{
         {
             console.log(error);
         }
-    });
+    }, []);
 
     const handleChange = (e) =>{
         console.log(productss)
@@ -75,7 +75,7 @@ const CompareProduct = () =>{
                     <option value="">none</option>
                     {
                         productss.map((p) =>
-                            <option value={p.name}>{p.name}</option>
+                            <option value={p._id}>{p.name}</option>
                         )
                     }
                     
@@ -86,7 +86,7 @@ const CompareProduct = () =>{
                 <option value="">none</option>
                     {
                         productss.map((p) =>
-                            <option value={p.name}>{p.name}</option>
+                            <option value={p._id}>{p.name}</option>
                         )
                     }
 
