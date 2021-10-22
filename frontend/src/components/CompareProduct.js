@@ -80,7 +80,7 @@ const CompareProduct = () =>{
                     }
                     
                 </select>
-               
+               <br></br>
             <label for="exampleFormControlSelect1">Leptop2</label>
             <select class="form-control" id="exampleFormControlSelect1" name="laptop_2" onChange={handleChange} >
                 <option value="">none</option>
@@ -93,6 +93,7 @@ const CompareProduct = () =>{
                    
             </select>
             <br></br>
+                <br></br>
             <button type="submit" className="btn btn-dark">Comparison</button>
         </div>
         </form>
