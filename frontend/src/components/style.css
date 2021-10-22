@@ -12,3 +12,7 @@
     font-size: 30px !important;
 
 }
+.text-tl {
+   -webkit-text-decoration-line: line-through !important; /* Safari */
+   text-decoration-line: line-through !important; 
+}

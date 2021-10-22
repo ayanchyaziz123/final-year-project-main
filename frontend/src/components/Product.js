@@ -25,8 +25,9 @@ function Product({ product }) {
                 </Card.Text>
 
 
-                <Card.Text as="h3">
-                    &#2547;{product.price}
+                <Card.Text as="h5">
+                    &#2547;{product.is_offer ?  product.price - ((product.price * product.offer_percentage)/100) : product.price}
+                    <br></br><span class="text-tl">{product.is_offer ? '৳ ' + product.price : null}</span> {product.is_offer ? '-'+product.offer_percentage+'%' : null}
                 </Card.Text>
             </Card.Body>
         </Card>
