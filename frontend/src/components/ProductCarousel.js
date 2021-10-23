@@ -32,6 +32,7 @@ function ProductCarousel() {
                         </Carousel.Item>
                     ))}
                 </Carousel>
+                
             )
 
     )

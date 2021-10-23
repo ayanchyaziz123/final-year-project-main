@@ -190,7 +190,7 @@ function PricePredict() {
         return (
             
             <form onSubmit={handleSubmit} className="bg-dark text-white p-5">
-                <h4 className="text-white">Predict a Leptop Price</h4>
+                <h4 className="text-white">Predict a Laptop Price</h4>
                 <br></br>
                 <Row >
                     <Col md={6}>

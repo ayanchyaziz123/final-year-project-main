@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 function Product({ product }) {
     return (
         <Card className="my-3 p-3 rounded">
-            <strong className="ct">{product.rating > 2 && product.numReviews > 0 ? <span class="badge badge-warning"><i class="fas fa-star"></i> TOP REVIEWED</span> : null }</strong>
+            <strong className="ct">{product.rating > 2 && product.numReviews > 0 ? <span class="badge badge-warning"><i class="fas fa-star"></i> TOP REVIEWED</span> : <br></br> }</strong>
             <Link to={`/product/${product._id}`}>
-                <Card.Img src={product.image} />
+                <Card.Img src={product.image} className="img-fluid ps"/>
             </Link>
 
             <Card.Body>
@@ -27,7 +27,7 @@ function Product({ product }) {
 
                 <Card.Text as="h5">
                     &#2547;{product.is_offer ?  product.price - ((product.price * product.offer_percentage)/100) : product.price}
-                    <br></br><span class="text-tl">{product.is_offer ? '৳ ' + product.price : null}</span> {product.is_offer ? '-'+product.offer_percentage+'%' : null}
+                    <br></br><span class="text-tl">{product.is_offer ? '৳ ' + product.price : null}</span> {product.is_offer ? '-'+product.offer_percentage+'%' : <br></br>}
                 </Card.Text>
             </Card.Body>
         </Card>

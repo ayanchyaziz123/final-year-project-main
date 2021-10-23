@@ -9,6 +9,7 @@ import { listProducts } from '../actions/productActions'
 import ProductOffer from '../components/ProductOffer'
 import Navs from '../components/Navs'
 import CompareProduct from '../components/CompareProduct'
+import ProductCarousel from '../components/ProductCarousel'
 
 
 function HomeScreen({ history }) {
@@ -28,7 +29,7 @@ function HomeScreen({ history }) {
            
             <Row>
                 <Col md={9}>
-                    {!keyword && <ProductOffer />}
+                    <ProductOffer/>
                 </Col>
                 <Col md={3}>
                     <CompareProduct/>

@@ -16,3 +16,6 @@
    -webkit-text-decoration-line: line-through !important; /* Safari */
    text-decoration-line: line-through !important; 
 }
+.ps{
+    max-height: 100px !important;
+}
