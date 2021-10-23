@@ -1,16 +1,19 @@
+import axios from 'axios';
 import{
-    CREATE_CREATE_REQUEST,
-    CREATE_CREATE_SUCCESS,
-    CREATE_CREATE_FAIL,
+    CONTACT_LIST_REQUEST,
+    CONTACT_LIST_SUCCESS,
+    CONTACT_LIST_FAIL,
+
+    CONTACT_CREATE_REQUEST,
+    CONTACT_CREATE_SUCCESS,
+    CONTACT_CREATE_FAIL,
 
 } from '../constants/contactConstants';
 
-
-
-export const createProduct = () => async (dispatch, getState) => {
+export const createContact = () => async (dispatch, getState) => {
     try {
         dispatch({
-            type: PRODUCT_CREATE_REQUEST
+            type: CONTACT_CREATE_REQUEST
         })
 
         const {
@@ -25,22 +28,23 @@ export const createProduct = () => async (dispatch, getState) => {
         }
 
         const { data } = await axios.post(
-            `/api/contacts/create/`,
+            `/api/contact/create/`,
             {},
             config
         )
         dispatch({
-            type: PRODUCT_CREATE_SUCCESS,
+            type: CONTACT_CREATE_SUCCESS,
             payload: data,
         })
 
 
     } catch (error) {
         dispatch({
-            type: PRODUCT_CREATE_FAIL,
+            type: CONTACT_CREATE_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,
         })
     }
 }
+
