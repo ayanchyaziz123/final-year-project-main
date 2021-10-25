@@ -21,6 +21,7 @@ import PricePredict from './screens/PricePredict'
 import TopReviewProductScreen from './screens/TopReviewProductScreen'
 import Contact from './screens/ContactScreen'
 import CompareScreen from './screens/CompareScreen'
+import PriceRangeScreen from './screens/PriceRangeScreen'
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           <Route path='/pricePredict' component={PricePredict} />
           <Route path='/topReviewProductScreen' component={TopReviewProductScreen}/>
           <Route path='/contact' component={Contact}/>
+          <Route path='/priceRange' component={PriceRangeScreen} />
           
         </Container>
       </main>

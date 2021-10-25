@@ -10,9 +10,9 @@ function Navs() {
         {
             history.push("/pricePredict");
         }
-        if (eventKey == "topReviewProductScreen")
+        if (eventKey == "priceRange")
         {
-            history.push("/topReviewProductScreen");
+            history.push("/priceRange");
         }
         if (eventKey == "contact") {
             history.push("/contact");
@@ -26,7 +26,7 @@ function Navs() {
 
             <Nav className="justify-content-center" activeKey="/home" >
                 <Nav.Item>
-                    <Nav.Link eventKey="topReviewProductScreen" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-star"></i> TOP PRODUCT</Nav.Link>
+                    <Nav.Link eventKey="priceRange" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-star"></i> PRICE RANGE</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="pricePredict" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-laptop-medical text-dark"></i> PREDICT LAPTOP PRICE</Nav.Link>

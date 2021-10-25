@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
+import Loader from '../components/Loader'
 
 
 const baseURL = "http://127.0.0.1:8000/api/predict/";
