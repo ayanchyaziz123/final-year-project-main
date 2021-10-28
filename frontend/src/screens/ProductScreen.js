@@ -79,7 +79,8 @@ function ProductScreen({ match, history }) {
                                         </ListGroup.Item>
 
                                         <ListGroup.Item>
-                                            Price: &#2547;{product.price}
+                                            Price : &#2547;{product.is_offer ? product.price - ((product.price * product.offer_percentage) / 100) : product.price}
+                                            <br></br><span class="text-tl">{product.is_offer ? '৳' + product.price : null}</span> {product.is_offer ? '-' + product.offer_percentage + '%' : <br></br>}
                                         </ListGroup.Item>
                                     
 
