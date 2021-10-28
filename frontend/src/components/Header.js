@@ -22,7 +22,7 @@ function Header() {
 
     return (
         <header>
-            <Navbar className="navbar-dark bg-dark" expand="lg" collapseOnSelect>
+            <Navbar className="navbar-dark bg-dark pt-0 pb-0" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>Laptop Store</Navbar.Brand>
