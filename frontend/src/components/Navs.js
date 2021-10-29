@@ -35,6 +35,8 @@ function Navs() {
                     <Nav.Link eventKey="contact" onSelect={handleSelect} style={{ fontSize: "20px" }}><b><i class="fas fa-id-card-alt"></i> CONTACT</b></Nav.Link>
                 </Nav.Item>
             </Nav>
+            <p className="text-center mt-4 mb-4">A laptop Store</p>
+            <hr></hr>
             
         </div>
     )
