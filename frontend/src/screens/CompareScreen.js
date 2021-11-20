@@ -3,6 +3,7 @@ import Loader from '../components/Loader';
 import axios from 'axios';
 import {Row, Col, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 
 const baseURL = "http://127.0.0.1:8000/api/products/all/";
@@ -45,7 +46,7 @@ function CompareScreen(props){
                             </Link>
                            <Card.Body>
                                 <h5 className="text-white">{pr.name}</h5>
-                                <p>{pr.description}</p>
+                                <p>{ReactHtmlParser(pr.description)}</p>
                                 <p>{pr.price}</p>
                            </Card.Body>
 
@@ -66,7 +67,7 @@ function CompareScreen(props){
                                 </Link>
                                 <Card.Body>
                                     <h5 className="text-white">{pr.name}</h5>
-                                    <p>{pr.description}</p>
+                                    <p>{ReactHtmlParser(pr.description)}</p>
                                     <p>{pr.price}</p>
                                 </Card.Body>
 
