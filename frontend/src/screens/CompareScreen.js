@@ -1,20 +1,25 @@
 import React, {initialState, useState, useEffect} from 'react';
+import Loader from '../components/Loader';
 import axios from 'axios';
 import {Row, Col, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
+
 const baseURL = "http://127.0.0.1:8000/api/products/all/";
 
 function CompareScreen(props){
-    const [prod, setProd] = useState(initialState)
-    const[come, setCome] = useState(false)
+    const [prod, setProd] = useState(initialState);
+    const[come, setCome] = useState(false);
+    const[loading, setLoading] = useState(false);
 
     useEffect( async () => {
         try {
+            setLoading(true);
             axios.get(baseURL).then((response) => {
                 setProd(response.data)
 
             });
+            setLoading(false);
         }
         catch (error) {
             console.log(error);
@@ -23,7 +28,9 @@ function CompareScreen(props){
     return(
         
         <div>
-            
+
+            {loading ? <Loader/>:
+            <div>
             <h1 className="text-center">Comparision between Two Laptops</h1>
 
             {prod && (
@@ -70,6 +77,8 @@ function CompareScreen(props){
 
                 </Row>
             )}
+            </div>
+            }
 
         </div>
     )

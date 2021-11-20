@@ -1,21 +1,20 @@
-import React from 'react'
-import { Spinner } from 'react-bootstrap'
+import React from 'react';
+import Loader from "react-loader-spinner";
 
-function Loader() {
+const Loaders = () => {
     return (
-        <Spinner
-            animation='border'
-            role='status'
+        <Loader
+            type="Grid"
+            color="#212121"
+            height={150}
+            width={150}
+            timeout={3000} //3 secs
             style={{
-                height: '100px',
-                width: '100px',
-                margin: 'auto',
-                display: 'block'
+                marginTop: '90px',
+                textAlign: 'center',
             }}
-        >
-            <span className='sr-only'>Loading...</span>
-        </Spinner>
-    )
+        />
+    );
 }
 
-export default Loader
+export default Loaders;

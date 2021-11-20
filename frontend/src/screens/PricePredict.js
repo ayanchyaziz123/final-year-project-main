@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import Loader from '../components/Loader';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
-import Loader from '../components/Loader'
+
 
 
 const baseURL = "http://127.0.0.1:8000/api/predict/";
 
 function PricePredict() {
+
+    const [loading, setLoading] = useState(false);
 
     var [isTrue, setTrue] = useState(false);
     const [predict, setPredict] = React.useState(null);
@@ -50,6 +53,7 @@ function PricePredict() {
     );
 
     React.useEffect(() => {
+        setLoading(true)
         axios.get(baseURL).then((response) => {
             setLepCompany(response.data.lc);
             setLepName(response.data.ltn);
@@ -62,6 +66,7 @@ function PricePredict() {
             setLepOS(response.data.lops);
             setLepWeight(response.data.lw);
             setLepSSD(response.data.ssd);
+            setLoading(false);
 
         });
     }, []);
@@ -91,6 +96,7 @@ function PricePredict() {
         }
         else {
             setTrue(true);
+            setLoading(true);
             axios.post(baseURL, {
                 datas
             })
@@ -98,6 +104,7 @@ function PricePredict() {
                     setPredict(response.data);
                 });
         }
+        setLoading(false);
 
     }
 
@@ -105,6 +112,9 @@ function PricePredict() {
     if (isTrue) {
 
         return (
+            <div>
+            {loading ? <Loader/>:
+
             <div>
                 <Row>
 
@@ -170,6 +180,7 @@ function PricePredict() {
                                 Touch Screen
                                 <span class="badge badge-primary badge-pill">{datas.lep_touchscreen}</span>
                             </li>
+                            
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 IPS
                                 <span class="badge badge-primary badge-pill">{datas.lep_ips}</span>
@@ -183,12 +194,18 @@ function PricePredict() {
                 <h3 className="text-center mt-5"><bold>Predicted Price of leptop   <span class="badge badge-primary badge-pill">&#2547; {predict + (predict / 2)}</span> </bold></h3>
 
             </div>
+            }
+            </div>
 
         )
     }
     else {
         console.log(isTrue);
         return (
+
+            <div>
+
+                {loading ? <Loader /> :
             
             <form onSubmit={handleSubmit} className="bg-dark text-white p-5">
                 <h4 className="text-white">Predict a Laptop Price</h4>
@@ -393,6 +410,8 @@ function PricePredict() {
 
                 <button className="btn btn-warning" type="submit">Predict</button>
             </form>
+    }
+    </div>
         )
     }
 }
