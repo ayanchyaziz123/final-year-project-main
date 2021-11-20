@@ -8,6 +8,9 @@ import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 
 function ProductEditScreen({ match, history }) {
@@ -206,14 +209,13 @@ function ProductEditScreen({ match, history }) {
 
                             <Form.Group controlId='description'>
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    type='text'
-                                    placeholder='Enter description'
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                >
-                                </Form.Control>
+                                
+                                <CKEditor editor={ClassicEditor} 
+                                    onChange={(e, editor) => setDescription(editor.getData())}
+                                />
+                                <div>
+                                    {ReactHtmlParser(description)}
+                                </div>
                             </Form.Group>
 
                             <Form.Group controlId='is_offer'>

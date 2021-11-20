@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 function ProductScreen({ match, history }) {
     const [qty, setQty] = useState(1)
@@ -85,7 +86,7 @@ function ProductScreen({ match, history }) {
                                     
 
                                         <ListGroup.Item>
-                                            Description: {product.description}
+                                            Description: {ReactHtmlParser(product.description)}
                                         </ListGroup.Item>
                                     </ListGroup>
                                 </Col>
