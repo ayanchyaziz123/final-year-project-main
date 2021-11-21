@@ -108,7 +108,7 @@ function PricePredict() {
             })
                 .then((response) => {
                     setPredict(response.data.predict);
-                    setSuggestProduct(response.data.suggest_product);
+                    setSuggestProduct(response.data.suggest_products);
                 });
         }
         setLoading(false);
@@ -208,7 +208,7 @@ function PricePredict() {
                         :
                         <div>
                             <Row>
-                                {suggest_product && suggest_product.map(product => (
+                                {suggest_product && suggest_product.map(product => (product-10000) <= product && product <= (product + 10000) (
                                     <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
 
 

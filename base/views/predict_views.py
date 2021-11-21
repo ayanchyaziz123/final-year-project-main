@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from base.models import Product, Order, OrderItem, ShippingAddress
 from base.serializers import ProductSerializer, OrderSerializer
 
+
 from rest_framework import status
 from datetime import datetime
 import csv
@@ -72,7 +73,7 @@ def getPredict(request):
         query = np.array([company, name, ram, weight, touchscreen,ips, ppi, cpu, hdd, ssd, gpu, os])
         query = query.reshape(1, 12)
         predict = int(np.exp(pipe.predict(query)[0]))
-        suggest_products = Product.objects.filter(
-            price__range=(predict - 10000, predict + 10000))
-        return Response({'predict': predict, 'suggest_products': suggest_products})
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response({'predict': predict, 'suggest_products': serializer.data})
 
