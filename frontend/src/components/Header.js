@@ -55,7 +55,7 @@ function Header() {
 
 
                             {userInfo && userInfo.isAdmin && (
-                                <NavDropdown title='Admin' id='adminmenue'>
+                                <NavDropdown title='Deshboard' id='adminmenue'>
                                     <LinkContainer to='/admin/userlist'>
                                         <NavDropdown.Item>Users</NavDropdown.Item>
                                     </LinkContainer>
@@ -66,6 +66,9 @@ function Header() {
 
                                     <LinkContainer to='/admin/orderlist'>
                                         <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to='/admin/deshboard'>
+                                        <NavDropdown.Item>deshboard</NavDropdown.Item>
                                     </LinkContainer>
 
                                 </NavDropdown>

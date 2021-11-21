@@ -22,6 +22,7 @@ import TopReviewProductScreen from './screens/TopReviewProductScreen'
 import Contact from './screens/ContactScreen'
 import CompareScreen from './screens/CompareScreen'
 import PriceRangeScreen from './screens/PriceRangeScreen'
+import DeshboardScreen from './screens/DeshboardScreen'
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path='/topReviewProductScreen' component={TopReviewProductScreen}/>
           <Route path='/contact' component={Contact}/>
           <Route path='/priceRange' component={PriceRangeScreen} />
+          <Route path='/admin/deshboard' component={DeshboardScreen} />
           
         </Container>
       </main>

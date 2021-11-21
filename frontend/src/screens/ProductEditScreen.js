@@ -65,6 +65,11 @@ function ProductEditScreen({ match, history }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
+        if(is_offer == 'True' && offer_percentage >= 0)
+        {
+            alert("something went wrong");
+            return;
+        }
         dispatch(updateProduct({
             _id: productId,
             name,
@@ -219,7 +224,7 @@ function ProductEditScreen({ match, history }) {
                             </Form.Group>
 
                             <Form.Group controlId='is_offer'>
-                                <Form.Label>Is Offer</Form.Label>
+                                <Form.Label>Is Offer (You must give True or False)</Form.Label>
                                 <Form.Control
 
                                     type='text'
@@ -229,6 +234,8 @@ function ProductEditScreen({ match, history }) {
                                 >
                                 </Form.Control>
                             </Form.Group>
+
+    
 
                             <Form.Group controlId='offerPercentage'>
                                 <Form.Label>Offer Percentage</Form.Label>

@@ -6,7 +6,7 @@ function Footer() {
     return (
         <footer>
             <Container>
-                <Row className="bg-dark text-white p-4">
+                <Row className="bg-dark text-white p-4 mt-5">
                     <Col md={4}>
 
                         <h4 className="text-white">Links</h4>
