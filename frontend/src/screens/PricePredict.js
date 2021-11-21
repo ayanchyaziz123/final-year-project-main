@@ -5,12 +5,17 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
+import Product from '../components/Product';
+import Rating from '../components/Rating';
 
 
 
 const baseURL = "http://127.0.0.1:8000/api/predict/";
 
 function PricePredict() {
+
+
+    
 
     const [loading, setLoading] = useState(false);
 
@@ -27,6 +32,7 @@ function PricePredict() {
     const [lepOS, setLepOS] = React.useState([]);
     const [lepWeight, setLepWeight] = React.useState([]);
     const [lepSSD, setLepSSD] = React.useState([]);
+    const [suggest_product, setSuggestProduct] = React.useState([]);
 
 
 
@@ -101,7 +107,8 @@ function PricePredict() {
                 datas
             })
                 .then((response) => {
-                    setPredict(response.data);
+                    setPredict(response.data.predict);
+                    setSuggestProduct(response.data.suggest_product);
                 });
         }
         setLoading(false);
@@ -189,12 +196,66 @@ function PricePredict() {
                     </Col>
 
 
-
                 </Row>
                 <h3 className="text-center mt-5"><bold>Predicted Price of leptop   <span class="badge badge-primary badge-pill">&#2547; {predict + (predict / 2)}</span> </bold></h3>
 
             </div>
             }
+
+                <h4 className="mt-5">Suggest  Laptops</h4>
+                {loading ? <Loader />
+                
+                        :
+                        <div>
+                            <Row>
+                                {suggest_product && suggest_product.map(product => (
+                                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+
+
+                                        <Card className="my-3 p-3  rounded shadow">
+                                            <strong className="ct">{product.rating > 2 && product.numReviews > 0 ? <span class="badge badge-warning"><i class="fas fa-star"></i> TOP REVIEWED</span> : <br></br>}</strong>
+                                            <Link to={`/product/${product._id}`}>
+                                                <Card.Img src={product.image} className="img-fluid ps" />
+                                            </Link>
+
+                                            <Card.Body>
+                                                <Link to={`/product/${product._id}`}>
+                                                    <Card.Title as="div" >
+                                                        <strong >{product.name}</strong>
+                                                    </Card.Title>
+                                                </Link>
+
+                                                <Card.Text as="div">
+                                                    <div className="my-3">
+                                                        <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
+                                                    </div>
+                                                </Card.Text>
+
+
+                                                <Card.Text as="h5">
+                                                    &#2547;{product.is_offer ? product.price - ((product.price * product.offer_percentage) / 100) : product.price}
+                                                    <br></br><span class="text-tl">{product.is_offer ? '৳' + product.price : null}</span> {product.is_offer ? '-' + product.offer_percentage + '%' : <br></br>}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                        
+
+
+
+
+
+
+                                    </Col>
+                                ))}
+                            </Row>
+                
+                        </div>
+                }
+
+
+
+
+
             </div>
 
         )
