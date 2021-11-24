@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 function Footer() {
     return (
         <footer>
-            <Container>
                 <Row className="bg-dark text-white p-4 mt-5">
                     <Col md={4}>
 
@@ -41,7 +40,7 @@ function Footer() {
                 <Row className="bg-dark text-white">
                     <Col className="text-center py-3">Copyright &copy; Laptop Store</Col>
                 </Row>
-            </Container>
+     
         </footer>
     )
 }

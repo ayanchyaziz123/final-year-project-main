@@ -8,6 +8,7 @@ const baseURL = "http://127.0.0.1:8000/api/products/all/";
 const CompareProduct = () =>{
     const [productss, setProductss] = useState([])
     const [isPC, setIsPC] = useState(false);
+    const [visible, setVisible] = useState(false);
     const [gt, setGt] = useState({
         laptop_1: "",
         laptop_2: "",
@@ -27,10 +28,13 @@ const CompareProduct = () =>{
         }
     }, []);
 
+
+
+
     const handleChange = (e) =>{
         console.log(productss)
-        setGt({ ...gt, [e.target.name]: e.target.value })
-       
+        setGt({ ...gt, [e.target.name]: e.target.value })  
+    
     }
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -67,11 +71,11 @@ const CompareProduct = () =>{
     
     return(
         <form onSubmit={handleSubmit}>
-        <div className="card p-2 bg-warning">
-            <h5>Compare Products</h5>
-            <p>Choose Two Products to Compare</p>
-                <label for="exampleFormControlSelect1">Leptop1</label>
-                <select class="form-control" id="exampleFormControlSelect1" name="laptop_1" onChange={handleChange} >
+        <div className="card shadow p-2 bg-warning">
+                <h5 className="font-weight-bold">Compare Products</h5>
+                <br></br>
+                <label for="exampleFormControlSelect1">Laptop1</label>
+                <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_1" onChange={handleChange} >
                     <option value="">none</option>
                     {
                         productss.map((p) =>
@@ -82,7 +86,7 @@ const CompareProduct = () =>{
                 </select>
                <br></br>
             <label for="exampleFormControlSelect1">Leptop2</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="laptop_2" onChange={handleChange} >
+            <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_2" onChange={handleChange} disabled={visible == true ? true : false}>
                 <option value="">none</option>
                     {
                         productss.map((p) =>
@@ -94,7 +98,7 @@ const CompareProduct = () =>{
             </select>
             <br></br>
                 <br></br>
-            <button type="submit" className="btn btn-dark">Comparison</button>
+            <button type="submit" className="btn btn-dark btn-sm">Comparison</button>
         </div>
         </form>
     );

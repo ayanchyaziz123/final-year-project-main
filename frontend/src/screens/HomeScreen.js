@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col,Container } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import { listProducts } from '../actions/productActions'
 import ProductOffer from '../components/ProductOffer'
+import ProductOffer2 from '../components/ProductOffer2'
 import Navs from '../components/Navs'
 import CompareProduct from '../components/CompareProduct'
 import ProductCarousel from '../components/ProductCarousel'
+
 
 
 function HomeScreen({ history }) {
@@ -26,19 +28,24 @@ function HomeScreen({ history }) {
 
     return (
         <div>
+            <div>
+            <Container>
            
             <Row>
-                <Col md={9}>
-                    <ProductOffer/>
+                <Col md={10}>
+                    <ProductOffer2/>
                 </Col>
-                <Col md={3}>
+                <Col md={2}>
                     <CompareProduct/>
-
                 </Col>
+                
                 </Row>
             <br></br>
-
+            </Container>
+            </div>
+    
             <Navs/>
+            <Container>
 
             <h4 className="mt-5">Latest Laptops</h4>
             {loading ? <Loader />
@@ -55,6 +62,7 @@ function HomeScreen({ history }) {
                         <Paginate page={page} pages={pages} keyword={keyword} />
                     </div>
             }
+            </Container>
            
         </div>
     )

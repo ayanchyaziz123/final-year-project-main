@@ -2,7 +2,7 @@ import React, {initialState, useState, useEffect} from 'react';
 import Loader from '../components/Loader';
 import axios from 'axios';
 import {Row, Col, Card} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 
@@ -10,10 +10,14 @@ const baseURL = "http://127.0.0.1:8000/api/products/all/";
 
 function CompareScreen(props){
     const [prod, setProd] = useState(initialState);
-    const[come, setCome] = useState(false);
     const[loading, setLoading] = useState(false);
 
+
+
     useEffect( async () => {
+
+        
+
         try {
             setLoading(true);
             axios.get(baseURL).then((response) => {
@@ -28,7 +32,7 @@ function CompareScreen(props){
     }, []);
     return(
         
-        <div>
+        <div className="container">
 
             {loading ? <Loader/>:
             <div>
@@ -39,7 +43,7 @@ function CompareScreen(props){
                     <Col md={5}>
                           <Card className="bg-dark text-white p-2">
                               
-                    {prod.map((pr, index) => pr._id == props.location.state.lep1 ? (
+                                    {props.location.state.lep1 && prod.map((pr, index) => pr._id == props.location.state.lep1 ? (
                         <div key={index}>
                             <Link to={`/product/${pr._id}`}>
                                 <Card.Img src={pr.image} className="img-fluid cc"/>
@@ -60,7 +64,7 @@ function CompareScreen(props){
 
                     <Col md={5}>
                         <Card className="bg-dark text-white p-2">
-                        {prod.map((pr, index) => pr._id == props.location.state.lep2 ? (
+                                    {props.location.state.lep2 && prod.map((pr, index) => pr._id == props.location.state.lep2 ? (
                             <div key={index}>
                                 <Link to={`/product/${pr._id}`}>
                                     <Card.Img src={pr.image} className="img-fluid cc"/>

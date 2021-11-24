@@ -24,7 +24,7 @@ function Navs() {
         <div>
 
 
-            <Nav className="justify-content-center" activeKey="/home" >
+            <Nav className="justify-content-center mt-4" activeKey="/home" >
                 <Nav.Item>
                     <Nav.Link eventKey="priceRange" onSelect={handleSelect} style={{ fontSize: "20px" }}><i class="fas fa-star"></i> PRICE RANGE</Nav.Link>
                 </Nav.Item>

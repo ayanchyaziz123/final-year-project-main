@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
-import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Form, Button, Card, Container, CardDeck } from 'react-bootstrap'
 import Product from '../components/Product';
 import Rating from '../components/Rating';
 
@@ -120,10 +120,25 @@ function PricePredict() {
 
         return (
             <div>
+                <Container fluid>
+                    <Row>
+                        <Col md={3}>
+                            <Card className="bg-warning text-white p-2 mt-3">
+                                <Card.Header>
+                                    <h3 className="text-white">Predict A Laptop Price</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    Where Use ML algorithm to predict price of computer
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
+                        <Col md={9}>
             {loading ? <Loader/>:
 
             <div>
                 <Row>
+
 
                     <Col md={4}>
                         <ul class="list-group">
@@ -198,9 +213,17 @@ function PricePredict() {
 
                 </Row>
                 <h3 className="text-center mt-5"><bold>Predicted Price of leptop   <span class="badge badge-primary badge-pill">&#2547; {predict + (predict / 2)}</span> </bold></h3>
-
+                
             </div>
             }
+            </Col>
+            </Row>
+            </Container>
+
+            {/* sfdfd */}
+
+            <Container>
+            
 
                 <h4 className="mt-5">Suggest  Laptops</h4>
                 {loading ? <Loader />
@@ -251,6 +274,7 @@ function PricePredict() {
                 
                         </div>
                 }
+                </Container>
 
 
 
@@ -264,12 +288,24 @@ function PricePredict() {
         console.log(isTrue);
         return (
 
-            <div>
+                <Container fluid>
+                <Row>
+                    <Col md={3}>
+                        <Card className="bg-warning text-white p-2 mt-3">
+                                <Card.Header>
+                                <h3 className="text-white">Predict A Laptop Price</h3>
+                                </Card.Header>
+                            <Card.Body>
+                                Where Use ML algorithm to predict price of computer
+                            </Card.Body>
+                        </Card>
+                    </Col>
+
+                    <Col md={9}>
 
                 {loading ? <Loader /> :
             
-            <form onSubmit={handleSubmit} className="bg-dark text-white p-5">
-                <h4 className="text-white">Predict a Laptop Price</h4>
+            <form onSubmit={handleSubmit} >
                 <br></br>
                 <Row >
                     <Col md={6}>
@@ -469,10 +505,13 @@ function PricePredict() {
 
                 <br></br>
 
-                <button className="btn btn-warning" type="submit">Predict</button>
+                <button className="btn btn-dark" type="submit">Predict</button>
             </form>
     }
-    </div>
+    </Col>
+    </Row>
+    </Container>
+  
         )
     }
 }

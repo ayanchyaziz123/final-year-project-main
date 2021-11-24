@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listUsers, deleteUser } from '../actions/userActions'
+import CreateUser from './CreateUser';
 
 function UserList() {
 
@@ -18,6 +19,7 @@ function UserList() {
 
     const userDelete = useSelector(state => state.userDelete)
     const { success: successDelete } = userDelete
+    const [userScreen, setUserScreen] = useState(false);
 
 
 
@@ -28,14 +30,37 @@ function UserList() {
         }
     }
 
+    const createUserHandler = () =>{
+        setUserScreen(true);
+    }
+
+    if(userScreen)
+    {
+        return(
+            <CreateUser/>
+        )
+    }
+    else{
+
     return (
         <div>
+            <Row className='align-items-center'>
+                <Col>
+                    <h1 className="text-white">Products</h1>
+                </Col>
+
+                <Col className='text-right'>
+                    <Button className='my-3 btn-warning' onClick={createUserHandler}>
+                        <i className='fas fa-plus'></i> Create User
+                    </Button>
+                </Col>
+            </Row>
             {loading
                 ? (<Loader />)
                 : error
                     ? (<Message variant='danger'>{error}</Message>)
                     : (
-                        <Table striped bordered hover responsive className='table-sm'>
+                        <Table striped bordered hover responsive className='table-sm text-white'>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -76,6 +101,7 @@ function UserList() {
                     )}
         </div>
     )
+                                        }
 }
 
 export default UserList

@@ -24,6 +24,7 @@ h3{
 }
 
 /* carousel */
+/*
 .carousel-item-next,
 .carousel-item-prev,
 .carousel-item.active {
@@ -55,6 +56,7 @@ h3{
     font-size: 2.5vw;
   }
 }
+*/
 .bg-dark{
   background-color: #2F4F4F !important;
 }

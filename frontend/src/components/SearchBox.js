@@ -21,13 +21,16 @@ function SearchBox() {
                 type='text'
                 name='q'
                 onChange={(e) => setKeyword(e.target.value)}
-                className='mr-sm-2 ml-sm-5'
+                className=' shadow search-bar'
+                placeholder="Search for Products, Brands and more"
+                size="sm"
             ></Form.Control>
 
             <Button
                 type='submit'
                 variant='warning'
-                className='p-2'
+                className='p-2 search-bar-button'
+                size="sm"
             >
                 <i class="fas fa-search"></i>
             </Button>

@@ -22,7 +22,7 @@ function Header() {
 
     return (
         <header>
-            <Navbar className="navbar-dark bg-dark pt-1 pb-1" expand="lg" collapseOnSelect>
+            <Navbar  className="navbar-dark bg-dark pt-1 pb-1 shadow" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand><span class="text-info h2"><b>L</b></span><span className="text-danger">a</span>
@@ -32,10 +32,10 @@ function Header() {
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <SearchBox />
+                        <SearchBox/>
                         <Nav className="ml-auto">
                             <LinkContainer to='/cart'>
-                                <Nav.Link><i className="fas fa-shopping-cart ct"></i> <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
+                                <Nav.Link><i className="fas fa-shopping-cart ct"></i> cart <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
                             </LinkContainer>
                            
                             {userInfo ? (

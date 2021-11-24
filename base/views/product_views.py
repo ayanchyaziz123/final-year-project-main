@@ -106,7 +106,7 @@ def updateProduct(request, pk):
     product.countInStock = data['countInStock']
     product.category = data['category']
     product.description = data['description']
-    product.is_offer = data['is_offer'].capitalize()
+    product.is_offer = data['is_offer']
     product.offer_percentage = data['offer_percentage']
 
     product.save()

@@ -2,7 +2,7 @@ import React, { initialState, useState, useEffect } from 'react';
 import axios from 'axios';
 import RangeSlider from 'react-bootstrap-range-slider';
 import Loader from '../components/Loader';
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 import Product from '../components/Product'
 
 
@@ -41,6 +41,7 @@ const PriceRangeScreen = () =>{
 
 
     return (
+        <Container>
         <div>
             {loading ? <Loader/>:
             <div>
@@ -73,6 +74,7 @@ const PriceRangeScreen = () =>{
        
     
         </div>
+        </Container>
     );
 
 }

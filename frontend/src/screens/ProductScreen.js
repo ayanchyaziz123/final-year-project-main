@@ -55,7 +55,7 @@ function ProductScreen({ match, history }) {
     }
 
     return (
-        <div>
+        <div className="container">
             <Link to='/' className='btn btn-light my-3'>Go Back</Link>
             {loading ?
                 <Loader />
@@ -99,7 +99,7 @@ function ProductScreen({ match, history }) {
                                                 <Row>
                                                     <Col>Price:</Col>
                                                     <Col>
-                                                        <strong>${product.price}</strong>
+                                                        <strong>৳ {product.price}</strong>
                                 
                                                     </Col>
                                                 </Row>

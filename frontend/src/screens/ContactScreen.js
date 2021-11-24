@@ -19,7 +19,7 @@ function Contact()
     
 
     return(
-        <div>
+        <div className="container">
                 <h1>Contact</h1>
            <Row>
                 <Col md={6} className="bg-dark p-4 text-white">

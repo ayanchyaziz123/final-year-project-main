@@ -22,14 +22,14 @@ import TopReviewProductScreen from './screens/TopReviewProductScreen'
 import Contact from './screens/ContactScreen'
 import CompareScreen from './screens/CompareScreen'
 import PriceRangeScreen from './screens/PriceRangeScreen'
-import DeshboardScreen from './screens/DeshboardScreen'
+import DeshboardScreen from './screens/DashboardScreen'
 
 function App() {
   return (
     <Router>
       <Header />
-      <main className="py-3">
-        <Container>
+      <main className="py-3 ">
+
           <Route path='/' component={HomeScreen} exact />
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
@@ -55,7 +55,7 @@ function App() {
           <Route path='/priceRange' component={PriceRangeScreen} />
           <Route path='/admin/deshboard' component={DeshboardScreen} />
           
-        </Container>
+      
       </main>
       <Footer />
     </Router>

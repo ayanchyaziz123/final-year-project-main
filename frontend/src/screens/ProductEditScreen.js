@@ -125,6 +125,7 @@ function ProductEditScreen({ match, history }) {
 
                 {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message>
                     : (
+            
                         <Form onSubmit={submitHandler}>
 
                             <Form.Group controlId='name'>
@@ -187,6 +188,24 @@ function ProductEditScreen({ match, history }) {
                                 >
                                 </Form.Control>
                             </Form.Group>
+                            <Form.Group controlId='ram'>
+                                <Form.Label>RAM</Form.Label>
+                                <Form.Control
+
+                                    type='text'
+                                    placeholder='Enter brand'
+                                >
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group controlId='rom'>
+                                <Form.Label>ROM</Form.Label>
+                                <Form.Control
+
+                                    type='text'
+                                    placeholder='Enter brand'
+                                >
+                                </Form.Control>
+                            </Form.Group>
 
                             <Form.Group controlId='countinstock'>
                                 <Form.Label>Stock</Form.Label>
@@ -223,16 +242,15 @@ function ProductEditScreen({ match, history }) {
                                 </div>
                             </Form.Group>
 
-                            <Form.Group controlId='is_offer'>
-                                <Form.Label>Is Offer (You must give True or False)</Form.Label>
-                                <Form.Control
 
-                                    type='text'
-                                    placeholder='Enter '
-                                    value={is_offer}
-                                    onChange={(e) => setIsOffer(e.target.value)}
+                            <Form.Group controlId='is_offer'>
+                                <Form.Check
+                                    type='checkbox'
+                                    label='Is AOffer'
+                                    checked={is_offer}
+                                    onChange={(e) => setIsOffer(e.target.checked)}
                                 >
-                                </Form.Control>
+                                </Form.Check>
                             </Form.Group>
 
     

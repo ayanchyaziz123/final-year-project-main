@@ -37,12 +37,15 @@ const DeshboardScreen = ({ history}) =>{
 
 
     return(
-        <div>
+        <div className="bg-primary">
+            <Container fluid>
             <h3>Deshboard</h3>
+            
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                 <Row>
-                    <Col sm={2}>
-                        <Nav variant="pills" className="flex-column">
+                    <Col sm={3}>
+                        <div  className="bg-white">
+                        <Nav variant="pills" className="flex-column p-3 m-4">
                             <Nav.Item>
                                 <Nav.Link eventKey="first" size="lg"><i class="fas fa-tachometer-alt"></i>Dashboard</Nav.Link>
                             </Nav.Item>
@@ -59,8 +62,9 @@ const DeshboardScreen = ({ history}) =>{
                                 <Nav.Link eventKey="fifth"><i class="fab fa-first-order"></i>Contact</Nav.Link>
                             </Nav.Item>
                         </Nav>
+                        </div>
                     </Col>
-                    <Col sm={10}>
+                    <Col sm={9}>
                         <Tab.Content>
                             <Tab.Pane eventKey="first">
                                
@@ -142,22 +146,27 @@ const DeshboardScreen = ({ history}) =>{
                                 </Container>
                                 
                             </Tab.Pane>
-                            <Tab.Pane eventKey="second">
+                            <Tab.Pane eventKey="second" classNmae="text-white">
                                 <UserList />
                             </Tab.Pane>
-                            <Tab.Pane eventKey="third">
-                                This is 3
+                            <Tab.Pane eventKey="third" classNmae="text-white">
+                                    What is Lorem Ipsum?
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </Tab.Pane>
                             <Tab.Pane eventKey="fourth">
                                 <OrderList/>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="fifth">
-                               This is contact
+                            <Tab.Pane eventKey="fifth" className="text-white">
+                                    What is Lorem Ipsum?
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with 
+                                    desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>
                 </Row>
             </Tab.Container>
+            </Container>
         </div>
         
     )

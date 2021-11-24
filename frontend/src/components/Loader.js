@@ -4,7 +4,7 @@ import Loader from "react-loader-spinner";
 const Loaders = () => {
     return (
         <Loader
-            type="Grid"
+            type="Rings"
             color="#212121"
             height={150}
             width={150}

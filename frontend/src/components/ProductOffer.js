@@ -21,7 +21,7 @@ function ProductOffer() {
             ? <Message variant='danger'>{error}</Message>
             : (  
                
-                <Carousel pause='hover' className='bg-dark'>
+                <Carousel pause='hover' className='bg-primary mt-4'>
                     {products.map(product => (
                         
                         <Carousel.Item key={product._id}>
