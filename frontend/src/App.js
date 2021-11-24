@@ -23,12 +23,15 @@ import Contact from './screens/ContactScreen'
 import CompareScreen from './screens/CompareScreen'
 import PriceRangeScreen from './screens/PriceRangeScreen'
 import DeshboardScreen from './screens/DashboardScreen'
+import Header2 from './components/Header2';
 
 function App() {
   return (
     <Router>
       <Header />
-      <main className="py-3 ">
+      <br></br>
+
+      <main className="py-3 mt-5">
 
           <Route path='/' component={HomeScreen} exact />
           <Route path='/login' component={LoginScreen} />

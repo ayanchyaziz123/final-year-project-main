@@ -73,7 +73,7 @@ const CompareProduct = () =>{
         <form onSubmit={handleSubmit}>
         <div className="card shadow p-2 bg-warning">
                 <h5 className="font-weight-bold">Compare Products</h5>
-                <br></br>
+               
                 <label for="exampleFormControlSelect1">Laptop1</label>
                 <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_1" onChange={handleChange} >
                     <option value="">none</option>
@@ -97,7 +97,7 @@ const CompareProduct = () =>{
                    
             </select>
             <br></br>
-                <br></br>
+                <span>you can see comparison between two laptops</span>
             <button type="submit" className="btn btn-dark btn-sm">Comparison</button>
         </div>
         </form>

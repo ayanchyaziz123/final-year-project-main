@@ -22,10 +22,13 @@ function Header() {
 
     return (
         <header>
-            <Navbar  className="navbar-dark bg-dark pt-1 pb-1 shadow" expand="lg" collapseOnSelect>
+            <Navbar className="navbar-dark bg-dark pt-1 pb-1 shadow" expand="lg" fixed="top" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
-                        <Navbar.Brand><span class="text-info h2"><b>L</b></span><span className="text-danger">a</span>
+                        
+                        <Navbar.Brand><span class="text-info h2">
+                            <i class="fas fa-laptop-house"></i>
+                            <b>L</b></span><span className="text-danger">a</span>
                         <span className="text-success">p</span>
                         <span className="text-warning">t</span>op Store</Navbar.Brand>
                     </LinkContainer>

@@ -22,7 +22,7 @@ function SearchBox() {
                 name='q'
                 onChange={(e) => setKeyword(e.target.value)}
                 className=' shadow search-bar'
-                placeholder="Search for Products, Brands and more"
+                placeholder="Search for Laptops, Brands and more"
                 size="sm"
             ></Form.Control>
 

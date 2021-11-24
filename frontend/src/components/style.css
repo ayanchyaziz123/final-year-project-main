@@ -29,8 +29,8 @@
     border-radius: 2px 0 0 2px;
     border: 0 none;
     outline: 0 none;
-    font-size: 15px;
-    min-width: 400px;
+    font-size: 14px;
+    min-width: 390px;
 }
 .search-bar-button{
      background-color: #ffe11b;
@@ -38,7 +38,7 @@
     border-radius: 0 2px 2px 0;
     color: #565656;
     padding: 10px 0;
-    height: 43px;
+    height: 40px;
     cursor: pointer;
 }
 .bg-warning{
