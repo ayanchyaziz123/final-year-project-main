@@ -1,10 +1,11 @@
 import {React as useState, useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listUsers, deleteUser } from '../actions/userActions'
+import AdminSideBar from '../admin_components/AdminSideBar'
 
 function UserListScreen({ history }) {
 
@@ -38,8 +39,14 @@ function UserListScreen({ history }) {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Users</h1>
+            <Row>
+                <Col md={3}>
+                    <AdminSideBar/>
+
+                </Col>
+                <Col md={9}>
             {loading
                 ? (<Loader />)
                 : error
@@ -84,6 +91,8 @@ function UserListScreen({ history }) {
                             </tbody>
                         </Table>
                     )}
+                    </Col>
+                    </Row>
         </div>
     )
 }
