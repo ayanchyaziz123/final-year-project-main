@@ -37,13 +37,13 @@ function Header() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <SearchBox/>
                         <Nav className="ml-auto">
-                            <LinkContainer to='/cart'>
+                            <LinkContainer to='/cart' className="active">
                                 <Nav.Link><i className="fas fa-shopping-cart ct"></i> cart <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
                             </LinkContainer>
                            
                             {userInfo ? (
-                                <NavDropdown title={userInfo.name} id='username'>
-                                    <LinkContainer to='/profile'>
+                                <NavDropdown title={userInfo.name} id='username' className="active">
+                                    <LinkContainer to='/profile' className="active">
                                         <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
 
@@ -58,7 +58,7 @@ function Header() {
 
 
                             {userInfo && userInfo.isAdmin && (
-                                <NavDropdown title='Deshboard' id='adminmenue'>
+                                <NavDropdown title='Deshboard' id='adminmenue' className="active">
                                     <LinkContainer to='/admin/userlist'>
                                         <NavDropdown.Item>Users</NavDropdown.Item>
                                     </LinkContainer>
