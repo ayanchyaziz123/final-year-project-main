@@ -6,11 +6,31 @@ from django.contrib.auth.models import User
 
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    category = models.CharField(max_length=200, null=True, blank=True)
+    brand = models.CharField(max_length=200, null=True, blank=True)
     name = models.CharField(max_length=200, null=True, blank=True)
+    processor = models.CharField(max_length=200, null=True, blank=True)
+    display = models.CharField(max_length=200, null=True, blank=True)
+    graphics_card = models.CharField(max_length=200, null=True, blank=True)
+    ram_memory = models.CharField(max_length=200, null=True, blank=True)
+    storage = models.CharField(max_length=200, null=True, blank=True)
+    operating_system = models.CharField(max_length=200, null=True, blank=True)
+    web_cam = models.CharField(max_length=200, null=True, blank=True)
+    weight = models.CharField(max_length=200, null=True, blank=True)
+    color = models.CharField(max_length=200, null=True, blank=True)
+    battery =  models.CharField(max_length=200, null=True, blank=True)
+    warranty = models.CharField(max_length=200, null=True, blank=True)
+    
+    
     image = models.ImageField(null=True, blank=True,
                               default='/placeholder.png')
-    brand = models.CharField(max_length=200, null=True, blank=True)
-    category = models.CharField(max_length=200, null=True, blank=True)
+    
+    image2 = models.ImageField(null=True, blank=True,
+                              default='/placeholder.png')
+    image3 = models.ImageField(null=True, blank=True,
+                              default='/placeholder.png')
+    
+    
     description = models.TextField(null=True, blank=True)
     rating = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col,Container } from 'react-bootstrap'
+import { Row, Col,Container, Form } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -32,10 +32,10 @@ function HomeScreen({ history }) {
             <Container>
            
             <Row>
-                <Col md={10}>
+                <Col md={9}>
                     <ProductOffer2/>
                 </Col>
-                <Col md={2}>
+                <Col md={3}>
                     <CompareProduct/>
                 </Col>
                 
@@ -53,6 +53,40 @@ function HomeScreen({ history }) {
                     :
                     <div>
                         <Row>
+                            <Col md={2}>
+                                <h3>This is me</h3>
+                                    <Form>
+                                        {['checkbox', 'radio'].map((type) => (
+                                            <div key={`inline-${type}`} className="mb-3">
+                                                <Form.Check
+                                                    inline
+                                                    label="1"
+                                                    name="group1"
+                                                    type={type}
+                                                    id={`inline-${type}-1`}
+                                                />
+                                                <Form.Check
+                                                    inline
+                                                    label="2"
+                                                    name="group1"
+                                                    type={type}
+                                                    id={`inline-${type}-2`}
+                                                />
+                                                <Form.Check
+                                                    inline
+                                                    disabled
+                                                    label="3 (disabled)"
+                                                    type={type}
+                                                    id={`inline-${type}-3`}
+                                                />
+                                            </div>
+                                        ))}
+                                    </Form>
+                            </Col>
+                            <Col md={10}>
+                        
+
+                        <Row>
                             {products.map(product => (
                                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                                     <Product product={product} />
@@ -60,6 +94,9 @@ function HomeScreen({ history }) {
                             ))}
                         </Row>
                         <Paginate page={page} pages={pages} keyword={keyword} />
+                        </Col>
+                        </Row>
+                        
                     </div>
             }
             </Container>

@@ -50,6 +50,7 @@ function CompareScreen(props){
                             </Link>
                            <Card.Body>
                                 <h5 className="text-white">{pr.name}</h5>
+                                <p>Ram {pr.ram_memory}</p>
                                 <p>{ReactHtmlParser(pr.description)}</p>
                                 <p>{pr.price}</p>
                            </Card.Body>
@@ -71,6 +72,8 @@ function CompareScreen(props){
                                 </Link>
                                 <Card.Body>
                                     <h5 className="text-white">{pr.name}</h5>
+                                    <p>Ram {pr.ram_memory}</p>
+                                    <p>Storage {pr.storage}</p>
                                     <p>{ReactHtmlParser(pr.description)}</p>
                                     <p>{pr.price}</p>
                                 </Card.Body>

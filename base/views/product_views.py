@@ -80,11 +80,22 @@ def createProduct(request):
 
     product = Product.objects.create(
         user=user,
-        name='Sample Name',
-        price=0,
-        brand='Sample Brand',
-        countInStock=0,
         category='Sample Category',
+        brand='Sample Brand',
+        name='Sample Name',
+        processor = 'Simple Processor',
+        display = 'Simple Display',
+        graphics_card = 'Simple Graphics Card',
+        ram_memory = 'Simple RAM',
+        storage = 'Simple Storage',
+        operating_system = 'OS',
+        web_cam = 'web cam',
+        weight = 'weight',
+        color = 'color',
+        battery = 'battery',
+        warranty = 'warranty',
+        price=0,
+        countInStock=0,
         description='',
         is_offer='',
         offer_percentage=0
@@ -100,11 +111,22 @@ def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
 
-    product.name = data['name']
-    product.price = data['price']
-    product.brand = data['brand']
-    product.countInStock = data['countInStock']
     product.category = data['category']
+    product.brand = data['brand']
+    product.name = data['name']
+    product.processor = data['processor']
+    product.display = data['display']
+    product.graphics_card = data['graphics_card']
+    product.ram_memory = data['ram_memory']
+    product.storage = data['storage']
+    product.operating_system = data['operating_system']
+    product.web_cam = data['web_cam']
+    product.weight = data['weight']
+    product.color = data['color']
+    product.battery = data['battery']
+    product.warranty = data['warranty']
+    product.price = data['price']
+    product.countInStock = data['countInStock']
     product.description = data['description']
     product.is_offer = data['is_offer']
     product.offer_percentage = data['offer_percentage']
@@ -126,13 +148,19 @@ def deleteProduct(request, pk):
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
-
     product_id = data['product_id']
     product = Product.objects.get(_id=product_id)
-
-    product.image = request.FILES.get('image')
-    product.save()
-
+    
+    if request.FILES.get('image'):
+        product.image = request.FILES.get('image')
+        product.save()
+    elif request.FILES.get('image2'):
+        product.image2 = request.FILES.get('image2')
+        product.save()
+    elif request.FILES.get('image3'):
+        product.image3 = request.FILES.get('image3')
+        product.save()
+            
     return Response('Image was uploaded')
 
 

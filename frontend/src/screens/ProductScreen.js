@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
@@ -65,7 +67,22 @@ function ProductScreen({ match, history }) {
                         <div>
                             <Row>
                                 <Col md={6}>
-                                    <Image src={product.image} alt={product.name} fluid />
+                                    
+                                    <Carousel autoPlay="true" infiniteLoop="true" interval="1000" stopOnHover="true" >
+
+                                            <div >
+                                                <img src={product.image} />
+                                            </div>
+                                        <div >
+                                            <img src={product.image2} />
+                                        </div>
+                                        <div >
+                                            <img src={product.image3} />
+                                        </div>
+
+                                   
+
+                                    </Carousel>
                                 </Col>
 
 
@@ -145,6 +162,7 @@ function ProductScreen({ match, history }) {
                                                     onClick={addToCartHandler}
                                                     className='btn-block'
                                                     disabled={product.countInStock == 0}
+                                                    size="sm"
                                                     type='button'>
                                                     Add to Cart
                                                 </Button>
@@ -208,6 +226,7 @@ function ProductScreen({ match, history }) {
                                                         disabled={loadingProductReview}
                                                         type='submit'
                                                         variant='primary'
+                                                        size="sm"
                                                     >
                                                         Submit
                                                     </Button>
