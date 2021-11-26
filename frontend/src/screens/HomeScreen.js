@@ -9,6 +9,7 @@ import { listProducts } from '../actions/productActions'
 import ProductOffer from '../components/ProductOffer'
 import ProductOffer2 from '../components/ProductOffer2'
 import Navs from '../components/Navs'
+import Navs2 from '../components/Navs2'
 import CompareProduct from '../components/CompareProduct'
 import ProductCarousel from '../components/ProductCarousel'
 
@@ -44,10 +45,10 @@ function HomeScreen({ history }) {
             </Container>
             </div>
     
-            <Navs/>
+            <Navs2/>
             <Container>
 
-            <h4 className="mt-4">Latest Laptops</h4>
+            <h4 className="mt-5">Latest Laptops</h4>
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :

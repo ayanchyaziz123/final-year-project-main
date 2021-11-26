@@ -61,11 +61,15 @@ h3{
   background-color: #2F4F4F !important;
 }
 .cc{
-  max-height: 220px !important;
+  max-height: 200px !important;
 }
 .pr{
   height: 200px !important;
   width: 50% !important;
+}
+
+.ni{
+  font-size: large !important;
 }
 
 

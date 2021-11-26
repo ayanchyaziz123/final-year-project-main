@@ -36,7 +36,7 @@ function CompareScreen(props){
 
             {loading ? <Loader/>:
             <div>
-            <h1 className="text-center">Comparision between Two Laptops</h1>
+          
 
             {prod && (
                 <Row className="mt-2 mb-5">

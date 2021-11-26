@@ -26,20 +26,36 @@ function Header() {
                 <Container>
                     <LinkContainer to='/'>
                         
-                        <Navbar.Brand><span class="text-info h2">
-                            <i class="fas fa-laptop-house"></i>
-                            <b>L</b></span><span className="text-danger">a</span>
-                        <span className="text-success">p</span>
-                        <span className="text-warning">t</span>op Store</Navbar.Brand>
+                        <Navbar.Brand className="mr-0 mr-md-4">
+
+                            <div>
+                                <div className="text-center " > <i class="fas fa-laptop-house"></i></div>
+                                <div className="text-center">
+
+
+                                    <span class="text-info "> <b>L</b></span><span className="text-danger">a</span>
+                                <span className="text-success">p</span>
+                                <span className="text-warning">t</span>op S
+
+                                </div>
+                            </div>
+                        
+                        
+                        
+                        
+                        
+                        </Navbar.Brand>
+                    </LinkContainer>
+
+                    <LinkContainer to='/cart' className="text-white active mr-0 mr-md-4">
+                        <Nav.Link><i className="fas fa-shopping-cart ct"></i> cart <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <SearchBox/>
                         <Nav className="ml-auto">
-                            <LinkContainer to='/cart' className="active">
-                                <Nav.Link><i className="fas fa-shopping-cart ct"></i> cart <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
-                            </LinkContainer>
+                           
                            
                             {userInfo ? (
                                 <NavDropdown title={userInfo.name} id='username' className="active">

@@ -14,7 +14,7 @@
     "draft-js": "^0.11.7",
     "lodash": "^4.17.21",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.6.4",
     "react-bootstrap-range-slider": "^3.0.2",
     "react-bootstrap-sidebar": "0.0.1",
     "react-circular-progressbar": "^2.0.4",
