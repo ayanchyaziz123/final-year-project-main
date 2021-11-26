@@ -9,7 +9,9 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import ReactImageMagnify from 'react-image-magnify';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import Coupon from '../components/Coupon';
 
 function ProductScreen({ match, history }) {
     const [qty, setQty] = useState(1)
@@ -58,6 +60,7 @@ function ProductScreen({ match, history }) {
 
     return (
         <div className="container">
+            <Coupon />
             <Link to='/' className='btn btn-light my-3'>Go Back</Link>
             {loading ?
                 <Loader />
@@ -78,6 +81,7 @@ function ProductScreen({ match, history }) {
                                         </div>
                                         <div >
                                             <img src={product.image3} />
+                                            
                                         </div>
 
                                    
@@ -202,6 +206,7 @@ function ProductScreen({ match, history }) {
                                                             as='select'
                                                             value={rating}
                                                             onChange={(e) => setRating(e.target.value)}
+                                                            size="sm"
                                                         >
                                                             <option value=''>Select...</option>
                                                             <option value='1'>1 - Poor</option>
@@ -219,6 +224,7 @@ function ProductScreen({ match, history }) {
                                                             row='5'
                                                             value={comment}
                                                             onChange={(e) => setComment(e.target.value)}
+                                                            size="sm"
                                                         ></Form.Control>
                                                     </Form.Group>
 

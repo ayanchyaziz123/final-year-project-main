@@ -34,8 +34,38 @@ import {
     PRODUCT_OFFER_SUCCESS,
     PRODUCT_OFFER_FAIL,
 
+    PRODUCT_COUPON_REQUEST,
+    PRODUCT_COUPON_SUCCESS,
+    PRODUCT_COUPON_FAIL
+
 } from '../constants/productConstants'
 
+
+export const couponListReducer = (state = { copuns: [] }, action) =>{
+    switch(action.type){
+        case PRODUCT_COUPON_REQUEST:
+            console.log('log with' , action.type)
+            return {loading: true, coupons: []}
+        case PRODUCT_COUPON_SUCCESS:
+            console.log('log with', action.type)
+            return{
+                loading: false,
+                coupon_redemptions: action.payload.coupon_redemptions,
+                coupons: action.payload.coupons
+
+            }   
+        case PRODUCT_COUPON_FAIL:
+            console.log('log with', action.type)
+            return {
+                loading: false,
+                error: action.payload
+
+            } 
+        default:
+            return state
+            
+    }
+}
 
 export const productListReducer = (state = { products: [] }, action) => {
     switch (action.type) {

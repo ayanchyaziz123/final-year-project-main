@@ -23,14 +23,20 @@ function ProductOffer2() {
             ? <Message variant='danger'>{error}</Message>
             : (
                     <Carousel autoPlay="true" infiniteLoop="true" interval="1000" stopOnHover="true" >
+                    
                     {products.map(product => (
+                        <Link to={`/product/${product._id}`}>
 
                         <div >
+                            
                             <img src={product.image} />
                             <p className="legend"> <h4 className="text-white">{product.name} real price (${product.price}) <br></br>offering price  ({product.offer_percentage}%) (${(product.price - (product.price * product.offer_percentage) / 100)}) </h4> </p>
+                        
                         </div>
+                        </Link>
 
                     ))}
+                   
         
                 </Carousel>
             )

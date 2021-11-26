@@ -5,24 +5,31 @@ import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
-import { listProducts } from '../actions/productActions'
+import { listProducts, listCoupons } from '../actions/productActions'
 import ProductOffer from '../components/ProductOffer'
 import ProductOffer2 from '../components/ProductOffer2'
 import Navs from '../components/Navs'
 import Navs2 from '../components/Navs2'
 import CompareProduct from '../components/CompareProduct'
 import ProductCarousel from '../components/ProductCarousel'
+import SearchRAM from '../components/SearchRam'
+import Coupon from '../components/Coupon'
+
 
 
 
 function HomeScreen({ history }) {
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
+
+
     const { error, loading, products, page, pages } = productList
 
     let keyword = history.location.search
 
-    useEffect(() => {
+
+
+    useEffect(() =>  {
         dispatch(listProducts(keyword))
 
     }, [dispatch, keyword])
@@ -31,6 +38,7 @@ function HomeScreen({ history }) {
         <div>
             <div>
             <Container>
+                <Coupon/> 
            
             <Row>
                 <Col md={9}>
@@ -55,34 +63,7 @@ function HomeScreen({ history }) {
                     <div>
                         <Row>
                             <Col md={2}>
-                                <h3>This is me</h3>
-                                    <Form>
-                                        {['checkbox', 'radio'].map((type) => (
-                                            <div key={`inline-${type}`} className="mb-3">
-                                                <Form.Check
-                                                    inline
-                                                    label="1"
-                                                    name="group1"
-                                                    type={type}
-                                                    id={`inline-${type}-1`}
-                                                />
-                                                <Form.Check
-                                                    inline
-                                                    label="2"
-                                                    name="group1"
-                                                    type={type}
-                                                    id={`inline-${type}-2`}
-                                                />
-                                                <Form.Check
-                                                    inline
-                                                    disabled
-                                                    label="3 (disabled)"
-                                                    type={type}
-                                                    id={`inline-${type}-3`}
-                                                />
-                                            </div>
-                                        ))}
-                                    </Form>
+                                <SearchRAM/>
                             </Col>
                             <Col md={10}>
                         
@@ -101,6 +82,7 @@ function HomeScreen({ history }) {
                     </div>
             }
             </Container>
+        
            
         </div>
     )

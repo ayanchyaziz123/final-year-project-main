@@ -302,7 +302,7 @@ function ProductEditScreen({ match, history }) {
                                 <Form.Label>Ram</Form.Label>
                                 <Form.Control
 
-                                    type='text'
+                                    type='number'
                                     placeholder='Enter Ram'
                                     value={ram_memory}
                                     onChange={(e) => setRam_memory(e.target.value)}

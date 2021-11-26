@@ -33,8 +33,37 @@ import {
     PRODUCT_OFFER_SUCCESS,
     PRODUCT_OFFER_FAIL,
 
+    PRODUCT_COUPON_REQUEST,
+    PRODUCT_COUPON_SUCCESS,
+    PRODUCT_COUPON_FAIL
+
 } from '../constants/productConstants'
 
+export const listCoupons = () => async (dispatch) => {
+    try{
+        dispatch({type: PRODUCT_COUPON_REQUEST})
+
+        const { data } = await axios.get(`/api/products/coupons/`)
+
+        dispatch(
+            {
+                type: PRODUCT_COUPON_SUCCESS,
+                payload: data
+
+            }
+        )
+    }
+    catch(error)
+    {
+        dispatch({
+            type: PRODUCT_COUPON_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+
+    }
+}
 
 export const listProducts = (keyword = '') => async (dispatch) => {
     try {

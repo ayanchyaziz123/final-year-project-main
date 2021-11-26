@@ -12,7 +12,7 @@ class Product(models.Model):
     processor = models.CharField(max_length=200, null=True, blank=True)
     display = models.CharField(max_length=200, null=True, blank=True)
     graphics_card = models.CharField(max_length=200, null=True, blank=True)
-    ram_memory = models.CharField(max_length=200, null=True, blank=True)
+    ram_memory = models.IntegerField(null=True, blank=True, default=0)
     storage = models.CharField(max_length=200, null=True, blank=True)
     operating_system = models.CharField(max_length=200, null=True, blank=True)
     web_cam = models.CharField(max_length=200, null=True, blank=True)
@@ -110,6 +110,21 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return str(self.address)
+class Coupon(models.Model):
+    coupon_code = models.CharField(primary_key=True, max_length=200)
+    discount_amount = models.FloatField()
+    discount_type = models.CharField(max_length=200)
+    expiration_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+        
+
+class CouponRedemption(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    coupon_code = models.ForeignKey(
+        Coupon, on_delete=models.SET_NULL, null=True)
+    total_discount = models.FloatField()
+    redemption_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    
 
 class Contact(models.Model):
     first_name = models.CharField(max_length=200)
@@ -120,3 +135,5 @@ class Contact(models.Model):
     need_contact = models.BooleanField(default=False)
     contact_media = models.CharField(max_length=20)
     message = models.CharField(max_length=800)
+    
+    

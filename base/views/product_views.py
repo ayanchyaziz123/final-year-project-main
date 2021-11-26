@@ -5,21 +5,43 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from base.models import Product, Review
-from base.serializers import ProductSerializer
+from base.models import Coupon, CouponRedemption, Product, Review
+from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer
 
 from rest_framework import status
 
 
 @api_view(['GET'])
+def getCoupons(request):
+    coupon_red = CouponRedemption.objects.all()
+    coupon_redemptions = CouponRedemptionSerializer(coupon_red, many=True)
+    coup = Coupon.objects.all()
+    coupons = CouponSerializer(coup, many=True)
+    return Response({'coupon_redemptions': coupon_redemptions.data, 'coupons': coupons.data})
+    
+    
+    
+
+
+@api_view(['GET'])
 # for get products
 def getProducts(request):
+    coupon_red = CouponRedemption.objects.all()
+    coupon_redemption = CouponRedemptionSerializer(coupon_red, many=True)
     query = request.query_params.get('keyword')
     if query == None:
         query = ''
+        products = Product.objects.filter(
+            name__icontains=query).order_by('-createdAt')
+        
+    elif query[-3:] == "RAM":
+        query = int(query[:-3])
+        products = Product.objects.filter(ram_memory=query).order_by('-createdAt')
+        
+    else:
+        products = Product.objects.filter(
+            name__icontains=query).order_by('-createdAt')
 
-    products = Product.objects.filter(
-        name__icontains=query).order_by('-createdAt')
 
     page = request.query_params.get('page')
     paginator = Paginator(products, 8)
@@ -37,6 +59,8 @@ def getProducts(request):
     page = int(page)
     print('Page:', page)
     serializer = ProductSerializer(products, many=True)
+    
+    
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
 

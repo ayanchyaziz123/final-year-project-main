@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Button, Row, Col, ListGroup, Image, Card, InputGroup, FormControl, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -53,7 +53,27 @@ function PlaceOrderScreen({ history }) {
                 <Col md={8}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Shipping</h2>
+
+                            <Form>
+
+                            <h4>Enter Coupon Id</h4><span>if you have otherwise no need to submit</span>
+                            <p>
+                                <InputGroup className="mb-3">
+                                    <FormControl
+                                        placeholder="XY123ABC"
+                                        aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2"
+                                        size="sm"
+                                    />
+                                    <Button variant="outline-warning" id="button-addon2" size="sm">
+                                        Submit
+                                    </Button>
+                                </InputGroup>
+                            </p>
+                            </Form>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <h3>Shipping</h3>
 
                             <p>
                                 <strong>Shipping: </strong>
@@ -66,7 +86,8 @@ function PlaceOrderScreen({ history }) {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            <h2>Payment Method</h2>
+                            
+                            <h3>Payment Method</h3>
                             <p>
                                 <strong>Method: </strong>
                                 {cart.paymentMethod}
@@ -74,7 +95,7 @@ function PlaceOrderScreen({ history }) {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            <h2>Order Items</h2>
+                            <h3>Order Items</h3>
                             {cart.cartItems.length === 0 ? <Message variant='info'>
                                 Your cart is empty
                             </Message> : (
@@ -108,7 +129,7 @@ function PlaceOrderScreen({ history }) {
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
-                                <h2>Order Summary</h2>
+                                <h3>Order Summary</h3>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
@@ -150,6 +171,7 @@ function PlaceOrderScreen({ history }) {
                                     className='btn-block'
                                     disabled={cart.cartItems === 0}
                                     onClick={placeOrder}
+                                    size="sm"
                                 >
                                     Place Order
                                 </Button>

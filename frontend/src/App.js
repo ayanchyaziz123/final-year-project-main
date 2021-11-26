@@ -32,7 +32,6 @@ function App() {
       <br></br>
 
       <main className="py-3 mt-5">
-
           <Route path='/' component={HomeScreen} exact />
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
