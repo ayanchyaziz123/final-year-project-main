@@ -123,6 +123,7 @@ class CouponRedemption(models.Model):
         Coupon, on_delete=models.SET_NULL, null=True)
     total_discount = models.FloatField()
     redemption_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    is_used = models.BooleanField(default=False)
 
     
 

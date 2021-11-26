@@ -9,6 +9,8 @@ import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
 function PlaceOrderScreen({ history }) {
 
+    const [coupon_code, setCoupon_code] = useState('')
+    const [user_id, setUser_id] = useState('')
     const orderCreate = useSelector(state => state.orderCreate)
     const { order, error, success } = orderCreate
 
@@ -54,7 +56,7 @@ function PlaceOrderScreen({ history }) {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
 
-                            <Form>
+                            <Form onSubmit={()=>{console.log("Coupon Code : ", coupon_code)}}>
 
                             <h4>Enter Coupon Id</h4><span>if you have otherwise no need to submit</span>
                             <p>
@@ -64,8 +66,9 @@ function PlaceOrderScreen({ history }) {
                                         aria-label="Recipient's username"
                                         aria-describedby="basic-addon2"
                                         size="sm"
+                                        onChange={(e)=>{setCoupon_code(e.target.value)}}
                                     />
-                                    <Button variant="outline-warning" id="button-addon2" size="sm">
+                                    <Button type="submit" variant="outline-warning" id="button-addon2" size="sm">
                                         Submit
                                     </Button>
                                 </InputGroup>

@@ -5,9 +5,9 @@ const Navs2 = () =>{
     return(
         <>
         <hr></hr>
-            <h5 className="text-center mt-4 mb-4">Top OS</h5>
+            <h5 className="text-center mt-2 mb-2">Top Operating System</h5>
 
-            <p className="text-center mt-4 mb-4">Or right-aligned</p>
+            <p className="text-center mt-1 mb-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <Nav className="justify-content-center" activeKey="/home">
                 <Nav.Item>
                     <Nav.Link href="/home">
@@ -16,9 +16,6 @@ const Navs2 = () =>{
                             <div className="text-center nav-text" ><i class="fab fa-linux"></i></div>
                             <div className="text-center">Linux</div>
                         </div>
-                    
-                    
-                    
                     
                     
                     
