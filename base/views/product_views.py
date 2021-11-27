@@ -18,6 +18,28 @@ def getCoupons(request):
     coup = Coupon.objects.all()
     coupons = CouponSerializer(coup, many=True)
     return Response({'coupon_redemptions': coupon_redemptions.data, 'coupons': coupons.data})
+
+@api_view(['POST'])
+def getCouponStatus(request):
+    data = request.data
+    print("data ---->>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+    user_id = 10
+    coupon_code = data['coupon_code']
+    print("USER COUPON  ", user_id, coupon_code)
+    coupon_redemption = CouponRedemption.objects.filter(
+        user_id=user_id).filter(coupon_code=coupon_code)
+    print("Coupon : ", coupon_redemption)
+    if coupon_redemption:
+        coupon_redemption.is_used = True 
+        coupon_redemption.status = False
+        
+        total_discount = CouponRedemption.objects.values_list(
+            'total_discount',  flat=True)
+        return Response({'status': 3, 'total_discount': total_discount})
+    else:
+        return Response({'status': 2, 'total_discount': 0})
+    
+    
     
     
     

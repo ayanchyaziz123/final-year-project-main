@@ -71,7 +71,7 @@ const CompareProduct = () =>{
     
     return(
         <form onSubmit={handleSubmit}>
-        <div className="card shadow p-2 bg-warning">
+        <div className="card shadow p-2 bg-warning br">
                 <h5 className="font-weight-bold">Compare Products</h5>
                
                 <label for="exampleFormControlSelect1">Laptop1</label>
@@ -98,7 +98,7 @@ const CompareProduct = () =>{
             </select>
             <br></br>
                 <span>you can see comparison between two laptops</span>
-            <button type="submit" className="btn btn-dark btn-sm">Comparison</button>
+            <button type="submit" className="btn btn-dark btn-sm br">Comparison</button>
         </div>
         </form>
     );

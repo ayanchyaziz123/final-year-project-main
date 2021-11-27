@@ -70,6 +70,12 @@ class CouponSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class SubUserSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
 class ShippingAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShippingAddress

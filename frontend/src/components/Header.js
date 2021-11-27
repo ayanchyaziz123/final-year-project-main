@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Nav, Container, Row, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -17,8 +17,12 @@ function Header() {
         dispatch(logout())
     }
 
+
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
+
+  
+    
 
     return (
         <header>
@@ -48,7 +52,7 @@ function Header() {
                     </LinkContainer>
 
                     <LinkContainer to='/cart' className="text-white active mr-0 mr-md-4">
-                        <Nav.Link><i className="fas fa-shopping-cart ct"></i> cart <span class="badge badge-warning ct3">{cartItems.length > 0 ? cartItems.length : null}</span></Nav.Link>
+                        <Nav.Link><i className="fas fa-shopping-cart ct"></i> cart <span class="badge badge-warning ct3">{cartItems.length > 0 ? ( cartItems.reduce((acc, item) => acc + item.qty, 0) ) : null}</span></Nav.Link>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

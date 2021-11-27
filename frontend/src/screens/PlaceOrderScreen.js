@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import { Button, Row, Col, ListGroup, Image, Card, InputGroup, FormControl, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,19 +11,47 @@ import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 function PlaceOrderScreen({ history }) {
 
     const [coupon_code, setCoupon_code] = useState('')
-    const [user_id, setUser_id] = useState('')
+    const [coupon_code_status, setCoupon_code_status] = useState(0)
+    const [user_id, setUser_id] = useState()
+    const [total_discount, setTotal_discount] = useState(0)
     const orderCreate = useSelector(state => state.orderCreate)
     const { order, error, success } = orderCreate
 
     const dispatch = useDispatch()
 
     const cart = useSelector(state => state.cart)
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
     cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
-
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+
+    const getCoouponCodeStatus = () =>{
+        setUser_id(userInfo._id);
+        try{
+        axios.post(`/api/products/coupon_check/`, {user_id, coupon_code}).then(res =>{
+            console.log("res--->>>", res.data.status)
+            console.log("Discount --->>>>>", res.data.total_discount)
+            setCoupon_code_status(res.data.status);
+            setTotal_discount(res.data.total_discount);
+        })
+    }
+    catch(erro)
+    {
+        console.log(error)
+    }
+    }
+
+    const coupon_discount = (
+        <ListGroup.Item>
+            <Row>
+                <Col>Total Discount:</Col>
+                <Col>${total_discount}</Col>
+            </Row>
+        </ListGroup.Item>
+    );
 
 
     if (!cart.paymentMethod) {
@@ -30,11 +59,12 @@ function PlaceOrderScreen({ history }) {
     }
 
     useEffect(() => {
+        
         if (success) {
             history.push(`/order/${order._id}`)
             dispatch({ type: ORDER_CREATE_RESET })
         }
-    }, [success, history])
+    }, [[success, history]])
 
     const placeOrder = () => {
         dispatch(createOrder({
@@ -56,7 +86,7 @@ function PlaceOrderScreen({ history }) {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
 
-                            <Form onSubmit={()=>{console.log("Coupon Code : ", coupon_code)}}>
+                            <Form onSubmit={getCoouponCodeStatus}>
 
                             <h4>Enter Coupon Id</h4><span>if you have otherwise no need to submit</span>
                             <p>
@@ -72,6 +102,7 @@ function PlaceOrderScreen({ history }) {
                                         Submit
                                     </Button>
                                 </InputGroup>
+                                    {coupon_code_status == 3 ? <p>Your Code is right you are being discounted</p> : coupon_code_status == 2 ?  <p>Your Code is not right please try again</p>: null}
                             </p>
                             </Form>
                         </ListGroup.Item>
@@ -155,6 +186,9 @@ function PlaceOrderScreen({ history }) {
                                     <Col>${cart.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
+
+                           {coupon_code_status == 3 ? coupon_discount : null}
+
 
                             <ListGroup.Item>
                                 <Row>

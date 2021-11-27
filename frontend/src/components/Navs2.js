@@ -12,7 +12,7 @@ const Navs2 = () =>{
                 <Nav.Item>
                     <Nav.Link href="/home">
                     
-                        <div className="bg-light p-3"  >
+                        <div className="bg-warning p-3 br"  >
                             <div className="text-center nav-text" ><i class="fab fa-linux"></i></div>
                             <div className="text-center">Linux</div>
                         </div>
@@ -24,7 +24,7 @@ const Navs2 = () =>{
                 <Nav.Item>
                     <Nav.Link eventKey="link-1">
                         
-                        <div className="bg-light p-3" >
+                        <div className="bg-warning p-3 br" >
                             <div className="text-center nav-text" ><i class="fab fa-apple"></i></div>
                             <div className="text-center">Apple</div>
                         </div>
@@ -36,7 +36,7 @@ const Navs2 = () =>{
                 <Nav.Item>
                     <Nav.Link href="/home">
 
-                        <div className="bg-light p-3"  >
+                        <div className="bg-warning p-3 br"  >
                             <div className="text-center nav-text" ><i class="fab fa-android"></i></div>
                             <div className="text-center">Android</div>
                         </div>
@@ -51,7 +51,7 @@ const Navs2 = () =>{
                 <Nav.Item>
                     <Nav.Link eventKey="link-1">
 
-                        <div className="bg-light p-3"  >
+                        <div className="bg-warning p-3 br"  >
                             <div className="text-center nav-text" ><i class="fab fa-windows"></i></div>
                             <div className="text-center">Windows</div>
                         </div>

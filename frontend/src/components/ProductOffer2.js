@@ -22,7 +22,7 @@ function ProductOffer2() {
         : error
             ? <Message variant='danger'>{error}</Message>
             : (
-                    <Carousel autoPlay="true" infiniteLoop="true" interval="1000" stopOnHover="true" >
+                    <Carousel autoPlay="true" infiniteLoop="true" interval="1000" stopOnHover="true" className="br">
                     
                     {products.map(product => (
                         <Link to={`/product/${product._id}`}>
