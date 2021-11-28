@@ -64,7 +64,7 @@ function HomeScreen({ history }) {
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :
-                    <div className="bg-white p-md-5 card">
+                    <div className="pr-md-5 pl-md-5 pt-3">
                         <Row>
                             <Col md={2}>
                                 <SearchRAM/>
@@ -77,7 +77,7 @@ function HomeScreen({ history }) {
                         <Row>
                             
                             {products.map(product => (
-                                <Col key={product._id} sm={12} md={6} lg={4} xl={3} className="card">
+                                <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
                                     <Product product={product} />
                                 </Col>
                             ))}
