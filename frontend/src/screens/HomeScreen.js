@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col,Container, Form } from 'react-bootstrap'
+import { Row, Col,Container, Form, ListGroup } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -43,7 +43,17 @@ function HomeScreen({ history }) {
            
             <Row>
                         <Col md={2}>
-                            <CompareProduct />
+                        <ListGroup className="border border-warning">
+                            <ListGroup.Item className="bg-dark text-white">1. new laptop</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Dapibus ac facilisis in</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Morbi leo risus</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Porta ac consectetur ac</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Vestibulum at eros</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Cras justo odio</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Dapibus ac facilisis in</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Morbi leo risus</ListGroup.Item>
+                            <ListGroup.Item className="bg-dark text-white">Porta ac consectetur ac</ListGroup.Item>
+                        </ListGroup>
                         </Col>
                 <Col md={8}>
                     <ProductOffer2/>

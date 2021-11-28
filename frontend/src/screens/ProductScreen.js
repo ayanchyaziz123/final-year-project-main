@@ -91,8 +91,8 @@ function ProductScreen({ match, history }) {
                                 </Col>
 
 
-                                <Col md={3}>
-                                    <Card>
+                                <Col md={3} >
+                                   
                                     <ListGroup variant="flush">
                                     <ListGroup.Item>
                                             <h3>{product.name}</h3>
@@ -112,7 +112,7 @@ function ProductScreen({ match, history }) {
                                             Description: {ReactHtmlParser(product.description)}
                                         </ListGroup.Item>
                                     </ListGroup>
-                                    </Card>
+                                   
                                 </Col>
 
 
