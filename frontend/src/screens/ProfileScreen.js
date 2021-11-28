@@ -82,6 +82,7 @@ function ProfileScreen({ history }) {
                             placeholder='Enter name'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            size="sm"
                         >
                         </Form.Control>
                     </Form.Group>
@@ -94,6 +95,7 @@ function ProfileScreen({ history }) {
                             placeholder='Enter Email'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                                size="sm"
                         >
                         </Form.Control>
                     </Form.Group>
@@ -106,6 +108,7 @@ function ProfileScreen({ history }) {
                             placeholder='Enter Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                                size="sm"
                         >
                         </Form.Control>
                     </Form.Group>
@@ -118,11 +121,23 @@ function ProfileScreen({ history }) {
                             placeholder='Confirm Password'
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
+                                size="sm"
                         >
                         </Form.Control>
-                    </Form.Group>
 
-                    <Button type='submit' variant='primary'>
+                    </Form.Group>
+                        <Form.Group controlId='profile photo'>
+                            <Form.Label>Profile Photo</Form.Label>
+                            <Form.Control
+
+                                type='file'
+                                size="sm"
+                            >
+                            </Form.Control>
+
+                        </Form.Group>
+
+                        <Button type='submit' variant='primary' size="sm">
                         Update
                 </Button>
 

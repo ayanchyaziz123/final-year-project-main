@@ -92,6 +92,7 @@ function ProductScreen({ match, history }) {
 
 
                                 <Col md={3}>
+                                    <Card>
                                     <ListGroup variant="flush">
                                     <ListGroup.Item>
                                             <h3>{product.name}</h3>
@@ -111,6 +112,7 @@ function ProductScreen({ match, history }) {
                                             Description: {ReactHtmlParser(product.description)}
                                         </ListGroup.Item>
                                     </ListGroup>
+                                    </Card>
                                 </Col>
 
 
@@ -179,6 +181,7 @@ function ProductScreen({ match, history }) {
 
                             <Row>
                                 <Col md={6}>
+                                    <Card>
                                     <h4>Reviews</h4>
                                     {product.reviews.length === 0 && <Message variant='info' size="sm">No Reviews</Message>}
 
@@ -244,6 +247,7 @@ function ProductScreen({ match, history }) {
                                                 )}
                                         </ListGroup.Item>
                                     </ListGroup>
+                                    </Card>
                                 </Col>
                             </Row>
                         </div>

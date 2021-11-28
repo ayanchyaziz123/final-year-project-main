@@ -78,7 +78,7 @@ function OrderScreen({ match, history }) {
     ) : error ? (
         <Message variant='danger'>{error}</Message>
     ) : (
-                <div>
+                <div className="container">
                     <h1>Order: {order.Id}</h1>
                     <Row>
                         <Col md={8}>

@@ -1,5 +1,5 @@
 body {
- background-color: #C0C0C0;
+ background-color: #111010 !important;
 }
 main{
     min-height: 80vh;
@@ -88,6 +88,18 @@ h3{
 .br{
   border-radius: 10px;
 }
+.carousel .slide img {
+    max-height: 370px;  /* change this to whatever you want */
+}
+
+@media only screen and (min-width: 992px) {
+
+.large-devices-margin {
+    margin-left: 130px !important;
+    margin-right: 130px !important;
+}
+}
+
 
 
 

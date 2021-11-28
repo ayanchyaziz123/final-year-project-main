@@ -16,13 +16,33 @@
    -webkit-text-decoration-line: line-through !important; /* Safari */
    text-decoration-line: line-through !important; 
 }
-.ps{
-    max-height: 100px !important;
+
+.cardd{
+    border-radius: 4px;
+    background: #fff;
+  
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 14px 80px 18px 36px;
+  cursor: pointer;
 }
 
-.carousel .slide img {
-    max-height: 370px;  /* change this to whatever you want */
+.cardd:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
+
+.ps{
+    max-height: 155px !important;
+    max-width: 150px !important;
+    min-height: 155px !important;
+    min-width: 150px !important;
+}
+.ps:hover
+{
+       transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
 
 .search-bar{
      padding: 11px 16px;
@@ -56,4 +76,6 @@
       color: black;
 
 }
+
+
 

@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+
+
+
+
 class SubUser(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     coins = models.IntegerField(null=True, blank=True, default=0)

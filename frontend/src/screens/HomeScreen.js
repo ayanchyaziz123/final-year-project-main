@@ -36,15 +36,18 @@ function HomeScreen({ history }) {
 
     return (
         <div>
-            <div>
-            <Container>
+            <div className="large-devices-margin">
+            <Container fluid>
                 <Coupon/> 
            
             <Row>
-                <Col md={9}>
+                        <Col md={2}>
+                            <CompareProduct />
+                        </Col>
+                <Col md={8}>
                     <ProductOffer2/>
                 </Col>
-                <Col md={3}>
+                <Col md={2}>
                     <CompareProduct/>
                 </Col>
                 
@@ -54,13 +57,14 @@ function HomeScreen({ history }) {
             </div>
     
             <Navs2/>
-            <Container>
+            <div className="large-devices-margin">
+            <Container clssName="large-devices-margin" fluid>
 
             <h4 className="mt-5">Latest Laptops</h4>
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :
-                    <div>
+                    <div className="bg-white p-md-5 card">
                         <Row>
                             <Col md={2}>
                                 <SearchRAM/>
@@ -82,6 +86,7 @@ function HomeScreen({ history }) {
                     </div>
             }
             </Container>
+            </div>
         
            
         </div>

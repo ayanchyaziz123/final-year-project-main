@@ -42,6 +42,25 @@ function SearchRAM() {
                         id="formHorizontalRadios1"
                         onChange={(e) => setKeyword(e.target.value + 'RAM')}
                     />
+
+                    <Form.Check
+                        type="radio"
+                        color="warning"
+                        label="8gb"
+                        name="btn1"
+                        value="8"
+                        id="formHorizontalRadios1"
+                        onChange={(e) => setKeyword(e.target.value + 'RAM')}
+                    />
+                    <Form.Check
+                        type="radio"
+                        color="warning"
+                        label="16gb"
+                        name="btn1"
+                        value="16"
+                        id="formHorizontalRadios1"
+                        onChange={(e) => setKeyword(e.target.value + 'RAM')}
+                    />
                    
 
                     <Button
