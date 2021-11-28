@@ -14,6 +14,7 @@ import CompareProduct from '../components/CompareProduct'
 import ProductCarousel from '../components/ProductCarousel'
 import SearchRAM from '../components/SearchRam'
 import Coupon from '../components/Coupon'
+import SearchSlider from '../components/SearchSlider'
 
 
 
@@ -52,7 +53,7 @@ function HomeScreen({ history }) {
                 </Col>
                 
                 </Row>
-            <br></br>
+            
             </div>
     
             <Navs2/>
@@ -67,11 +68,14 @@ function HomeScreen({ history }) {
                         <Row>
                             <Col md={2}>
                                 <SearchRAM/>
+                                <br></br>
+                                
                             </Col>
                             <Col md={10}>
                         
 
                         <Row>
+                            
                             {products.map(product => (
                                 <Col key={product._id} sm={12} md={6} lg={4} xl={3} className="card">
                                     <Product product={product} />

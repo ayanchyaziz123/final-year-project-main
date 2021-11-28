@@ -32,7 +32,7 @@ function CompareScreen(props){
     }, []);
     return(
         
-        <div className="container">
+        <div className="large-devices-margin">
 
             {loading ? <Loader/>:
             <div>
