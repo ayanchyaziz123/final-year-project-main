@@ -37,7 +37,7 @@ function HomeScreen({ history }) {
     return (
         <div>
             <div className="large-devices-margin">
-            <Container fluid>
+   
                 <Coupon/> 
            
             <Row>
@@ -53,12 +53,11 @@ function HomeScreen({ history }) {
                 
                 </Row>
             <br></br>
-            </Container>
             </div>
     
             <Navs2/>
             <div className="large-devices-margin">
-            <Container clssName="large-devices-margin" fluid>
+        
 
             <h4 className="mt-5">Latest Laptops</h4>
             {loading ? <Loader />
@@ -85,7 +84,7 @@ function HomeScreen({ history }) {
                         
                     </div>
             }
-            </Container>
+
             </div>
         
            

@@ -60,7 +60,7 @@ function ProductScreen({ match, history }) {
     }
 
     return (
-        <div className="container">
+        <div className="large-devices-margin">
             <Coupon />
             <Link to='/' className='btn btn-light my-3'>Go Back</Link>
             {loading ?
