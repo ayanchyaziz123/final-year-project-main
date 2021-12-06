@@ -1,18 +1,14 @@
 from django.db import models
+from datetime import datetime
 from django.contrib.auth.models import User
 
 # Create your models here.
 
-
-
-
-
-
 class SubUser(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     coins = models.IntegerField(null=True, blank=True, default=0)
-    filtering_history = models.CharField(max_length=400, null=True, blank=True)
-    
+    filtering_history = models.CharField(max_length=2000, null=True, blank=True)
+    created_at = models.DateTimeField(default=datetime.now, blank=True)
     
     
 class Product(models.Model):

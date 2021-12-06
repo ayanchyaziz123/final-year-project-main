@@ -39,7 +39,7 @@ function CompareScreen(props){
           
 
             {prod && (
-                <Row className="mt-2 mb-5">
+                <Row className="mt-2 mb-5 text-white">
                     
                     <Col md={2}>
                                 <h2>This is compare product</h2>
@@ -55,7 +55,7 @@ function CompareScreen(props){
                                 <Card.Img src={pr.image} className="img-fluid cc"/>
                             </Link>
                            <Card.Body>
-                                <h5>{pr.name}</h5>
+                                <h5 className="text-white">{pr.name}</h5>
                                 <hr></hr>
                                                 <p>Category {pr.category}</p>
                                                 <hr></hr>
@@ -98,7 +98,7 @@ function CompareScreen(props){
                                     <Card.Img src={pr.image} className="img-fluid cc"/>
                                 </Link>
                                 <Card.Body>
-                                                <h5>{pr.name}</h5>
+                                                <h5 className="text-white">{pr.name}</h5>
                                                 <hr></hr>
                                                 <p>Category {pr.category}</p>
                                                 <hr></hr>

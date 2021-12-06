@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Product({ product }) {
     return (
-        <div className="my-2 p-2  br text-white border border-info">
+        <div className="my-2 p-2  br text-white border border-dark text-center">
             <strong className="ct">{product.rating > 2 && product.numReviews > 0 ? <span class="badge badge-warning"><i class="fas fa-star"></i> TOP REVIEWED</span> : <br></br> }</strong>
             <Link to={`/product/${product._id}`}>
                 <Card.Img src={product.image} className="img-fluid ps rounded mx-auto d-block"/>

@@ -11,6 +11,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
+from base.models import SubUser
+from django.db.models import Sum
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -28,7 +30,16 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@api_view(['POST'])
+@api_view(['GET'])
+def getUserCoins(request, pk):
+    print("user  :: ", pk)
+    coins = list(SubUser.objects.filter(
+        user_id=pk).aggregate(Sum('coins')).values())[0]
+    print("coins : ->>>>>>", coins)
+    return Response(coins)
+
+
+@api_view(['get'])
 def registerUser(request):
     data = request.data
     try:

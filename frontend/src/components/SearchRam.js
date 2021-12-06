@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Row, Col } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
@@ -7,75 +7,71 @@ function SearchRAM() {
 
     let history = useHistory()
 
-    const submitHandler = (e) => {
-        e.preventDefault()
+    useEffect(()  => {
         if (keyword) {
             history.push(`/?keyword=${keyword}&page=1`)
-        } else {
-            history.push(history.push(history.location.pathname))
-        }
+        } 
+     
+    }, [keyword]);
+
+    const handleChange = (event) => {
+        setKeyword(event.target.value + 'RAM')
+
     }
+
+    
     return (
 
-         
-                <Form.Group as={Row} className="mb-3">
-                    <h5>RAM</h5>
 
-                    <Col sm={10} >
-                      
-                <Form onSubmit={submitHandler} inline>
+        <Form.Group as={Row} className="mb-3">
+            <h5 className="text-white">RAM</h5>
+
+            <Col sm={10} >
+
+
+                <Form.Group className="mb-3">
                     <Form.Check
-                        type="radio"
-                        color="warning"
-                        label="8gb"
-                        name="btn1"
+                        required
+                        name="terms"
+                        label="8 GB"
+                        id="validationFormik0"
                         value="8"
-                        id="formHorizontalRadios1"
-                        onChange={(e) => setKeyword(e.target.value + 'RAM')}
+                        defaultChecked= {keyword == null ? true : false}
+                        onChange={handleChange}
                     />
-                    <Form.Check
-                        type="radio"
-                        color="warning"
-                        label="16gb"
-                        name="btn1"
-                        value="16"
-                        id="formHorizontalRadios1"
-                        onChange={(e) => setKeyword(e.target.value + 'RAM')}
-                    />
-
-                    <Form.Check
-                        type="radio"
-                        color="warning"
-                        label="8gb"
-                        name="btn1"
-                        value="8"
-                        id="formHorizontalRadios1"
-                        onChange={(e) => setKeyword(e.target.value + 'RAM')}
-                    />
-                    <Form.Check
-                        type="radio"
-                        color="warning"
-                        label="16gb"
-                        name="btn1"
-                        value="16"
-                        id="formHorizontalRadios1"
-                        onChange={(e) => setKeyword(e.target.value + 'RAM')}
-                    />
-                   
-
-                    <Button
-                        type='submit'
-                        variant='warning'
-                        className='p-2 search-bar-button'
-                        size="sm"
-                    >
-                        <i class="fas fa-search"></i>
-                    </Button>
-                </Form>
-                    </Col>
                 </Form.Group>
-       
-      
+
+
+                <Form.Group className="mb-3">
+                    <Form.Check
+                        required
+                        name="terms"
+                        label="12 GB"
+                        id="validationFormik0"
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Check
+                        required
+                        name="terms"
+                        label="16 GB"
+                        id="validationFormik0"
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3 ">
+                    <Form.Check
+                        required
+                        name="terms"
+                        label="32 GB"
+                        id="validationFormik1"
+                    />
+                </Form.Group>
+
+            </Col>
+        </Form.Group>
+
+
     )
 }
 

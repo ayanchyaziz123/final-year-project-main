@@ -8,6 +8,7 @@ import Message from '../components/Message'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 import { listMyOrders } from '../actions/orderActions'
+import axios from 'axios'
 
 function ProfileScreen({ history }) {
 
@@ -16,6 +17,7 @@ function ProfileScreen({ history }) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [userCoins, setUserCoins] = useState(0);
 
     const dispatch = useDispatch()
 
@@ -36,15 +38,23 @@ function ProfileScreen({ history }) {
         if (!userInfo) {
             history.push('/login')
         } else {
+
+            axios.get(`http://127.0.0.1:8000/api/users/coin/${userInfo._id}`).then(res => {
+                setUserCoins(res.data);
+            })
+
+
             if (!user || !user.name || success || userInfo._id !== user._id) {
                 dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
                 dispatch(listMyOrders())
+
             } else {
                 setName(user.name)
                 setEmail(user.email)
             }
         }
+        
     }, [dispatch, history, userInfo, user, success])
 
     const submitHandler = (e) => {
@@ -64,10 +74,14 @@ function ProfileScreen({ history }) {
 
     }
     return (
-        <Container>
+        <div className="large-devices-margin">
         <Row>
+            <Col md={2}>
+                <h1 className="text-white">My Total Coins</h1>
+                    <h2 className="text-white text-center bg-danger">{userCoins > 0 ? userCoins : "You got no coin yet!"}</h2>
+            </Col>
             <Col md={3}>
-                <h2>User Profile</h2>
+                <h2 className="text-white">User Profile</h2>
 
                 {message && <Message variant='danger'>{message}</Message>}
                 {error && <Message variant='danger'>{error}</Message>}
@@ -126,16 +140,7 @@ function ProfileScreen({ history }) {
                         </Form.Control>
 
                     </Form.Group>
-                        <Form.Group controlId='profile photo'>
-                            <Form.Label>Profile Photo</Form.Label>
-                            <Form.Control
-
-                                type='file'
-                                size="sm"
-                            >
-                            </Form.Control>
-
-                        </Form.Group>
+                       
 
                         <Button type='submit' variant='primary' size="sm">
                         Update
@@ -144,14 +149,14 @@ function ProfileScreen({ history }) {
                 </Form>
             </Col>
 
-            <Col md={9}>
-                <h2>My Orders</h2>
+            <Col md={7}>
+                <h2 className="text-white">My Recent Orders</h2>
                 {loadingOrders ? (
                     <Loader />
                 ) : errorOrders ? (
                     <Message variant='danger'>{errorOrders}</Message>
                 ) : (
-                            <Table striped responsive className='table-sm'>
+                            <Table striped responsive className='table-sm text-white'>
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -184,7 +189,7 @@ function ProfileScreen({ history }) {
                         )}
             </Col>
         </Row>
-        </Container>
+        </div>
     )
 }
 
