@@ -120,7 +120,7 @@ function PricePredict() {
 
         return (
             <div>
-                <Container fluid>
+                <div className="large-devices-margin">
                     <Row>
                         <Col md={3}>
                             <Card className="bg-warning text-white p-2 mt-3">
@@ -218,11 +218,11 @@ function PricePredict() {
             }
             </Col>
             </Row>
-            </Container>
+            </div>
 
             {/* sfdfd */}
 
-            <Container>
+                <div className="large-devices-margin">
             
 
                 <h4 className="mt-5">Suggest  Laptops</h4>
@@ -274,7 +274,7 @@ function PricePredict() {
                 
                         </div>
                 }
-                </Container>
+               </div>
 
 
 

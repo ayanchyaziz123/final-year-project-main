@@ -56,10 +56,10 @@ function ProductListScreen({ history, match }) {
     }
 
     return (
-        <div className="container">
-            <Row className='align-items-center'>
+        <div className="large-devices-margin">
+            <Row className='align-items-center text-white'>
                 <Col>
-                    <h1>Products</h1>
+                    <h1 className="text-white">Products</h1>
                 </Col>
 
                 <Col className='text-right'>
@@ -89,7 +89,7 @@ function ProductListScreen({ history, match }) {
                     ? (<Message variant='danger'>{error}</Message>)
                     : (
                         <div>
-                            <Table striped bordered hover responsive className='table-sm'>
+                            <Table striped bordered hover responsive className='table-sm text-white'>
                                 <thead>
                                     <tr>
                                         <th>ID</th>

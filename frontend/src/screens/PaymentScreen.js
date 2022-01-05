@@ -25,7 +25,7 @@ function PaymentScreen({ history }) {
     }
 
     return (
-        <Container>
+        <div className="large-devices-margin">
         <FormContainer>
             <CheckoutSteps step1 step2 step3 />
 
@@ -51,7 +51,7 @@ function PaymentScreen({ history }) {
                 </Button>
             </Form>
         </FormContainer>
-        </Container>
+        </div>
     )
 }
 

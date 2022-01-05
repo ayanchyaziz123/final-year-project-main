@@ -31,10 +31,10 @@ function LoginScreen({ location, history }) {
 
     return (
 
-        <Row>
+        <Row >
             <Col md={3}>
             </Col>
-            <Col>
+            <Col className="card">
                 <FormContainer>
                     <h1>Sign In</h1>
                     {error && <Message variant='danger'>{error}</Message>}

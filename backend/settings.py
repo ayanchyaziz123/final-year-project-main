@@ -191,7 +191,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-
+AUTH_KEY = 'YOUR_KEY_HERE'
 # Dont forget to reset database connection and hide password
 #AWS_QUERYSTRING_AUTH = False
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

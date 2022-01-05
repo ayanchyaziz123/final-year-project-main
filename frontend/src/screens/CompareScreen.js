@@ -42,7 +42,7 @@ function CompareScreen(props){
                 <Row className="mt-2 mb-5 text-white">
                     
                     <Col md={2}>
-                                <h2>This is compare product</h2>
+                                <h3 className="text-white">This is compare product</h3>
                     </Col>
                     <Col md={1}>
                     </Col>

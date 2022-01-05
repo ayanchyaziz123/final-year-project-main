@@ -26,10 +26,13 @@ function PlaceOrderScreen({ history }) {
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
     cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2) - total_discount
+    useEffect(() => {
+        setUser_id(userInfo._id);
+    })
 
     const getCoouponCodeStatus = () =>{
-        setUser_id(userInfo._id);
+        
         try{
         axios.post(`/api/products/coupon_check/`, {user_id, coupon_code}).then(res =>{
             console.log("res--->>>", res.data.status)
@@ -79,7 +82,7 @@ function PlaceOrderScreen({ history }) {
     }
 
     return (
-        <div className="container">
+        <div className="large-devices-margin">
             <CheckoutSteps step1 step2 step3 step4 />
             <Row>
                 <Col md={8}>

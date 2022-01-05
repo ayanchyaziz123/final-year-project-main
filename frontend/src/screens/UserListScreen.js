@@ -39,8 +39,8 @@ function UserListScreen({ history }) {
     }
 
     return (
-        <div className="container">
-            <h1>Users</h1>
+        <div className="large-devices-margin">
+            <h1 className="text-white">Users</h1>
             <Row>
                 <Col md={3}>
                     <AdminSideBar/>
@@ -52,7 +52,7 @@ function UserListScreen({ history }) {
                 : error
                     ? (<Message variant='danger'>{error}</Message>)
                     : (
-                        <Table striped bordered hover responsive className='table-sm'>
+                        <Table striped bordered hover responsive className='table-sm text-white'>
                             <thead>
                                 <tr>
                                     <th>ID</th>

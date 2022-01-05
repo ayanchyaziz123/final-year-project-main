@@ -4,12 +4,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class SubUser(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    mobile = models.CharField(max_length=200, default=0)
     coins = models.IntegerField(null=True, blank=True, default=0)
-    filtering_history = models.CharField(max_length=2000, null=True, blank=True)
-    created_at = models.DateTimeField(default=datetime.now, blank=True)
-    
+    otp = models.CharField(max_length=6, default=0)
+ 
+
+
     
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

@@ -70,10 +70,15 @@ function Header() {
                                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
 
                                 </NavDropdown>
-                            ) : (
+                            ) : (<>
+        
+                                    <LinkContainer to='/register'>
+                                        <Nav.Link><i className="fas fa-user"></i>Register A Account </Nav.Link>
+                                    </LinkContainer>
                                     <LinkContainer to='/login'>
                                         <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
                                     </LinkContainer>
+                                </>
                                 )}
 
 

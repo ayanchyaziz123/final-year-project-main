@@ -5,14 +5,14 @@ import AdminSideBar from '../admin_components/AdminSideBar';
 
 const DashboardScreen = () =>{
     return(
-        <div className="container">
-            <h1>Dashboard</h1>
+        <div className="large-devices-margin">
+            <h1 className="text-white">Dashboard</h1>
             <Row>
                 <Col md={3}>
                     <AdminSideBar/>
                 </Col>
                 <Col>
-                    <h1>This is dashboard screen</h1>
+                    <h1 className="text-white">This is dashboard screen</h1>
                 </Col>
             </Row>
         </div>

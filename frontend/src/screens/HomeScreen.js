@@ -42,7 +42,7 @@ function HomeScreen({ history }) {
                 <Coupon/> 
            
             <Row>
-                        <Col md={2}>
+                        {/* <Col md={2}>
                         <ListGroup className="border border-warning">
                             <ListGroup.Item className="bg-dark text-white">1. new laptop</ListGroup.Item>
                             <ListGroup.Item className="bg-dark text-white">Dapibus ac facilisis in</ListGroup.Item>
@@ -54,8 +54,9 @@ function HomeScreen({ history }) {
                             <ListGroup.Item className="bg-dark text-white">Morbi leo risus</ListGroup.Item>
                             <ListGroup.Item className="bg-dark text-white">Porta ac consectetur ac</ListGroup.Item>
                         </ListGroup>
-                        </Col>
-                <Col md={8}>
+                  
+                        </Col> */}
+                <Col md={10}>
                     <ProductOffer2/>
                 </Col>
                 <Col md={2}>
@@ -67,6 +68,8 @@ function HomeScreen({ history }) {
             </div>
     
             <Navs2/>
+            <br></br>
+            <Navs/>
             <div className="large-devices-margin">
         
 

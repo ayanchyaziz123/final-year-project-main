@@ -78,8 +78,8 @@ function OrderScreen({ match, history }) {
     ) : error ? (
         <Message variant='danger'>{error}</Message>
     ) : (
-                <div className="container">
-                    <h1>Order: {order.Id}</h1>
+                <div className="large-devices-margin">
+                    <h1 className="text-white">Order: {order.Id}</h1>
                     <Row>
                         <Col md={8}>
                             <ListGroup variant='flush'>

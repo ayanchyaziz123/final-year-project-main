@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render
 
 from rest_framework.decorators import api_view, permission_classes
@@ -7,12 +8,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Coupon, CouponRedemption, Product, Review
 from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer
-
+import datetime
 from rest_framework import status
 
 
 @api_view(['GET'])
 def getCoupons(request):
+    x = datetime.datetime.now()
     coupon_red = CouponRedemption.objects.all()
     coupon_redemptions = CouponRedemptionSerializer(coupon_red, many=True)
     coup = Coupon.objects.all()
@@ -23,7 +25,7 @@ def getCoupons(request):
 def getCouponStatus(request):
     data = request.data
     print("data ---->>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
-    user_id = 10
+    user_id = data['user_id']
     coupon_code = data['coupon_code']
     print("USER COUPON  ", user_id, coupon_code)
     coupon_redemption = CouponRedemption.objects.filter(
@@ -55,6 +57,9 @@ def getProducts(request):
         query = ''
         products = Product.objects.filter(
             name__icontains=query).order_by('-createdAt')
+    elif query == 'linux' or query == 'windows' or query == 'mac' or query == 'android':
+        products = Product.objects.filter(
+            operating_system=query).order_by('-createdAt')
         
     elif query[-3:] == "RAM":
         query = int(query[:-3])
