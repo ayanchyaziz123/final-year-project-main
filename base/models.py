@@ -82,6 +82,11 @@ class Order(models.Model):
         max_digits=13, decimal_places=3, null=True, blank=True)
     isPaid = models.BooleanField(default=False)
     paidAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    is_offer = models.BooleanField(default=False, null=True, blank=True)
+    offer_percentage = models.IntegerField(
+        default=0, null=True, blank=True)
+    coin_to_money = models.FloatField(default=0, null=True, blank=True)
+    order_status = models.CharField(max_length=300, null=True, blank=True)
     isDelivered = models.BooleanField(default=False)
     deliveredAt = models.DateTimeField(
         auto_now_add=False, null=True, blank=True)
@@ -99,6 +104,7 @@ class OrderItem(models.Model):
     qty = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(
         max_digits=13, decimal_places=3, null=True, blank=True)
+    
     image = models.CharField(max_length=200, null=True, blank=True)
     _id = models.AutoField(primary_key=True, editable=False)
 

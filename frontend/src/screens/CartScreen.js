@@ -50,7 +50,8 @@ function CartScreen({ match, location, history }) {
                                         </Col>
 
                                         <Col md={2}>
-                                            &#2547;{item.price} <br></br>
+                                            <span className="text-tl">&#2547;{item.price}</span>  <br></br>
+                                            &#2547;{item.offer_percentage ? item.price - ((item.price * item.offer_percentage) / 100) : null }
                                         </Col>
 
                                         <Col md={3}>

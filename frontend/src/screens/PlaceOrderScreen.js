@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Button, Row, Col, ListGroup, Image, Card, InputGroup, FormControl, Form } from 'react-bootstrap'
+import { Button, Row, Col, ListGroup, Image, Card, InputGroup, FormControl, Form, ButtonGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -16,6 +16,8 @@ function PlaceOrderScreen({ history }) {
     const [total_discount, setTotal_discount] = useState(0)
     const orderCreate = useSelector(state => state.orderCreate)
     const { order, error, success } = orderCreate
+    const [count, setCount] = useState(0);
+    const [coinPrice, setCoinPrice] =  useState(0);
 
     const dispatch = useDispatch()
 
@@ -51,7 +53,7 @@ function PlaceOrderScreen({ history }) {
         <ListGroup.Item>
             <Row>
                 <Col>Total Discount:</Col>
-                <Col>${total_discount}</Col>
+                <Col>&#2547;{total_discount}</Col>
             </Row>
         </ListGroup.Item>
     );
@@ -81,6 +83,18 @@ function PlaceOrderScreen({ history }) {
         }))
     }
 
+    const setRemoveCoin = () =>
+    {
+        if(count)
+        {
+            setCount(count - 1);
+        }
+        else{
+            alert("You have not enough coin");
+        }
+
+    }
+
     return (
         <div className="large-devices-margin">
             <CheckoutSteps step1 step2 step3 step4 />
@@ -108,6 +122,16 @@ function PlaceOrderScreen({ history }) {
                                     {coupon_code_status == 3 ? <p>Your Code is right you are being discounted</p> : coupon_code_status == 2 ?  <p>Your Code is not right please try again</p>: null}
                             </p>
                             </Form>
+                            
+                            <div>
+                                <p>You have {count} coins and this coin value in tk : {29 < count ? count * 120 : 19 < count ? count * 110 : 9 < count ? count * 105 : count * 100} </p>
+                                <ButtonGroup aria-label="Basic example">
+                                    <Button size="sm" variant="danger" onClick={setRemoveCoin}>-</Button>
+                                    <Button size="sm" variant="warning" onClick={() => setCount(count + 1)}>+</Button>
+                                </ButtonGroup>
+                            </div>
+
+
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h3>Shipping</h3>
@@ -149,7 +173,7 @@ function PlaceOrderScreen({ history }) {
                                                     </Col>
 
                                                     <Col md={4}>
-                                                        {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                                                        {item.qty} X &#2547; {item.price} = &#2547; {(item.qty * item.price).toFixed(2)}
                                                     </Col>
                                                 </Row>
                                             </ListGroup.Item>
@@ -172,31 +196,39 @@ function PlaceOrderScreen({ history }) {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Items:</Col>
-                                    <Col>${cart.itemsPrice}</Col>
+                                    <Col>&#2547; {cart.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Shipping:</Col>
-                                    <Col>${cart.shippingPrice}</Col>
+                                    <Col>&#2547; {cart.shippingPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax:</Col>
-                                    <Col>${cart.taxPrice}</Col>
+                                    <Col>&#2547; {cart.taxPrice}</Col>
+                                </Row>
+                            </ListGroup.Item>
+
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>Coin Exchange:</Col>
+                                    <Col>&#2547; {29 < count ? count * 120 : 19 < count ? count * 110 : 9 < count ? count * 105 : count * 100}</Col>
                                 </Row>
                             </ListGroup.Item>
 
                            {coupon_code_status == 3 ? coupon_discount : null}
+                            
 
-
+                            
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total:</Col>
-                                    <Col>${cart.totalPrice}</Col>
+                                    <Col>&#2547; {cart.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
 

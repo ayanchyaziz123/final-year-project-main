@@ -91,7 +91,7 @@ function ProductScreen({ match, history }) {
                                 </Col>
 
 
-                                <Col md={3} >
+                                <Col md={4} >
                                    
                                     <ListGroup variant="flush">
                                     <ListGroup.Item>
@@ -116,7 +116,7 @@ function ProductScreen({ match, history }) {
                                 </Col>
 
 
-                                <Col md={3}>
+                                <Col md={2}>
                                     <Card>
                                         <ListGroup variant='flush'>
                                             <ListGroup.Item>

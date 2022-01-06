@@ -18,6 +18,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
             name: data.name,
             image: data.image,
             price: data.price - ((data.price * data.offer_percentage) / 100),
+            offer_percentage: data.offer_percentage,
             countInStock: data.countInStock,
             qty
         }

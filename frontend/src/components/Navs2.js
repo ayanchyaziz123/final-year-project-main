@@ -8,9 +8,8 @@ const Navs2 = () =>{
 
     let history = useHistory()
 
-    const submitHandler = text => e => {
+    const submitHandler = (e) => {
         e.preventDefault()
-        setKeyword(text)
         if (keyword) {
             history.push(`/?keyword=${keyword}&page=1`)
         } else {
@@ -29,9 +28,10 @@ const Navs2 = () =>{
             <p className="text-center mt-1 mb-1 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <Nav className="justify-content-center">
                 <Nav.Item>
-                        <Form onSubmit={submitHandler('linux')} inline>
+                        <Form onSubmit={submitHandler} inline>
                             <Button
                                 type='submit'
+                                onClick={() => setKeyword('linux')}
                             >
                                 <div className="bg-warning p-3 br"  >
                                     <div className="text-center nav-text" ><i class="fab fa-linux"></i></div>
@@ -44,9 +44,10 @@ const Navs2 = () =>{
 
 
                 <Nav.Item>
-                    <Form onSubmit={submitHandler('apple')} inline>
+                    <Form onSubmit={submitHandler} inline>
                         <Button
                             type='submit'
+                            onClick={() => setKeyword('apple')}
                         >
                             <div className="bg-warning p-3 br" >
                                 <div className="text-center nav-text" ><i class="fab fa-apple"></i></div>
@@ -60,9 +61,10 @@ const Navs2 = () =>{
                         
                         
                 <Nav.Item>
-                    <Form onSubmit={submitHandler('andoid')} inline>
+                    <Form onSubmit={submitHandler} inline>
                         <Button
                             type='submit'
+                            onClick={() => setKeyword('android')}
                         >
                             <div className="bg-warning p-3 br"  >
                                 <div className="text-center nav-text" ><i class="fab fa-android"></i></div>
@@ -73,9 +75,10 @@ const Navs2 = () =>{
                 </Nav.Item>
 
                 <Nav.Item>
-                    <Form onSubmit={submitHandler('windows')} inline>
+                    <Form onSubmit={submitHandler} inline>
                         <Button
                             type='submit'
+                            onClick={() => setKeyword('windows')}
                         >
                             <div className="bg-warning p-3 br"  >
                                 <div className="text-center nav-text" ><i class="fab fa-windows"></i></div>

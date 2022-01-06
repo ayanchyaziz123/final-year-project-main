@@ -15,6 +15,7 @@ import ProductCarousel from '../components/ProductCarousel'
 import SearchRAM from '../components/SearchRam'
 import Coupon from '../components/Coupon'
 import SearchSlider from '../components/SearchSlider'
+import CoinTable from '../components/CoinTable'
 
 
 
@@ -42,21 +43,10 @@ function HomeScreen({ history }) {
                 <Coupon/> 
            
             <Row>
-                        {/* <Col md={2}>
-                        <ListGroup className="border border-warning">
-                            <ListGroup.Item className="bg-dark text-white">1. new laptop</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Dapibus ac facilisis in</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Morbi leo risus</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Porta ac consectetur ac</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Vestibulum at eros</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Cras justo odio</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Dapibus ac facilisis in</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Morbi leo risus</ListGroup.Item>
-                            <ListGroup.Item className="bg-dark text-white">Porta ac consectetur ac</ListGroup.Item>
-                        </ListGroup>
-                  
-                        </Col> */}
-                <Col md={10}>
+                        <Col md={2} >
+                        <CoinTable/>
+                        </Col>
+                <Col md={8}>
                     <ProductOffer2/>
                 </Col>
                 <Col md={2}>
