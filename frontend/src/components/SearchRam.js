@@ -24,7 +24,7 @@ function SearchRAM() {
 
 
         <Form.Group as={Row} className="mb-3">
-            <h5 className="text-white">RAM</h5>
+            <h5>RAM</h5>
 
             <Col sm={10} >
 

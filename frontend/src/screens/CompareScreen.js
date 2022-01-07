@@ -42,14 +42,14 @@ function CompareScreen(props){
                 <Row className="mt-2 mb-5">
                     
                     <Col md={2}>
-                                <h3 className="text-white">This is compare product</h3>
+                                <h3>This is compare product</h3>
                     </Col>
                     <Col md={1}>
                     </Col>
                     <Col md={4}>
                       
                               
-                                    {props.location.state.lep1 && prod.map((pr, index) => pr._id == props.location.state.lep1 ? (
+                                    {props.location.state && prod.map((pr, index) => pr._id == props.location.state.lep1 ? (
                         <div key={index}>
                             <Link to={`/product/${pr._id}`}>
                                 <Card.Img src={pr.image} className="img-fluid cc"/>
@@ -92,7 +92,7 @@ function CompareScreen(props){
 
                     <Col md={4}>
                      
-                                    {props.location.state.lep2 && prod.map((pr, index) => pr._id == props.location.state.lep2 ? (
+                                    {props.location.state && prod.map((pr, index) => pr._id == props.location.state.lep2 ? (
                             <div key={index}>
                                 <Link to={`/product/${pr._id}`}>
                                     <Card.Img src={pr.image} className="img-fluid cc"/>
