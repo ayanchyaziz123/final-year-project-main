@@ -33,7 +33,7 @@ function Coupon() {
                 {
                         coupon_redemptions.map(coupon => coupon.user_id == userInfo._id ? (
                             <>
-                                <Countdown date={coupon.redemption_date} className="text-white h4"/>
+                                <Countdown date={coupon.redemption_date} className=" h4"/>
                                 
                             <div className="h5 bg-dark p-2 text-white">You are being discounted {coupon.total_discount} Tk. Coupon code is : {coupon.coupon_code} deadline : {coupon.redemption_date} </div>
                     </>): null) 

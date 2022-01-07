@@ -57,6 +57,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class ProductPriceHistory(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    price = models.DecimalField(
+        max_digits=13, decimal_places=3, null=False, blank=False)
+    createdAt = models.DateField(auto_now_add=True)
+    
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)

@@ -32,7 +32,7 @@ function CartScreen({ match, location, history }) {
         <Container>
         <Row>
             <Col md={8}>
-                <h1 className="text-white">Shopping Cart</h1>
+                <h1>Shopping Cart</h1>
                 {cartItems.length === 0 ? (
                     <Message variant='info'>
                         Your cart is empty <Link to='/'>Go Back</Link>

@@ -43,14 +43,13 @@ function HomeScreen({ history }) {
                 <Coupon/> 
            
             <Row>
-                        <Col md={2} >
-                        <CoinTable/>
-                        </Col>
-                <Col md={8}>
+                <Col md={9}>
                     <ProductOffer2/>
                 </Col>
-                <Col md={2}>
+                <Col md={3}>
                     <CompareProduct/>
+                    <hr></hr>
+                    <CoinTable/>
                 </Col>
                 
                 </Row>
@@ -63,7 +62,7 @@ function HomeScreen({ history }) {
             <div className="large-devices-margin">
         
 
-            <h4 className="mt-5 text-white">Latest Laptops</h4>
+            <h4 className="mt-2">Latest Laptops</h4>
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :

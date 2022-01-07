@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, Card, Form, Modal } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -12,11 +12,20 @@ import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 import ReactImageMagnify from 'react-image-magnify';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import Coupon from '../components/Coupon';
+import axios from 'axios';
+
+const baseURL = "http://127.0.0.1:8000/api/products/predict_history_price/";
 
 function ProductScreen({ match, history }) {
     const [qty, setQty] = useState(1)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
+    const [show, setShow] = useState(false);
+    const [date, setDate] = useState(null)
+    const [predictPrice, setPredict_price] = useState(null);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
    
 
     const dispatch = useDispatch()
@@ -33,6 +42,8 @@ function ProductScreen({ match, history }) {
         error: errorProductReview,
         success: successProductReview,
     } = productReviewCreate
+
+    const product_id = product._id;
 
     useEffect(() => {
         if (successProductReview) {
@@ -58,11 +69,29 @@ function ProductScreen({ match, history }) {
         }
         ))
     }
+    const predict_future_price_submit = (e) =>{
+        e.preventDefault()
+        if(product._id && date)
+        {   
+            console.log("hello", product_id, date)
+            axios.post(baseURL, {
+                date,
+                product_id
+
+            }).then((response)=>{
+                setPredict_price(response.data);
+            })
+        }
+    
+
+    }
 
     return (
         <div className="large-devices-margin">
-            <Coupon />
-            <Link to='/' className='btn btn-light my-3'>Go Back</Link>
+            
+          
+        <Coupon />
+               
             {loading ?
                 <Loader />
                 : error
@@ -88,12 +117,15 @@ function ProductScreen({ match, history }) {
                                    
 
                                     </Carousel>
+                                    <Card className="p-2 mt-4 border border-white">
+                                        <div>Description: {ReactHtmlParser(product.description)}</div>
+                                    </Card>
                                 </Col>
 
 
-                                <Col md={4} >
+                                <Col md={4}>
                                    
-                                    <ListGroup variant="flush">
+                                    <ListGroup variant="primary">
                                     <ListGroup.Item>
                                             <h3>{product.name}</h3>
                                         </ListGroup.Item>
@@ -105,15 +137,72 @@ function ProductScreen({ match, history }) {
                                         <ListGroup.Item>
                                             <span className="h3">&#2547;{product.is_offer ? product.price - ((product.price * product.offer_percentage) / 100) : product.price}</span>
                                             <br></br><span class="text-tl">{product.is_offer ? '৳' + product.price : null}</span> <b>{product.is_offer ? '-' + product.offer_percentage + '%' : <br></br>}</b>
+                                        <br></br>
+
+
+                                            <Button variant="primary" size="sm" className="mt-2" onClick={handleShow}>
+                                                predict future price
+                                            </Button>
+
+                                            <Modal show={show} onHide={handleClose}>
+                                                <Modal.Header closeButton>
+                                                    <Modal.Title>Predict future price of {product.name}</Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <span >enter the date where you can predict the price of this laptop</span>
+                                                    <Form onSubmit={predict_future_price_submit}>
+                                                    <Form.Control type="date" size="sm" className="mb-2 mt-2" name="date" onChange={(e)=>{setDate(e.target.value)}}/>
+                                                    <h3>{predictPrice ? 'Predict Price : ' + predictPrice : null}</h3>
+                                                    <Button type="submit" size="sm" className="mt-3">predict</Button>
+                                                    </Form>
+                                                </Modal.Body>
+                                                <Modal.Footer>
+                    
+                                                </Modal.Footer>
+                                            </Modal>
+                                      
+
+
+
+
+
+
                                         </ListGroup.Item>
+
+                                       
                                     
 
                                         <ListGroup.Item>
-                                            Description: {ReactHtmlParser(product.description)}
+                                            <p>Category: {product.category}</p>
+                                            <hr></hr>
+                                            <p>Processor: {product.processor}</p>
+                                            <hr></hr>
+                                            <p>Display: {product.display}</p>
+                                            <hr></hr>
+                                            <p>Graphics: {product.graphics_card}</p>
+                                            <hr></hr>
+                                            <p>Ram: {product.ram_memory}</p>
+                                            <hr></hr>
+                                            <p>OS: {product.operating_system}</p>
+                                            <hr></hr>
+                                            <p>Storage: {product.storage}</p>
+                                            <hr></hr>
+                                            <p>Web Cam: {product.web_cam}</p>
+                                            <hr></hr>
+                                            <p> Color: {product.color}</p>
+                                            <hr></hr>
+                                            <p>Battery: {product.battery}</p>
+                                            <hr></hr>
+                                            <p>Weight: {product.weight}</p>
+                                            <hr></hr>
+                                            <p>Warranty: {product.warranty}</p>
+                                            <hr></hr>
                                         </ListGroup.Item>
                                     </ListGroup>
                                    
                                 </Col>
+
+                           
 
 
                                 <Col md={2}>
@@ -181,7 +270,8 @@ function ProductScreen({ match, history }) {
 
                             <Row>
                                 <Col md={6}>
-                                    <Card>
+                                   
+                                    <Card className="p-2 border border-white">
                                     <h4>Reviews</h4>
                                     {product.reviews.length === 0 && <Message variant='info' size="sm">No Reviews</Message>}
 
@@ -248,6 +338,7 @@ function ProductScreen({ match, history }) {
                                         </ListGroup.Item>
                                     </ListGroup>
                                     </Card>
+                                    <Link to='/' className='btn btn-light my-3 '>Go Back</Link>  
                                 </Col>
                             </Row>
                         </div>

@@ -57,9 +57,9 @@ function ProductListScreen({ history, match }) {
 
     return (
         <div className="large-devices-margin">
-            <Row className='align-items-center text-white'>
+            <Row className='align-items-center'>
                 <Col>
-                    <h1 className="text-white">Products</h1>
+                    <h1>Products</h1>
                 </Col>
 
                 <Col className='text-right'>
@@ -89,7 +89,7 @@ function ProductListScreen({ history, match }) {
                     ? (<Message variant='danger'>{error}</Message>)
                     : (
                         <div>
-                            <Table striped bordered hover responsive className='table-sm text-white'>
+                            <Table striped bordered hover responsive className='table-sm'>
                                 <thead>
                                     <tr>
                                         <th>ID</th>

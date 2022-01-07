@@ -6,6 +6,10 @@ urlpatterns = [
     path('', views.getProducts, name="products"),
     path('all/', views.getAllProducts, name="all+products"),
     path('coupons/', views.getCoupons, name="coupons"),
+    
+    path('predict_history_price/', views.predict_history_price,
+         name="predict_history_price"),
+    
     path('coupon_check/', views.getCouponStatus, name="coupon_check"),
     
     

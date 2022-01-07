@@ -10,11 +10,12 @@ from base.models import Coupon, CouponRedemption, Product, Review
 from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer
 import datetime
 from rest_framework import status
+from base.views.history_model import *
 
 
 @api_view(['GET'])
 def getCoupons(request):
-    x = datetime.datetime.now()
+    #x = datetime.datetime.now()
     coupon_red = CouponRedemption.objects.all()
     coupon_redemptions = CouponRedemptionSerializer(coupon_red, many=True)
     coup = Coupon.objects.all()
@@ -117,11 +118,26 @@ def getOfferProducts(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def getProduct(request, pk):
+    date = '2017-01-15'
+    future_price = ''
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def predict_history_price(request):
+    print("hello I am Called !!!!!!!!!!!!!!!!!!!!")
+    print(request.data['date'], request.data['product_id'])
+    date = request.data['date']
+    product_id = request.data['product_id']
+    _predictFuture_price = history_model(date, product_id)
+    predictFuture_price = 121212.001
+    return Response(predictFuture_price)
+        
+    
 
 
 @api_view(['POST'])

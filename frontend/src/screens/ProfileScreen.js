@@ -77,11 +77,11 @@ function ProfileScreen({ history }) {
         <div className="large-devices-margin">
         <Row>
             <Col md={2}>
-                <h1 className="text-white">My Total Coins</h1>
+                <h1>My Total Coins</h1>
                     <h2 className="text-white text-center bg-danger">{userCoins > 0 ? userCoins : "You got no coin yet!"}</h2>
             </Col>
             <Col md={3}>
-                <h2 className="text-white">User Profile</h2>
+                <h2 >User Profile</h2>
 
                 {message && <Message variant='danger'>{message}</Message>}
                 {error && <Message variant='danger'>{error}</Message>}
@@ -150,13 +150,13 @@ function ProfileScreen({ history }) {
             </Col>
 
             <Col md={7}>
-                <h2 className="text-white">My Recent Orders</h2>
+                <h2 >My Recent Orders</h2>
                 {loadingOrders ? (
                     <Loader />
                 ) : errorOrders ? (
                     <Message variant='danger'>{errorOrders}</Message>
                 ) : (
-                            <Table striped responsive className='table-sm text-white'>
+                            <Table striped responsive className='table-sm'>
                                 <thead>
                                     <tr>
                                         <th>ID</th>

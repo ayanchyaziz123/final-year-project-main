@@ -97,7 +97,6 @@ const CompareProduct = () =>{
                    
             </select>
             <br></br>
-                <span>you can see comparison between two laptops</span>
             <button type="submit" className="btn btn-dark btn-sm br">Comparison</button>
         </div>
         </form>
