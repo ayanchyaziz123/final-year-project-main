@@ -1,15 +1,20 @@
 import pandas
 from sklearn import linear_model
 from datetime import datetime
+from base.models import *
 
 
 def history_model(user_date, user_product_id):
    import datetime as dt
     
-   d = ['2016-01-15', '2017-01-15', '2018-01-15', '2019-01-15']
-   p = [10, 20, 30, 40]
-
-
+   d = []
+   p = []
+   
+   products = ProductPriceHistory.objects.filter(product=user_product_id)
+   for i in products:
+       d.append(i.createdAt)
+       p.append(i.price)
+       
    data = {'date': d,
            'price': p}
 
@@ -17,7 +22,9 @@ def history_model(user_date, user_product_id):
 
    df['date'] = pandas.to_datetime(df['date'])
    df['date'] = df['date'].map(dt.datetime.toordinal)
-   print(df['date'])
+   #print(df['date'])
+   #print("***************************")
+   #print(df['price'])
 
    X = df[['date']]
    y = df[['price']]
@@ -25,7 +32,7 @@ def history_model(user_date, user_product_id):
    regr = linear_model.LinearRegression()
    regr.fit(X, y)
 
-   date_str = '2019-01-15'
+   date_str = user_date
    ate_object = datetime.strptime(date_str, '%Y-%m-%d').date()
 
    #print('Date:', date_time_obj.date())
@@ -34,6 +41,6 @@ def history_model(user_date, user_product_id):
    dt = ate_object.toordinal()
 
 
-   predictedCO2 = regr.predict([[dt]])
+   predicted = regr.predict([[dt]])
 
-   print(predictedCO2)
+   return predicted

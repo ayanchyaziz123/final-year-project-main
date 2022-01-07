@@ -22,10 +22,10 @@ const Navs2 = () =>{
 
     return(
         <>
-        <hr></hr>
-            <h5 className="text-center mt-2 mb-2 text-white">Top Operating System</h5>
+        
+            <h5 className="text-center mt-2 mb-2">Top Operating System</h5>
 
-            <p className="text-center mt-1 mb-1 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p className="text-center mt-1 mb-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <Nav className="justify-content-center">
                 <Nav.Item>
                         <Form onSubmit={submitHandler} inline>

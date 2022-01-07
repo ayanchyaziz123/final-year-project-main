@@ -129,12 +129,11 @@ def getProduct(request, pk):
 
 @api_view(['POST'])
 def predict_history_price(request):
-    print("hello I am Called !!!!!!!!!!!!!!!!!!!!")
-    print(request.data['date'], request.data['product_id'])
+   # print("hello I am Called !!!!!!!!!!!!!!!!!!!!")
+    #print(request.data['date'], request.data['product_id'])
     date = request.data['date']
     product_id = request.data['product_id']
-    _predictFuture_price = history_model(date, product_id)
-    predictFuture_price = 121212.001
+    predictFuture_price = history_model(date, product_id)
     return Response(predictFuture_price)
         
     

@@ -61,7 +61,7 @@ class ProductPriceHistory(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(
         max_digits=13, decimal_places=3, null=False, blank=False)
-    createdAt = models.DateField(auto_now_add=True)
+    createdAt = models.DateField(null=False, blank=False)
     
 
 class Review(models.Model):
