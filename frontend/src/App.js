@@ -25,6 +25,7 @@ import PriceRangeScreen from './screens/PriceRangeScreen'
 import DeshboardScreen from './screens/DashboardScreen'
 import Header2 from './components/Header2';
 import OTPScreen from './screens/OTPScreen';
+import RegisterScreen2 from './screens/RegisterScreen2'
 
 function App() {
   return (
@@ -37,8 +38,9 @@ function App() {
           <Route path='/' component={HomeScreen} exact />
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
+        <Route path='/register2' component={RegisterScreen2} />
           <Route path='/profile' component={ProfileScreen} />
-          <Route path='/otp' component={OTPScreen} />  
+          <Route path='/otp_screen' component={OTPScreen} />  
           <Route path='/compare' component={CompareScreen} />
           <Route path='/shipping' component={ShippingScreen} />
           <Route path='/placeorder' component={PlaceOrderScreen} />

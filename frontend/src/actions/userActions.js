@@ -84,7 +84,9 @@ export const logout = () => (dispatch) => {
 }
 
 
-export const register = (name, email, password, mobile) => async (dispatch) => {
+
+
+export const register = (otp, email) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST
@@ -98,7 +100,7 @@ export const register = (name, email, password, mobile) => async (dispatch) => {
 
         const { data } = await axios.post(
             '/api/users/register/',
-            { 'name': name, 'email': email, 'password': password, 'mobile': mobile },
+            { 'otp': otp, 'email': email },
             config
         )
 

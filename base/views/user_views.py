@@ -12,11 +12,12 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
-from base.models import  UserProfile
+from base.models import  TempUser, UserProfile
 from django.db.models import Sum
 import random
 import http.client
 from django.conf import settings
+from base.views.helper_file.otp import *
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -33,18 +34,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-def send_otp(mobile, otp):
-    print("FUNCTION CALLED")
-    conn = http.client.HTTPSConnection("api.msg91.com")
-    authkey = settings.AUTH_KEY
-    headers = {'content-type': "application/json"}
-    url = "http://control.msg91.com/api/sendotp.php?otp="+otp+"&message=" + \
-        "Your otp is "+otp + "&mobile="+mobile+"&authkey="+authkey+"&country=91"
-    conn.request("GET", url, headers=headers)
-    res = conn.getresponse()
-    data = res.read()
-    print("Otp works : ",data)
-    return None
 
 
 @api_view(['GET'])
@@ -57,43 +46,73 @@ def getUserCoins(request, pk):
 
 
 @api_view(['POST'])
-def registerUser(request):
+def tempRegister_user(request):
     data = request.data
     print("data ::: ", data)
 
-        #for otp
+    #for otp
     otp = str(random.randint(1000, 9999))
     mobile = data['mobile']
     email = data['email']
     check_user = User.objects.filter(email=email).first()
     check_profile = UserProfile.objects.filter(mobile=mobile).first()
-        
+
     if(check_profile):
         message = {'detail': 'User with this mobile already exists'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
     elif(check_user):
         message = {'detail': 'User with this email already exists'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
-        
-        #for user 
-    user = User.objects.create(
-            first_name=data['name'],
-            username=data['email'],
-            email=data['email'],
-            password=make_password(data['password'])
+
+        #for user
+    user = TempUser.objects.create(
+        temp_user_firstName=data['name'],
+        temp_user_name = data['email'],
+        temp_user_email=data['email'],
+        temp_user_mobile=data['mobile'],
+        temp_user_otp=otp,
+        temp_user_password=make_password(data['password'])
     )
-        
-        #for otp user
-        
-    profile = UserProfile(user=user, mobile=mobile, otp=otp)
-    profile.save()
-    send_otp(mobile, otp)
-    request.session['mobile'] = mobile
-    
+
+    #for otp user
+    send_otp(email, otp)
+    print("I am OKKKK !! ", email)
+    return Response(email)
+
+
+@api_view(['POST'])
+def registerUser_with_otp(request):
+    data = request.data
+    email = data['email']
+    otp = data['otp']
+    temp_user = TempUser.objects.filter(temp_user_email=email).first()
+    if otp == temp_user.temp_user_otp:
+        user = User.objects.create(
+            first_name=temp_user.temp_user_firstName,
+            username=temp_user.temp_user_email,
+            email=temp_user.temp_user_email,
+            password=make_password(temp_user.temp_user_password)
+        )
+        profile = UserProfile(user=user, mobile=temp_user.temp_user_otp, otp=temp_user.temp_user_otp)
+        profile.save()
+    else:
+        message = {'detail': 'Your Otp is not match'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)       
     serializer = UserSerializerWithToken(user, many=False)
     return Response(serializer.data)
 
-        
+
+@api_view(['POST'])
+def otp_verification(request):
+    email = request.session['email']
+    if request.method == 'POST':
+        otp = request.POST.get('otp')
+        profile = UserProfile.objects.filter(email=email).first()
+        if otp == profile.otp:
+            pass
+        else:
+            pass
+             
 
 
 @api_view(['PUT'])

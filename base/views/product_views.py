@@ -10,8 +10,7 @@ from base.models import Coupon, CouponRedemption, Product, Review
 from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer
 import datetime
 from rest_framework import status
-from base.views.history_model import *
-
+from base.views.helper_file.history_model import *
 
 @api_view(['GET'])
 def getCoupons(request):

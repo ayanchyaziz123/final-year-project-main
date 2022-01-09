@@ -9,6 +9,19 @@ class UserProfile(models.Model):
     mobile = models.CharField(max_length=200, default=0)
     coins = models.IntegerField(null=True, blank=True, default=0)
     otp = models.CharField(max_length=6, default=0)
+    
+
+class TempUser(models.Model):
+    temp_user_id = models.AutoField(primary_key=True, editable=False)
+    temp_user_firstName = models.CharField(max_length=200, null=False, blank=False)
+    temp_user_name = models.CharField(max_length=200, null=False, blank=False)
+    temp_user_mobile = models.CharField(
+        max_length=200, null=False, blank=False)
+    temp_user_email = models.CharField(
+        max_length=200, null=False, blank=False)
+    temp_user_otp = models.CharField(max_length=200, null=False, blank=False)
+    temp_user_password = models.CharField(max_length=200, null=False, blank=False)
+        
  
 
 
