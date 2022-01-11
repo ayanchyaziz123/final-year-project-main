@@ -72,7 +72,7 @@ function Header() {
                                 </NavDropdown>
                             ) : (<>
         
-                                    <LinkContainer to='/register'>
+                                    <LinkContainer to='/register2'>
                                         <Nav.Link><i className="fas fa-user"></i>Register A Account </Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to='/login'>

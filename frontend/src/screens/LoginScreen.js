@@ -34,8 +34,9 @@ function LoginScreen({ location, history }) {
         <Row >
             <Col md={3}>
             </Col>
-            <Col className="card">
-                <FormContainer>
+            <Col>
+                <div className="card">
+                <FormContainer >
                     <h1>Sign In</h1>
                     {error && <Message variant='danger'>{error}</Message>}
                     {loading && <Loader />}
@@ -44,6 +45,7 @@ function LoginScreen({ location, history }) {
                         <Form.Group controlId='email'>
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control
+                                size="sm"
                                 type='email'
                                 placeholder='Enter Email'
                                 value={email}
@@ -56,6 +58,7 @@ function LoginScreen({ location, history }) {
                         <Form.Group controlId='password'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
+                                size="sm"
                                 type='password'
                                 placeholder='Enter Password'
                                 value={password}
@@ -64,7 +67,7 @@ function LoginScreen({ location, history }) {
                             </Form.Control>
                         </Form.Group>
 
-                        <Button type='submit' variant='primary'>
+                        <Button size="sm" type='submit' variant='primary' className="btn-block">
                             Sign In
                         </Button>
                     </Form>
@@ -75,10 +78,19 @@ function LoginScreen({ location, history }) {
                                 to={redirect ? `/register?redirect=${redirect}` : '/register'}>
                                 Register
                             </Link>
+                            
+                        </Col>
+                        <Col>
+                            Recover your account <Link
+                                to={redirect ? `/reset_password?redirect=${redirect}` : '/reset_password'}>
+                                reset password
+                            </Link>
+
                         </Col>
                     </Row>
 
                 </FormContainer>
+                </div>
 
             </Col>
             <Col md={3}>

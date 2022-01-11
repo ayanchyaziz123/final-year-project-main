@@ -26,6 +26,7 @@ import DeshboardScreen from './screens/DashboardScreen'
 import Header2 from './components/Header2';
 import OTPScreen from './screens/OTPScreen';
 import RegisterScreen2 from './screens/RegisterScreen2'
+import ResetPassword from './screens/ResetPassword';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
         <Route path='/register2' component={RegisterScreen2} />
+        <Route path='/reset_password' component={ResetPassword} />
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/otp_screen' component={OTPScreen} />  
           <Route path='/compare' component={CompareScreen} />

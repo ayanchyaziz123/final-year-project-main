@@ -13,6 +13,7 @@ import ReactImageMagnify from 'react-image-magnify';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import Coupon from '../components/Coupon';
 import axios from 'axios';
+import ProductChart from '../components/ProductChart';
 
 const baseURL = "http://127.0.0.1:8000/api/products/predict_history_price/";
 
@@ -120,6 +121,13 @@ function ProductScreen({ match, history }) {
                                     <Card className="p-2 mt-4 border border-white">
                                         <div>Description: {ReactHtmlParser(product.description)}</div>
                                     </Card>
+                                    <diV className="mt-5 mb-5">
+
+                                    </diV>
+                                    <ProductChart />
+                                    <diV className="mt-5 mb-5">
+
+                                    </diV>
                                 </Col>
 
 
@@ -145,15 +153,15 @@ function ProductScreen({ match, history }) {
                                             </Button>
 
                                             <Modal show={show} onHide={handleClose}>
-                                                <Modal.Header closeButton>
-                                                    <Modal.Title>Predict future price of {product.name}</Modal.Title>
+                                                <Modal.Header className="bg-dark" closeButton>
+                                                    <Modal.Title className="text-white">Predict future price of {product.name}</Modal.Title>
                                                 </Modal.Header>
                                                 <Modal.Body>
                                                     <span >enter the date where you can predict the price of this laptop</span>
                                                     <Form onSubmit={predict_future_price_submit}>
                                                     <Form.Control type="date" size="sm" className="mb-2 mt-2" name="date" onChange={(e)=>{setDate(e.target.value)}}/>
                                                     <h3>{predictPrice ? 'Predict Price : ' + predictPrice : null}</h3>
-                                                    <Button type="submit" size="sm" className="mt-3">predict</Button>
+                                                    <Button type="submit" size="sm" className="mt-3">Predict</Button>
                                                     </Form>
                                                 </Modal.Body>
                                                 <Modal.Footer>
@@ -265,6 +273,7 @@ function ProductScreen({ match, history }) {
                                             </ListGroup.Item>
                                         </ListGroup>
                                     </Card>
+                                  
                                 </Col>
                             </Row>
 
@@ -333,12 +342,12 @@ function ProductScreen({ match, history }) {
 
                                                 </Form>
                                             ) : (
-                                                    <Message variant='info'>Please <Link to='/login'>login</Link> to write a review</Message>
+                                                    <Message size="sm" variant='info'>Please <Link to='/login'>login</Link> to write a review</Message>
                                                 )}
                                         </ListGroup.Item>
                                     </ListGroup>
                                     </Card>
-                                    <Link to='/' className='btn btn-light my-3 '>Go Back</Link>  
+                                    <Link to='/'  className='btn btn-primary my-3 btn-sm'>Go Back</Link>  
                                 </Col>
                             </Row>
                         </div>

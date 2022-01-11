@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Row, Col, Card} from 'react-bootstrap';
 import {Link, Redirect} from 'react-router-dom';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ProductCompareChart from '../components/ProductCompareChart';
 
 
 const baseURL = "http://127.0.0.1:8000/api/products/all/";
@@ -41,12 +42,11 @@ function CompareScreen(props){
             {prod && (
                 <Row className="mt-2 mb-5">
                     
-                    <Col md={2}>
+                    <Col md={6}>
                                 <h3>This is compare product</h3>
+                                <ProductCompareChart/>
                     </Col>
-                    <Col md={1}>
-                    </Col>
-                    <Col md={4}>
+                    <Col md={3}>
                       
                               
                                     {props.location.state && prod.map((pr, index) => pr._id == props.location.state.lep1 ? (
@@ -57,31 +57,31 @@ function CompareScreen(props){
                            <Card.Body>
                                 <h5 >{pr.name}</h5>
                                 <hr></hr>
-                                                <p>Category {pr.category}</p>
+                                                <p>Category: {pr.category}</p>
                                                 <hr></hr>
-                                                <p>Processor {pr.processor}</p>
+                                                <p>Processor:  {pr.processor}</p>
                                                 <hr></hr>
-                                                <p>Display {pr.display}</p>
+                                                <p>Display:  {pr.display}</p>
                                                 <hr></hr>
-                                                <p>Graphics {pr.graphics_card}</p>
+                                                <p>Graphics:  {pr.graphics_card}</p>
                                                 <hr></hr>
-                                                <p>Ram {pr.ram_memory}</p>
+                                                <p>Ram:  {pr.ram_memory}</p>
                                                 <hr></hr>
-                                                <p>OS {pr.operating_system}</p>
+                                                <p>OS:  {pr.operating_system}</p>
                                                 <hr></hr>
-                                                <p>Storage {pr.storage}</p>
+                                                <p>Storage:  {pr.storage}</p>
                                                 <hr></hr>
-                                                <p>Web Cam {pr.web_cam}</p>
+                                                <p>Web Cam:  {pr.web_cam}</p>
                                                 <hr></hr>
-                                                <p> Color{pr.color}</p>
+                                                <p> Color: {pr.color}</p>
                                                 <hr></hr>
-                                                <p>Battery {pr.battery}</p>
+                                                <p>Battery:  {pr.battery}</p>
                                                 <hr></hr>
-                                                <p>Weight{pr.weight}</p>
+                                                <p>Weight: {pr.weight}</p>
                                                 <hr></hr>
-                                                <p>Warranty {pr.warranty}</p>
+                                                <p>Warranty:  {pr.warranty}</p>
                                                 <hr></hr>
-                                <p>{pr.price}</p>
+                                                   <p>Price: {pr.price}</p>
                            </Card.Body>
 
                         </div>
@@ -90,7 +90,7 @@ function CompareScreen(props){
                     </Col>
                 
 
-                    <Col md={4}>
+                    <Col md={3}>
                      
                                     {props.location.state && prod.map((pr, index) => pr._id == props.location.state.lep2 ? (
                             <div key={index}>
@@ -100,31 +100,31 @@ function CompareScreen(props){
                                 <Card.Body>
                                                 <h5>{pr.name}</h5>
                                                 <hr></hr>
-                                                <p>Category {pr.category}</p>
+                                                <p>Category:  {pr.category}</p>
                                                 <hr></hr>
-                                                <p>Processor {pr.processor}</p>
+                                                <p>Processor:  {pr.processor}</p>
                                                 <hr></hr>
-                                                <p>Display {pr.display}</p>
+                                                <p>Display:  {pr.display}</p>
                                                 <hr></hr>
-                                                <p>Graphics {pr.graphics_card}</p>
+                                                <p>Graphics:  {pr.graphics_card}</p>
                                                 <hr></hr>
-                                                <p>Ram {pr.ram_memory}</p>
+                                                <p>Ram:  {pr.ram_memory}</p>
                                                 <hr></hr>
-                                                <p>OS {pr.operating_system}</p>
+                                                <p>OS:  {pr.operating_system}</p>
                                                 <hr></hr>
-                                                <p>Storage {pr.storage}</p>
+                                                <p>Storage:  {pr.storage}</p>
                                                 <hr></hr>
-                                                <p>Web Cam {pr.web_cam}</p>
+                                                <p>Web Cam:  {pr.web_cam}</p>
                                                 <hr></hr>
-                                                <p> Color{pr.color}</p>
+                                                <p> Color: {pr.color}</p>
                                                 <hr></hr>
-                                                <p>Battery {pr.battery}</p>
+                                                <p>Battery:  {pr.battery}</p>
                                                 <hr></hr>
-                                                <p>Weight{pr.weight}</p>
+                                                <p>Weight: {pr.weight}</p>
                                                 <hr></hr>
-                                                <p>Warranty {pr.warranty}</p>
+                                                <p>Warranty:  {pr.warranty}</p>
                                                 <hr></hr>
-                                                <p>{pr.price}</p>
+                                                <p>Price: {pr.price}</p>
                                 </Card.Body>
 
                             </div>

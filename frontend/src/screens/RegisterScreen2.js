@@ -69,8 +69,8 @@ function RegisterScreen2({ location, history }) {
     return (
 
         <FormContainer>
-            <div className="card p-3">
-                <h1>Sign In</h1>
+            <div className="card p-4">
+                <h1>Register</h1>
                 {/* {message && <Message variant='danger'>{message}</Message>}
                 {error && <Message variant='danger'>{error}</Message>} */}
                 {/* {loading && <Loader />} */}
@@ -80,6 +80,7 @@ function RegisterScreen2({ location, history }) {
                         <Form.Label>Name</Form.Label>
                         <Form.Control
                             required
+                            size="sm"
                             type='name'
                             placeholder='Enter name'
                             value={name}
@@ -91,6 +92,7 @@ function RegisterScreen2({ location, history }) {
                         <Form.Label>Mobile</Form.Label>
                         <Form.Control
                             required
+                            size="sm"
                             type='text'
                             placeholder='019*******'
                             value={mobile}
@@ -103,6 +105,7 @@ function RegisterScreen2({ location, history }) {
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control
                             required
+                            size="sm"
                             type='email'
                             placeholder='Enter Email'
                             value={email}
@@ -115,6 +118,7 @@ function RegisterScreen2({ location, history }) {
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             required
+                            size="sm"
                             type='password'
                             placeholder='Enter Password'
                             value={password}
@@ -127,6 +131,7 @@ function RegisterScreen2({ location, history }) {
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control
                             required
+                            size="sm"
                             type='password'
                             placeholder='Confirm Password'
                             value={confirmPassword}
@@ -135,7 +140,7 @@ function RegisterScreen2({ location, history }) {
                         </Form.Control>
                     </Form.Group>
 
-                    <Button type='submit' variant='primary'>
+                    <Button size="sm" type='submit' variant='primary' className="btn-block mt-4">
                         Register
                     </Button>
 

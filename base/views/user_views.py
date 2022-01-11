@@ -95,6 +95,8 @@ def registerUser_with_otp(request):
         )
         profile = UserProfile(user=user, mobile=temp_user.temp_user_otp, otp=temp_user.temp_user_otp)
         profile.save()
+        temp = TempUser.objects.get(temp_user_email=email)
+        temp.delete()
     else:
         message = {'detail': 'Your Otp is not match'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)       
