@@ -96,7 +96,10 @@ export const productDetailsReducer = (state = { product: { reviews: [] } }, acti
             return { loading: true, ...state }
 
         case PRODUCT_DETAILS_SUCCESS:
-            return { loading: false, product: action.payload }
+            return { loading: false, 
+                     product: action.payload.product,
+                price_history: action.payload.price_history 
+            }
 
         case PRODUCT_DETAILS_FAIL:
             return { loading: false, error: action.payload }

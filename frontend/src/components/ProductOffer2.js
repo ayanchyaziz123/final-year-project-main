@@ -30,7 +30,7 @@ function ProductOffer2() {
                         <div >
                             
                             <img src={product.image} />
-                            <p className="legend"> <h4 className="text-white">{product.name} real price (${product.price}) <br></br>offering price  ({product.offer_percentage}%) (${(product.price - (product.price * product.offer_percentage) / 100)}) </h4> </p>
+                            <p className="legend"> <h6 className="text-white">{product.name} real price (${product.price}) <br></br>offering price  ({product.offer_percentage}%) (${(product.price - (product.price * product.offer_percentage) / 100)}) </h6> </p>
                         
                         </div>
                         </Link>

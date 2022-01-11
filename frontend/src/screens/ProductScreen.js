@@ -32,7 +32,7 @@ function ProductScreen({ match, history }) {
     const dispatch = useDispatch()
 
     const productDetails = useSelector(state => state.productDetails)
-    const { loading, error, product } = productDetails
+    const { loading, error, product, price_history } = productDetails
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -70,6 +70,7 @@ function ProductScreen({ match, history }) {
         }
         ))
     }
+    console.log("price : ", price_history);
     const predict_future_price_submit = (e) =>{
         e.preventDefault()
         if(product._id && date)
@@ -124,7 +125,7 @@ function ProductScreen({ match, history }) {
                                     <diV className="mt-5 mb-5">
 
                                     </diV>
-                                    <ProductChart />
+                                    <ProductChart/>
                                     <diV className="mt-5 mb-5">
 
                                     </diV>
@@ -181,6 +182,8 @@ function ProductScreen({ match, history }) {
                                     
 
                                         <ListGroup.Item>
+                                            <p>Model: {product.model}</p>
+                                            <hr></hr>
                                             <p>Category: {product.category}</p>
                                             <hr></hr>
                                             <p>Processor: {product.processor}</p>

@@ -31,6 +31,7 @@ class Product(models.Model):
     category = models.CharField(max_length=200, null=True, blank=True)
     brand = models.CharField(max_length=200, null=True, blank=True)
     name = models.CharField(max_length=200, null=True, blank=True)
+    model = models.CharField(max_length=300, null=True, blank=True)
     processor = models.CharField(max_length=200, null=True, blank=True)
     display = models.CharField(max_length=200, null=True, blank=True)
     graphics_card = models.CharField(max_length=200, null=True, blank=True)

@@ -21,6 +21,7 @@ function ProductEditScreen({ match, history }) {
     const [category, setCategory] = useState('')
     const [brand, setBrand] = useState('')
     const [name, setName] = useState('')
+    const [model, setModel] = useState('')
     const [processor, setProcessor] = useState('')
     const [display, setDisplay] = useState('')
     const [graphics_card, setGraphics_card] = useState('')
@@ -65,6 +66,7 @@ function ProductEditScreen({ match, history }) {
                 setCategory(product.category)
                 setBrand(product.brand)
                 setName(product.name)
+                setModel(product.model)
                 setProcessor(product.processor)
                 setGraphics_card(product.graphics_card)
                 setRam_memory(product.ram_memory)
@@ -103,6 +105,7 @@ function ProductEditScreen({ match, history }) {
             category,
             brand,
             name,
+            model,
             processor,
             display,
             graphics_card,
@@ -258,6 +261,17 @@ function ProductEditScreen({ match, history }) {
                                     placeholder='Enter name'
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
+                                >
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group controlId='model'>
+                                <Form.Label>Model</Form.Label>
+                                <Form.Control
+
+                                    type='name'
+                                    placeholder='Enter name'
+                                    value={model}
+                                    onChange={(e) => setModel(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>

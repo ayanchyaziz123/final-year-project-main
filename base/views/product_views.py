@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Coupon, CouponRedemption, Product, Review
-from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer
+from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer, Price_History_Serializer
 import datetime
 from rest_framework import status
 from base.views.helper_file.history_model import *
@@ -87,6 +87,8 @@ def getProducts(request):
     print('Page:', page)
     serializer = ProductSerializer(products, many=True)
     
+    product_price_history = ProductPriceHistory.objects.all()
+    price_history = Price_History_Serializer(product_price_history, many=True)
     
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
@@ -119,11 +121,11 @@ def getOfferProducts(request):
 
 @api_view(['GET','POST'])
 def getProduct(request, pk):
-    date = '2017-01-15'
-    future_price = ''
+    product_price_history = ProductPriceHistory.objects.all()
+    price_history = Price_History_Serializer(product_price_history, many=True)
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
-    return Response(serializer.data)
+    return Response({'product': serializer.data, 'price_history': price_history.data})
 
 
 @api_view(['POST'])
@@ -148,6 +150,7 @@ def createProduct(request):
         category='Sample Category',
         brand='Sample Brand',
         name='Sample Name',
+        model='Sample Model',
         processor = 'Simple Processor',
         display = 'Simple Display',
         graphics_card = 'Simple Graphics Card',
@@ -179,6 +182,7 @@ def updateProduct(request, pk):
     product.category = data['category']
     product.brand = data['brand']
     product.name = data['name']
+    product.model = data['model']
     product.processor = data['processor']
     product.display = data['display']
     product.graphics_card = data['graphics_card']
