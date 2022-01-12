@@ -19,8 +19,8 @@ const CompareProduct = () =>{
         try{
             axios.get(baseURL).then((response) => {
                 setProductss(response.data)
-
             });
+            console.log("$$$$$$$$$$$$$$", productss);
         }
         catch(error)
         {

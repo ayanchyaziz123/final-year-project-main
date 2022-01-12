@@ -93,10 +93,24 @@ def getProducts(request):
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def getAllProducts(request):
     products = Product.objects.all()
     serializer = ProductSerializer(products, many=True)
+    if request.method == 'POST':
+        data = request.data
+        pro1 = data['id_1']
+        pro2 = data['id_2']
+       
+        if pro1 and pro2:
+            product_price_history1 = ProductPriceHistory.objects.filter(
+                product=pro1).order_by('createdAt')  # -createdAt // reverse
+            price_history1 = Price_History_Serializer(product_price_history1, many=True)
+            product_price_history2 = ProductPriceHistory.objects.filter(
+                product=pro2).order_by('createdAt')  # -createdAt // reverse
+            price_history2 = Price_History_Serializer(
+                product_price_history2, many=True) 
+            return Response({'products': serializer.data, 'price_history1': price_history1.data, 'price_history2': price_history2.data})
     return Response(serializer.data)
 
 

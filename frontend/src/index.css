@@ -59,7 +59,8 @@ h3{
   background-color: #2F4F4F !important;
 }
 .cc{
-  max-height: 200px !important;
+  max-height: 160px !important;
+  max-width: 200px !important;
 }
 .pr{
   height: 200px !important;

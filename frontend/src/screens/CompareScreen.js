@@ -11,18 +11,20 @@ const baseURL = "http://127.0.0.1:8000/api/products/all/";
 
 function CompareScreen(props){
     const [prod, setProd] = useState(initialState);
-    const[loading, setLoading] = useState(false);
-
-
+    const [loading, setLoading] = useState(false);
+    const [price_history1, set_price_history1] = useState(null);
+    const [price_history2, set_price_history2] = useState(null);
+    
 
     useEffect( async () => {
-
-        
+   
 
         try {
             setLoading(true);
-            axios.get(baseURL).then((response) => {
-                setProd(response.data)
+            axios.post(baseURL, { 'id_1': props.location.state.lep1, 'id_2': props.location.state.lep2}).then((response) => {
+                setProd(response.data.products);
+                set_price_history1(response.data.price_history1);
+                set_price_history2(response.data.price_history2);
 
             });
             setLoading(false);
@@ -44,7 +46,7 @@ function CompareScreen(props){
                     
                     <Col md={6}>
                                 <h3>This is compare product</h3>
-                                <ProductCompareChart/>
+                                <ProductCompareChart price_history1={price_history1} price_history2={price_history2}/>
                     </Col>
                     <Col md={3}>
                       
