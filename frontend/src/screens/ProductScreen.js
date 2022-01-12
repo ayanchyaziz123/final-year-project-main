@@ -125,7 +125,7 @@ function ProductScreen({ match, history }) {
                                     <diV className="mt-5 mb-5">
 
                                     </diV>
-                                    <ProductChart/>
+                                    <ProductChart price_history={price_history}  product_id={product._id}/>
                                     <diV className="mt-5 mb-5">
 
                                     </diV>

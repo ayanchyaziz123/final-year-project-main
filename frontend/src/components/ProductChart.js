@@ -36,11 +36,10 @@ import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Legen
 
 // ]
 
-const ProductChart = () =>{
+const ProductChart = (props) =>{
 
-    const productDetails = useSelector(state => state.productDetails);
-    const { loading, error, product, price_history } = productDetails;
-    const pdata = price_history;
+    const pdata = props.price_history;
+   // console.log("####################", props.product_id, props.price_history);
 
 
     return(

@@ -121,7 +121,8 @@ def getOfferProducts(request):
 
 @api_view(['GET','POST'])
 def getProduct(request, pk):
-    product_price_history = ProductPriceHistory.objects.all()
+    product_price_history = ProductPriceHistory.objects.filter(
+        product=pk).order_by('createdAt') #-createdAt // reverse
     price_history = Price_History_Serializer(product_price_history, many=True)
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
