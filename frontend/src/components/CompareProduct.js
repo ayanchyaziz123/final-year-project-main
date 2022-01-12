@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { React, useState, initialState, useEffect, context}from 'react';
 import {Redirect} from 'react-router-dom';
+import {Card, Button} from 'react-bootstrap';
 
 
 const baseURL = "http://127.0.0.1:8000/api/products/all/";
@@ -71,34 +72,39 @@ const CompareProduct = () =>{
     
     return(
         <form onSubmit={handleSubmit}>
-        <div className="card shadow p-2 bg-warning br">
-                <h5 className="font-weight-bold">Compare Products</h5>
-               
-                <label for="exampleFormControlSelect1">Laptop1</label>
-                <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_1" onChange={handleChange} >
-                    <option value="">none</option>
-                    {
-                        productss.map((p) =>
-                            <option value={p._id}>{p.name}</option>
-                        )
-                    }
-                    
-                </select>
-               <br></br>
-            <label for="exampleFormControlSelect1">Leptop2</label>
-            <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_2" onChange={handleChange} disabled={visible == true ? true : false}>
-                <option value="">none</option>
-                    {
-                        productss.map((p) =>
-                            <option value={p._id}>{p.name}</option>
-                        )
-                    }
+            <Card border="light">
+                <Card.Header className="bg-warning">Comparision Between 2 laptops</Card.Header>
+                <Card.Body>
 
-                   
-            </select>
-            <br></br>
-            <button type="submit" className="btn btn-dark btn-sm br">Comparison</button>
-        </div>
+                        <label for="exampleFormControlSelect1">Laptop1</label>
+                        <br></br>
+                        <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_1" onChange={handleChange} fullWidth>
+                            <option value="">none</option>
+                            {
+                                productss.map((p) =>
+                                    <option value={p._id}>{p.name}</option>
+                                )
+                            }
+
+                        </select>
+                        <br></br>
+                        <label for="exampleFormControlSelect1" className="mt-3">Leptop2</label>
+                        <br></br>
+                        <select class="form-control-sm" id="exampleFormControlSelect1" name="laptop_2" onChange={handleChange} disabled={visible == true ? true : false}>
+                            <option value="">none</option>
+                            {
+                                productss.map((p) =>
+                                    <option value={p._id}>{p.name}</option>
+                                )
+                            }
+
+
+                        </select>
+                        <br></br>
+                        <button type="submit" className="btn btn-dark btn-sm br mt-3">Comparison</button>
+            
+                </Card.Body>
+            </Card>
         </form>
     );
     }

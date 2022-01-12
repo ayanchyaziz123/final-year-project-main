@@ -59,7 +59,7 @@ function CompareScreen(props){
                            <Card.Body>
                                 <h5 >Laptop_1: {pr.name}</h5>
                                 <hr></hr>
-                                                <p>Category: {pr.category}</p>
+                                                <p>Brand: {pr.brand}</p>
                                                 <hr></hr>
                                                 <p>Processor:  {pr.processor}</p>
                                                 <hr></hr>
@@ -102,7 +102,7 @@ function CompareScreen(props){
                                 <Card.Body>
                                                 <h5>Laptop_2: {pr.name}</h5>
                                                 <hr></hr>
-                                                <p>Category:  {pr.category}</p>
+                                                <p>Brand:  {pr.brand}</p>
                                                 <hr></hr>
                                                 <p>Processor:  {pr.processor}</p>
                                                 <hr></hr>

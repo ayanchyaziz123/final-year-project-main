@@ -12,7 +12,7 @@ const DashboardScreen = () =>{
                     <AdminSideBar/>
                 </Col>
                 <Col>
-                    <h1 className="text-white">This is dashboard screen</h1>
+                    <h1>This is dashboard screen</h1>
                 </Col>
             </Row>
         </div>

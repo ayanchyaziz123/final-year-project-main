@@ -169,7 +169,7 @@ def createProduct(request):
         processor = 'Simple Processor',
         display = 'Simple Display',
         graphics_card = 'Simple Graphics Card',
-        ram_memory = 'Simple RAM',
+        ram_memory = 0,
         storage = 'Simple Storage',
         operating_system = 'OS',
         web_cam = 'web cam',

@@ -324,7 +324,7 @@ function ProductEditScreen({ match, history }) {
                                 </Form.Control>
                             </Form.Group>
 
-                            <Form.Group controlId='storage'>
+                                <Form.Group controlId='storage'>
                                 <Form.Label>Storage</Form.Label>
                                 <Form.Control
 
