@@ -44,7 +44,7 @@ const ProductChart = (props) =>{
 
     return(
         <div className="mt-5 mb-5">
-            <h4 className="mb-3">Lates Price graph</h4>
+            <h4 className="mb-3 text-danger">Lates Price graph</h4>
             <div className="mt-4">
             <ResponsiveContainer width="100%" aspect={3}>
                 <LineChart data={pdata} width={500} height={300} margin={{top:5, right: 30, left:20, bottom: 5}}>

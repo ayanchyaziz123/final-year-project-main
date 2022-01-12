@@ -13,23 +13,27 @@ const data1 = [
 const data2 = [
     { name: 10, uv: 4000, amt: 2400 },
     { name: 45, uv: 3490, amt: 2100 },
+    { name: 46, uv: 3390, amt: 2100 },
+    { name: 48, uv: 3890, amt: 2100 },
 ];
 
 const ProductCompareChart = (props) => {
     // const data1 = props.price_history1;
     // const data2 = props.price_history2;
+    // console.log(data1);
+    // console.log(data2);
     return (
         <div className="mt-5 mb-5">
             <h4 className="mb-3">Lates Price graph </h4>
             <LineChart width={600} height={300}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                <XAxis type="number" dataKey="name" domain={['auto', 'auto']} />
+                <XAxis type="number" dataKey="careatedAt" domain={['auto', 'auto']} />
                 <YAxis />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" data={data1} dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                <Line type="monotone" data={data2} dataKey="uv" stroke="#82ca9d" />
+                <Line type="monotone" data={data1} dataKey="price" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Line type="monotone" data={data2} dataKey="price" stroke="#82ca9d" />
             </LineChart>
         </div>
     )
