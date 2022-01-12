@@ -8,13 +8,10 @@ const CoinTable = () =>{
             <Card border="light">
                 <Card.Header className="bg-warning">Coin table</Card.Header>
                 <Card.Body>
-                    <Card.Title>Light Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk
-                        of the card's content.
-                        
-                    </Card.Text>
-                    <Button size="sm" className="btn">Click</Button>
+                    <p>10 coins is equal to 1000 tk</p>
+                    <p>20 coins is equal to 1000 tk</p>
+                    <p>30 coins is equal to 1000 tk</p>
+                    <Button size="sm" className="btn">More</Button>
                 </Card.Body>
             </Card>
         </div>
