@@ -20,13 +20,13 @@ function RegisterScreen2({ location, history }) {
     const [message, setMessage] = useState('')
     const [isOk, setIsOk] = useState(false);
     const [data_tkn, setData_tkn] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoadding] = useState(false)
 
     const dispatch = useDispatch()
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
-    const userRegister = useSelector(state => state.userRegister)
-    const { error, loading, userInfo } = userRegister
 
     // useEffect(() => {
     //     console.log("Is ok : ", isOk);
@@ -44,6 +44,7 @@ function RegisterScreen2({ location, history }) {
             setMessage('Passwords do not match')
         } else {
             //dispatch(register(name, email, password, mobile))
+            setLoadding(true)
             try{
                 axios.post(baseURL, {
                     name,
@@ -55,11 +56,16 @@ function RegisterScreen2({ location, history }) {
                     setData_tkn(response.data);
                     localStorage.setItem('data_tkn', response.data);
                 })
-                history.push('/otp_screen');
+               
             }
             catch(error)
             {
-                alert("Something wrong!!!")
+                setError(error.response.data.detail);
+            }
+            setLoadding(false)
+            if(!error)
+            {
+                history.push('/otp_screen');
             }
         }
        
@@ -71,9 +77,8 @@ function RegisterScreen2({ location, history }) {
         <FormContainer>
             <div className="card p-4">
                 <h1>Register</h1>
-                {/* {message && <Message variant='danger'>{message}</Message>}
-                {error && <Message variant='danger'>{error}</Message>} */}
-                {/* {loading && <Loader />} */}
+                {error && <Message variant='danger'>{error}</Message>}
+                {loading && <Loader />}
                 <Form onSubmit={submitHandler}>
 
                     <Form.Group controlId='name'>

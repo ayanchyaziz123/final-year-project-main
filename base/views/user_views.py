@@ -75,7 +75,10 @@ def tempRegister_user(request):
     )
 
     #for otp user
-    send_otp(email, otp)
+    x = send_otp(email, otp)
+    if(x == 0):
+        message = {'detail': 'Your given email is not authenticated'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST) 
     print("I am OKKKK !! ", email)
     return Response(email)
 
