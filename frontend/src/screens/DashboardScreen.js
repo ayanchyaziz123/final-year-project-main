@@ -1,27 +1,46 @@
 import React from 'react';
 import {Row, Col, Card} from 'react-bootstrap';
 import AdminSideBar from '../admin_components/AdminSideBar';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import Todolist from '../admin_components/Todolist';
 import PieCharts from '../admin_components/PieCharts';
-const data = [{ name: 'Page A', uv: 400, pv: 2400, amt: 2400 }, 
-{ name: 'Page B', uv: 300, pv: 2500, amt: 1100 },
-    { name: 'Page C', uv: 600, pv: 1500, amt: 1100 },
-    { name: 'Page D', uv: 500, pv: 2700, amt: 1500 }, 
-    { name: 'Page E', uv: 350, pv: 1900, amt: 1200 },];
+import { useDispatch, useSelector } from 'react-redux'
+
+const data = [{ name: '2016', profit: 400000, revenue: 240000, expenses: 240000 }, 
+    { name: '2017', profit: 300000, revenue: 250000, expenses: 110000 },
+    { name: '2018', profit: 600000, revenue: 150000, expenses: 110000 },
+    { name: '2019', profit: 500000, revenue: 270000, expenses: 150000 }, 
+    { name: '2020', profit: 350000, revenue: 190000, expenses: 120000 },];
 
 const renderLineChart = (
-    <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+    <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 5 }}>
+        <Line type="monotone" dataKey="profit" stroke="#8884d8" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <XAxis dataKey="name" />
         <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="revenue" stroke="red" />
+        <Line type="monotone" dataKey="expenses" stroke="black" />
         <Tooltip />
     </LineChart>
 );
 
 
-const DashboardScreen = () =>{
+const DashboardScreen = ({history}) =>{
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
+    React.useEffect(() => {
+
+        if (!userInfo.isAdmin) {
+            history.push('/login')
+        }
+
+    }, [history, userInfo])
+
+
     return(
         <div className="large-devices-margin">
             <h1 className="text-white">Dashboard</h1>
@@ -45,6 +64,9 @@ const DashboardScreen = () =>{
 
                     </div>
                     <div>{renderLineChart}</div>
+                    <div style={{ marginBottom: "100px" }}>
+
+                    </div>
                     <Todolist/>
 
                 </Col>
@@ -60,7 +82,7 @@ const DashboardScreen = () =>{
                         </Card.Body>
                     </Card>
                     <hr></hr>
-                    <PieCharts/>
+               
                 </Col>
                 <Col md={2}>
                     <Card

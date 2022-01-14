@@ -22,11 +22,13 @@ import TopReviewProductScreen from './screens/TopReviewProductScreen'
 import Contact from './screens/ContactScreen'
 import CompareScreen from './screens/CompareScreen'
 import PriceRangeScreen from './screens/PriceRangeScreen'
-import DeshboardScreen from './screens/DashboardScreen'
+import DashboardScreen from './screens/DashboardScreen'
 import Header2 from './components/Header2';
 import OTPScreen from './screens/OTPScreen';
 import RegisterScreen2 from './screens/RegisterScreen2'
 import ResetPassword from './screens/ResetPassword';
+import AdminContactScreen from './screens/AdminContactScreen';
+import BrandScreen from './screens/BrandScreen'
 
 function App() {
   return (
@@ -62,7 +64,9 @@ function App() {
           <Route path='/topReviewProductScreen' component={TopReviewProductScreen}/>
           <Route path='/contact' component={Contact}/>
           <Route path='/priceRange' component={PriceRangeScreen} />
-          <Route path='/admin/deshboard' component={DeshboardScreen} />
+          <Route path='/dashboard' component={DashboardScreen} />
+        <Route path='/admin/contact' component={AdminContactScreen} />
+        <Route path="/brand" component={BrandScreen} />
           
       
       </main>

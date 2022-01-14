@@ -1,10 +1,19 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux'
+import { Nav, Button } from "react-bootstrap";
 import { withRouter } from "react-router";
 import {Link, NavLink} from 'react-router-dom';
+import { logout } from '../actions/userActions'
 
 
-const SideBar = history => {
+
+const SideBar = (history) => {
+
+    const dispatch = useDispatch()
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
 
 
     return (
@@ -40,12 +49,24 @@ const SideBar = history => {
                     <NavLink
                         className="navbar-item h5 font-weight-bold ml-3 text-white"
                         activeClassName="is-active"
+                        to="/brand"
+                        exact
+                    >
+                        <i class="fab fa-bandcamp"></i> Brands
+                    </NavLink>
+                </Nav.Item>
+                <hr></hr>
+                <Nav.Item>
+                    <NavLink
+                        className="navbar-item h5 font-weight-bold ml-3 text-white"
+                        activeClassName="is-active"
                         to="/admin/productlist"
                         exact
                     >
                         <i class="fab fa-product-hunt"></i> Products
                     </NavLink>
                 </Nav.Item>
+
                 <hr></hr>
                 <Nav.Item>
                     <NavLink
@@ -62,12 +83,25 @@ const SideBar = history => {
                     <NavLink
                         className="navbar-item h5 font-weight-bold ml-3 text-white"
                         activeClassName="is-active"
-                        to="/admin/orderlist"
+                        to="/admin/contact"
                         exact
                     >
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-file-signature"></i> Contacts
                     </NavLink>
                 </Nav.Item>
+                <hr></hr>
+                <Nav.Item>
+                    <Link
+                        className="navbar-item h5 font-weight-bold ml-3 text-white"
+                        activeClassName="is-active"
+                        onClick={logoutHandler}
+                        to="/"
+                        
+                    >
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </Link>
+                </Nav.Item>
+                
                 <div style={{marginBottom: "1200px"}}>
 
                 </div>

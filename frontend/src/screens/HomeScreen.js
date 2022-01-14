@@ -16,6 +16,7 @@ import SearchRAM from '../components/SearchRam'
 import Coupon from '../components/Coupon'
 import SearchSlider from '../components/SearchSlider'
 import CoinTable from '../components/CoinTable'
+import SearchBrand from '../components/SearchBrand'
 
 
 
@@ -70,7 +71,8 @@ function HomeScreen({ history }) {
                         <Row>
                             <Col md={2}>
                                 <SearchRAM/>
-                                <br></br>
+                                <hr></hr>
+                                <SearchBrand/>
                                 
                             </Col>
                             <Col md={10}>

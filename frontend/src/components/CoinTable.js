@@ -5,14 +5,15 @@ const CoinTable = () =>{
     return(
         <div >
         
-            <Card border="light">
-                <Card.Header className="bg-warning">Coin table</Card.Header>
-                <Card.Body>
-                    <p>10 coins is equal to 1000 tk</p>
-                    <p>20 coins is equal to 1000 tk</p>
-                    <p>30 coins is equal to 1000 tk</p>
-                    <Button size="sm" className="btn">More</Button>
-                </Card.Body>
+            <Card>
+                <Card.Header className="text-center bg-dark text-white">Coin Table</Card.Header>
+                <ListGroup variant="flush" className="text-center">
+                    <ListGroup.Item>Coin To Tk</ListGroup.Item>
+                    <ListGroup.Item>1 To 100</ListGroup.Item>
+                    <ListGroup.Item>10 To 1000</ListGroup.Item>
+                    <ListGroup.Item>20 To 200</ListGroup.Item>
+                    <ListGroup.Item>30 To 3000</ListGroup.Item>
+                </ListGroup>
             </Card>
         </div>
     )

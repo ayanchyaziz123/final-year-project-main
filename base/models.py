@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
@@ -24,6 +25,8 @@ class TempUser(models.Model):
         
  
 
+class Brand(models.Model):
+    brand = models.CharField(primary_key=True, max_length=100)
 
     
 class Product(models.Model):
@@ -172,5 +175,7 @@ class Contact(models.Model):
     need_contact = models.BooleanField(default=False)
     contact_media = models.CharField(max_length=20)
     message = models.CharField(max_length=800)
+    reply = models.BooleanField(default=False)
+    
     
     
