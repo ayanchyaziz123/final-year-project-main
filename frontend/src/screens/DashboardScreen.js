@@ -34,8 +34,8 @@ const DashboardScreen = ({history}) =>{
 
     React.useEffect(() => {
 
-        if (!userInfo.isAdmin) {
-            history.push('/login')
+        if (!userInfo) {
+                history.push('/login')
         }
 
     }, [history, userInfo])

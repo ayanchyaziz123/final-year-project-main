@@ -5,7 +5,7 @@ const CoinTable = () =>{
     return(
         <div >
         
-            <Card>
+            <Card className="shadow">
                 <Card.Header className="text-center bg-dark text-white">Coin Table</Card.Header>
                 <ListGroup variant="flush" className="text-center">
                     <ListGroup.Item>Coin To Tk</ListGroup.Item>
