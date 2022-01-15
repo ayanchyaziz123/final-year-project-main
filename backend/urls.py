@@ -20,6 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
+admin.site.site_header = "Laptop Store"
+admin.site.site_title = "Laptop Store"
+admin.site.index_title = "Welcomee Laptop Store"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),

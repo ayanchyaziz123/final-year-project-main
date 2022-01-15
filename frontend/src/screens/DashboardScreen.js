@@ -6,11 +6,11 @@ import Todolist from '../admin_components/Todolist';
 import PieCharts from '../admin_components/PieCharts';
 import { useDispatch, useSelector } from 'react-redux'
 
-const data = [{ name: '2016', profit: 400000, revenue: 240000, expenses: 240000 }, 
-    { name: '2017', profit: 300000, revenue: 250000, expenses: 110000 },
-    { name: '2018', profit: 600000, revenue: 150000, expenses: 110000 },
-    { name: '2019', profit: 500000, revenue: 270000, expenses: 150000 }, 
-    { name: '2020', profit: 350000, revenue: 190000, expenses: 120000 },];
+const data = [{ name: '2016', revenue: 400000, profit: 240000, expenses: 240000 }, 
+    { name: '2017', revenue: 300000, profit: 250000, expenses: 110000 },
+    { name: '2018', revenue: 600000, profit: 150000, expenses: 110000 },
+    { name: '2019', revenue: 500000, profit: 270000, expenses: 150000 }, 
+    { name: '2020', revenue: 350000, profit: 190000, expenses: 120000 },];
 
 const renderLineChart = (
     <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 5 }}>
@@ -75,7 +75,7 @@ const DashboardScreen = ({history}) =>{
                         bg="info"
                         className="mb-2 text-white text-center"
                     >
-                        <Card.Header className="nav-text"><i class="fas fa-shopping-cart"></i> Order </Card.Header>
+                        <Card.Header className="nav-text"><i class="fas fa-shopping-cart"></i> Orders </Card.Header>
                         <Card.Body>
                             <Card.Title>20 </Card.Title>
                 
