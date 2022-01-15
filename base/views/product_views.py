@@ -143,6 +143,12 @@ def getProduct(request, pk):
     return Response({'product': serializer.data, 'price_history': price_history.data})
 
 
+def getProduct_cart(request, pk):
+    product = Product.objects.get(_id=pk)
+    serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def predict_history_price(request):
    # print("hello I am Called !!!!!!!!!!!!!!!!!!!!")

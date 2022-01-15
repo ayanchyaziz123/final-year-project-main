@@ -45,7 +45,7 @@ function CompareScreen(props){
                 <Row className="mt-2 mb-5">
                     
                     <Col md={6}>
-                                <h3>This is compare product</h3>
+                                <h3>Compare Two Laptops</h3>
                                 <ProductCompareChart price_history1={price_history1} price_history2={price_history2}/>
                     </Col>
                     <Col md={3}>

@@ -45,6 +45,7 @@ function ProductScreen({ match, history }) {
     } = productReviewCreate
 
     const product_id = product._id;
+   
 
     useEffect(() => {
         if (successProductReview) {
@@ -58,6 +59,7 @@ function ProductScreen({ match, history }) {
     }, [dispatch, match, successProductReview])
 
     const addToCartHandler = () => {
+        console.log("product Ids", match.params.id)
         history.push(`/cart/${match.params.id}?qty=${qty}`)
     }
 
@@ -161,7 +163,7 @@ function ProductScreen({ match, history }) {
                                                     <span >enter the date where you can predict the price of this laptop</span>
                                                     <Form onSubmit={predict_future_price_submit}>
                                                     <Form.Control type="date" size="sm" className="mb-2 mt-2" name="date" onChange={(e)=>{setDate(e.target.value)}}/>
-                                                    <h3>{predictPrice ? 'Predict Price : ' + predictPrice : null}</h3>
+                                                        <h3>{predictPrice ? 'Predict Price : ' + parseFloat(predictPrice).toFixed(2) : null}</h3>
                                                     <Button type="submit" size="sm" className="mt-3">Predict</Button>
                                                     </Form>
                                                 </Modal.Body>
