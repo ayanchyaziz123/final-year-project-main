@@ -77,7 +77,7 @@ function ProfileScreen({ history }) {
         <div className="large-devices-margin">
         <Row>
             <Col md={2}>
-                <h1>My Total Coins</h1>
+                    <h1><i class="fas fa-coins"></i> Coins</h1>
                     <h2 className="text-white text-center bg-danger">{userCoins > 0 ? userCoins : "You got no coin yet!"}</h2>
             </Col>
             <Col md={3}>

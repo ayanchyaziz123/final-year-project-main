@@ -176,6 +176,14 @@ class Contact(models.Model):
     contact_media = models.CharField(max_length=20)
     message = models.CharField(max_length=800)
     reply = models.BooleanField(default=False)
+
+class Profit(models.Model):
+    year = models.IntegerField(null=False, blank=False)
+    profit = models.IntegerField(null=False, blank=False)
+    revenue = models.IntegerField(null=False, blank=False)
+    expenses = models.IntegerField(null=False, blank=False)
+    
+        
     
     
     

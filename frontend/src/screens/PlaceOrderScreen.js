@@ -18,6 +18,9 @@ function PlaceOrderScreen({ history }) {
     const { order, error, success } = orderCreate
     const [count, setCount] = useState(0);
     const [coinPrice, setCoinPrice] =  useState(0);
+    const [userCoins, setUserCoins] = useState(0);
+    const [leftCoins, setLeftCoins] = useState(0);
+
 
     const dispatch = useDispatch()
 
@@ -31,7 +34,12 @@ function PlaceOrderScreen({ history }) {
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2) - total_discount
     useEffect(() => {
         setUser_id(userInfo._id);
+        axios.get(`http://127.0.0.1:8000/api/users/coin/${userInfo._id}`).then(res => {
+            setUserCoins(res.data);
+        },[userCoins])
+     
     })
+  
 
     const getCoouponCodeStatus = () =>{
         
@@ -92,6 +100,10 @@ function PlaceOrderScreen({ history }) {
         else{
             alert("You have not enough coin");
         }
+        if(userCoins)
+        {
+            setLeftCoins(userCoins - count)
+        }
 
     }
 
@@ -124,10 +136,11 @@ function PlaceOrderScreen({ history }) {
                             </Form>
                             
                             <div>
-                                <p>You have {count} coins and this coin value in tk : {29 < count ? count * 120 : 19 < count ? count * 110 : 9 < count ? count * 105 : count * 100} </p>
+                                <p>You have {count} coins and these coins value in tk : {29 < count ? count * 120 : 19 < count ? count * 110 : 9 < count ? count * 105 : count * 100} </p>
                                 <ButtonGroup aria-label="Basic example">
                                     <Button size="sm" variant="danger" onClick={setRemoveCoin}>-</Button>
                                     <Button size="sm" variant="warning" onClick={() => setCount(count + 1)}>+</Button>
+                                    <p className="ml-2"> Left Coins : {leftCoins} </p>
                                 </ButtonGroup>
                             </div>
 
@@ -186,7 +199,10 @@ function PlaceOrderScreen({ history }) {
 
                 </Col>
 
-                <Col md={4}>
+                <Col md={4} >
+                    <Card className="mb-2 p-2 bg-warning">
+                        <h3>Total Coins :  {userCoins}</h3>
+                    </Card>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>

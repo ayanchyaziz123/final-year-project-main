@@ -1,7 +1,8 @@
+from cProfile import Profile
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Coupon, CouponRedemption, Product, Order, OrderItem, ProductPriceHistory, UserProfile, ShippingAddress, Review, UserProfile
+from .models import Coupon, CouponRedemption, Product, Order, OrderItem, ProductPriceHistory, Profit, UserProfile, ShippingAddress, Review, UserProfile
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -58,9 +59,17 @@ class ProductSerializer(serializers.ModelSerializer):
         return serializer.data
     
 
+
+
 class Price_History_Serializer(serializers.ModelSerializer):
     class Meta:
         model = ProductPriceHistory
+        fields = '__all__'
+
+
+class Profit_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profit
         fields = '__all__'
 
 class CouponRedemptionSerializer(serializers.ModelSerializer):

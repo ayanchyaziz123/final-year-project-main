@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Product, Order, OrderItem, ShippingAddress
+from base.models import Product, Order, OrderItem, ShippingAddress, UserProfile
 from base.serializers import ProductSerializer, OrderSerializer
 
 from rest_framework import status
@@ -60,7 +60,11 @@ def addOrderItems(request):
 
             product.countInStock -= item.qty
             product.save()
-
+        profile = UserProfile.objects.get(user=user)
+        new_coins = ((data['totalPrice'] // 10000) * 100) + profile.coins
+        profile.coins = new_coins
+        profile.save()
+        
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 

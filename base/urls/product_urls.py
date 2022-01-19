@@ -7,6 +7,8 @@ urlpatterns = [
     path('all/', views.getAllProducts, name="all+products"),
     path('coupons/', views.getCoupons, name="coupons"),
     
+    path('dashboard/', views.dashboard, name="dashboard"),
+    
     path('predict_history_price/', views.predict_history_price,
          name="predict_history_price"),
     

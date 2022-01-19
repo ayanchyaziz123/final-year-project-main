@@ -22,30 +22,28 @@ function RegisterScreen2({ location, history }) {
     const [data_tkn, setData_tkn] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoadding] = useState(false)
+    const [success, setSuccess] = useState(false);
 
     const dispatch = useDispatch()
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
 
-    // useEffect(() => {
-    //     console.log("Is ok : ", isOk);
-    //     alert(isOk);
-    //     if (isOk) {
-    //         alert("I am calleD!!!")
-    //         history.push('/otp_screen');
-    //     }
-    // },)
+    useEffect(() => {
+        if (success) {
+            history.push('/otp_screen');
+        }
+    }, [success]);
 
     const submitHandler = (e) => {
         e.preventDefault()
 
         if (password != confirmPassword) {
-            setMessage('Passwords do not match')
+            setError('Passwords do not match')
         } else {
             //dispatch(register(name, email, password, mobile))
             setLoadding(true)
-            try{
+    
                 axios.post(baseURL, {
                     name,
                     email,
@@ -55,18 +53,15 @@ function RegisterScreen2({ location, history }) {
                 }).then((response) => {
                     setData_tkn(response.data);
                     localStorage.setItem('data_tkn', response.data);
+                    setSuccess(true);
+                    
+                }).catch(error =>{
+                    setError(error.response.data);
                 })
                
-            }
-            catch(error)
-            {
-                setError(error.response.data.detail);
-            }
+            
             setLoadding(false)
-            if(!error)
-            {
-                history.push('/otp_screen');
-            }
+            
         }
        
 

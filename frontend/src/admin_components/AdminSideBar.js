@@ -26,7 +26,7 @@ const SideBar = (history) => {
                     <NavLink
                         className="navbar-item h5 font-weight-bold ml-3 mt-2 text-white"
                         activeClassName="is-active"
-                        to="dashboard"
+                        to="/dashboard"
                         exact
                     >
                         <i class="fas fa-tachometer-alt"></i> Dashboard

@@ -6,8 +6,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from base.models import Coupon, CouponRedemption, Product, Review
-from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer, Price_History_Serializer
+from base.models import Coupon, CouponRedemption, Product, Review, Profit
+from base.serializers import CouponRedemptionSerializer, CouponSerializer, ProductSerializer, Price_History_Serializer, Profit_Serializer
 import datetime
 from rest_framework import status
 from base.views.helper_file.history_model import *
@@ -293,3 +293,32 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
+
+
+@api_view(['GET'])
+def dashboard(request): 
+    pending_order = 0
+    profit = Profit.objects.all().order_by('year')
+    serializer = Profit_Serializer(profit, many=True)
+    for e in Order.objects.all():
+        print("EEEE", e.isDelivered)
+        pending_order += 1
+    new_user = 0    
+    for u in User.objects.all():
+        new_user += 1
+        
+   # from datetime import date
+    #current_date = datetime.today()
+   # current_year = current_date.year
+   # new_users = User.objects.filter(date_year=current_year)
+    #new = new_users.count()
+    revenue = 300000.30
+    return Response({'pending_orders': pending_order, 'new_users': new_user, 'revenue': revenue, 'profit': serializer.data})
+
+    
+            
+    
+            
+            
+    
+     

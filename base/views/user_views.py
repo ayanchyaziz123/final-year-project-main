@@ -36,6 +36,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 
+
 @api_view(['GET'])
 def getUserCoins(request, pk):
     print("user  :: ", pk)
@@ -58,10 +59,16 @@ def tempRegister_user(request):
     check_profile = UserProfile.objects.filter(mobile=mobile).first()
 
     if(check_profile):
-        message = {'detail': 'User with this mobile already exists'}
+        message = 'User with this mobile already exists'
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
     elif(check_user):
-        message = {'detail': 'User with this email already exists'}
+        message = 'User with this email already exists'
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+    x = send_otp(email, otp)
+    print("This is  $$$$$", x)
+    if not x:
+        message = 'Your given email is not authenticated in gmail'
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
         #for user
@@ -73,13 +80,9 @@ def tempRegister_user(request):
         temp_user_otp=otp,
         temp_user_password=make_password(data['password'])
     )
-
     #for otp user
-    x = send_otp(email, otp)
-    if(x == 0):
-        message = {'detail': 'Your given email is not authenticated'}
-        return Response(message, status=status.HTTP_400_BAD_REQUEST) 
-    print("I am OKKKK !! ", email)
+    
+    print("I am OKKKK!! ", email)
     return Response(email)
 
 
@@ -188,3 +191,18 @@ def deleteUser(request, pk):
     userForDeletion = User.objects.get(id=pk)
     userForDeletion.delete()
     return Response('User was deleted')
+
+
+@api_view(['POST'])
+def resetPassword(request):
+    data = request.data 
+    email = data['email']
+    try:
+        user = User.objects.get(email=email)
+        return Response({'email': email, 'result': True})
+    except:
+        return Response({'email': email, 'result': False})
+        
+        
+        
+    

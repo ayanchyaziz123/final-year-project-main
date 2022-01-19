@@ -8,7 +8,7 @@ urlpatterns = [
 
     path('register/', views.registerUser_with_otp, name='register'),
     path('temp_register/', views.tempRegister_user, name='temp_register'),
-
+    path('resetPassword/', views.resetPassword, name='resetPassword'),
     path('profile/', views.getUserProfile, name="users-profile"),
     path('profile/update/', views.updateUserProfile, name="user-profile-update"),
     path('', views.getUsers, name="users"),

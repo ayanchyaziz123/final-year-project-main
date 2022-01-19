@@ -1,5 +1,6 @@
 import random
 import smtplib
+from smtplib import SMTPException
 
 def send_otp(user_email, otp_code):
     try:
@@ -9,6 +10,6 @@ def send_otp(user_email, otp_code):
        msg = 'Hello, your otp is '+ str(otp_code)
        server.sendmail('aaziz9642@gmail.com', user_email, msg) 
        server.quit()
-    except:
-        return 0
-    
+       return True
+    except SMTPException:
+        return False
