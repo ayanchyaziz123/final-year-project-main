@@ -65,7 +65,7 @@ const DashboardScreen = ({history}) =>{
 
     return(
         <div className="large-devices-margin">
-            <h1 className="text-white">Dashboard</h1>
+            <h3>Dashboard SCreen</h3>
             <Row>
                 <Col md={3}>
                     <AdminSideBar/>
@@ -85,6 +85,8 @@ const DashboardScreen = ({history}) =>{
                     <div style={{marginBottom: "100px"}}>
 
                     </div>
+                
+                    <h3 className="text-danger">Past few years profit graph</h3>
                     <div>{renderLineChart}</div>
                     <div style={{ marginBottom: "100px" }}>
 

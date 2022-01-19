@@ -1,8 +1,10 @@
-import React from 'react';
-import {Row, Col, Table, Button} from 'react-bootstrap';
+import {React, useState} from 'react';
+import {Row, Col, Table, Button, Modal} from 'react-bootstrap';
 import AdminSideBar from '../admin_components/AdminSideBar';
 
 const AdminContactScreen = () => {
+
+    const [smShow, setSmShow] = useState(false);
 
     return(
         <div className='large-devices-margin'>
@@ -30,7 +32,21 @@ const AdminContactScreen = () => {
                                 <td>aadmin@.com</td>
                                 <td>Use size="sm" to make tables compact by cutting cell padding in half.</td>
                                 <td>yes</td>
-                                <td><Button varint="warning" size="sm">Reply</Button></td>
+                                <td> <Button  size="sm" onClick={() => setSmShow(true)}>Reply</Button>{' '}</td>
+
+                                <Modal
+                                    size="sm"
+                                    show={smShow}
+                                    onHide={() => setSmShow(false)}
+                                    aria-labelledby="example-modal-sizes-title-sm"
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title id="example-modal-sizes-title-sm">
+                                            Reply
+                                        </Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>...</Modal.Body>
+                                </Modal>
 
                             </tr>
                             <tr>

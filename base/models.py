@@ -153,6 +153,9 @@ class Coupon(models.Model):
     discount_amount = models.FloatField()
     discount_type = models.CharField(max_length=200)
     expiration_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return str(self.discount_type)
         
 
 class CouponRedemption(models.Model):
@@ -163,6 +166,9 @@ class CouponRedemption(models.Model):
     redemption_date = models.DateTimeField(auto_now=False, auto_now_add=False)
     is_used = models.BooleanField(default=False)
     status = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return str(self.coupon_code)
 
     
 
@@ -182,6 +188,9 @@ class Profit(models.Model):
     profit = models.IntegerField(null=False, blank=False)
     revenue = models.IntegerField(null=False, blank=False)
     expenses = models.IntegerField(null=False, blank=False)
+    
+    def __str__(self):
+        return str(self.year)
     
         
     

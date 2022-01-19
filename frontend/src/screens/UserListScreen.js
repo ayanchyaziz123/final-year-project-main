@@ -40,7 +40,7 @@ function UserListScreen({ history }) {
 
     return (
         <div className="large-devices-margin">
-            <h1>Users</h1>
+            <h1>Users Screen</h1>
             <Row>
                 <Col md={3}>
                     <AdminSideBar/>

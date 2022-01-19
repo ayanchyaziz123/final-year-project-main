@@ -50,8 +50,18 @@ function CartScreen({ match, location, history }) {
                                         </Col>
 
                                         <Col md={2}>
-                                            <span className="text-tl">&#2547;{item.price}</span>  <br></br>
-                                            &#2547;{item.offer_percentage ? item.price - parseFloat(((item.price * item.offer_percentage) / 100)).toFixed(2) : null }
+                                            {
+                                                item.offer_percentage ? <>
+                                                    <span className="text-tl">&#2547;{item.price}</span>  <br></br>
+                                                    &#2547;{item.offer_percentage ? parseFloat(item.price - ((item.price * item.offer_percentage) / 100)).toFixed(2) : null}
+                                                
+                                                
+                                                </>:
+                                                <>
+                                                        <span>&#2547;{item.price}</span>
+                                                </>
+                                            }
+                                           
                                         </Col>
 
                                         <Col md={3}>
@@ -93,7 +103,7 @@ function CartScreen({ match, location, history }) {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h3>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h3>
-                            Total &#2547;{cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                                Total &#2547;{cartItems.reduce((acc, item) => acc + item.qty * (item.offer_percentage ? parseFloat(item.price - ((item.price * item.offer_percentage) / 100)).toFixed(2) : item.price), 0).toFixed(2)}
                         </ListGroup.Item>
                     </ListGroup>
 

@@ -20,6 +20,7 @@ function PlaceOrderScreen({ history }) {
     const [coinPrice, setCoinPrice] =  useState(0);
     const [userCoins, setUserCoins] = useState(0);
     const [leftCoins, setLeftCoins] = useState(0);
+    const [coupon_id, setCoupon_id] = useState(0);
 
 
     const dispatch = useDispatch()
@@ -28,10 +29,10 @@ function PlaceOrderScreen({ history }) {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
+    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + (item.offer_percentage ? parseFloat(item.price - ((item.price * item.offer_percentage) / 100)).toFixed(2) : item.price) * item.qty, 0).toFixed(2)
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
-    cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2) - total_discount
+    cart.taxPrice = Number((0.050) * cart.itemsPrice).toFixed(2)
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2) - total_discount - (count * 10);
     useEffect(() => {
         setUser_id(userInfo._id);
         axios.get(`http://127.0.0.1:8000/api/users/coin/${userInfo._id}`).then(res => {
@@ -49,6 +50,7 @@ function PlaceOrderScreen({ history }) {
             console.log("Discount --->>>>>", res.data.total_discount)
             setCoupon_code_status(res.data.status);
             setTotal_discount(res.data.total_discount);
+            setCoupon_id(res.data.coupon_id)
         })
     }
     catch(erro)
@@ -88,6 +90,8 @@ function PlaceOrderScreen({ history }) {
             shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice,
+            left_coins: leftCoins,
+            coupon_id: coupon_id
         }))
     }
 
@@ -95,16 +99,24 @@ function PlaceOrderScreen({ history }) {
     {
         if(count)
         {
-            setCount(count - 1);
+            setCount(count - 100);
+            setLeftCoins(userCoins - count)
         }
         else{
             alert("You have not enough coin");
         }
-        if(userCoins)
+
+    }
+
+    const setAddCoin = () =>{
+        if(count + 100 > userCoins)
         {
+            alert("You have not enough coin");
+        }
+        else{
+            setCount(count + 100)
             setLeftCoins(userCoins - count)
         }
-
     }
 
     return (
@@ -136,11 +148,11 @@ function PlaceOrderScreen({ history }) {
                             </Form>
                             
                             <div>
-                                <p>You have {count} coins and these coins value in tk : {29 < count ? count * 120 : 19 < count ? count * 110 : 9 < count ? count * 105 : count * 100} </p>
+                                <p>You have {count} coins and these coins value in tk : {count * 10} </p>
                                 <ButtonGroup aria-label="Basic example">
                                     <Button size="sm" variant="danger" onClick={setRemoveCoin}>-</Button>
-                                    <Button size="sm" variant="warning" onClick={() => setCount(count + 1)}>+</Button>
-                                    <p className="ml-2"> Left Coins : {leftCoins} </p>
+                                    <Button size="sm" variant="warning" onClick={setAddCoin}>+</Button>
+                                    <h5 className="ml-2"> Left Coins : {leftCoins} </h5>
                                 </ButtonGroup>
                             </div>
 
@@ -186,7 +198,7 @@ function PlaceOrderScreen({ history }) {
                                                     </Col>
 
                                                     <Col md={4}>
-                                                        {item.qty} X &#2547; {item.price} = &#2547; {(item.qty * item.price).toFixed(2)}
+                                                        {item.qty} X &#2547; {item.offer_percentage ? parseFloat(item.price - ((item.price * item.offer_percentage) / 100)).toFixed(2) : item.price} = &#2547; {(item.qty * (item.offer_percentage ? parseFloat(item.price - ((item.price * item.offer_percentage) / 100)).toFixed(2) : item.price)).toFixed(2)}
                                                     </Col>
                                                 </Row>
                                             </ListGroup.Item>
@@ -201,7 +213,7 @@ function PlaceOrderScreen({ history }) {
 
                 <Col md={4} >
                     <Card className="mb-2 p-2 bg-warning">
-                        <h3>Total Coins :  {userCoins}</h3>
+                        <h3><i class="fas fa-coins"></i> Total Coins :  {userCoins}</h3>
                     </Card>
                     <Card>
                         <ListGroup variant='flush'>

@@ -31,7 +31,7 @@ function OrderListScreen({ history }) {
 
     return (
         <div className="large-devices-margin">
-            <h1 >Orders</h1>
+            <h1 >Orders Screen</h1>
             <Row>
                 <Col md={3}>
                     <AdminSideBar/>

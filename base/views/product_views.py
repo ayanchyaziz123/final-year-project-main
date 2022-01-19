@@ -15,7 +15,7 @@ from base.views.helper_file.history_model import *
 @api_view(['GET'])
 def getCoupons(request):
     #x = datetime.datetime.now()
-    coupon_red = CouponRedemption.objects.all()
+    coupon_red = CouponRedemption.objects.all(is_used=False)
     coupon_redemptions = CouponRedemptionSerializer(coupon_red, many=True)
     coup = Coupon.objects.all()
     coupons = CouponSerializer(coup, many=True)
@@ -29,15 +29,14 @@ def getCouponStatus(request):
     coupon_code = data['coupon_code']
     print("USER COUPON  ", user_id, coupon_code)
     coupon_redemption = CouponRedemption.objects.filter(
-        user_id=user_id).filter(coupon_code=coupon_code)
-    print("Coupon : ", coupon_redemption)
-    if coupon_redemption:
-        coupon_redemption.is_used = True 
-        coupon_redemption.status = False
-        
-        total_discount = CouponRedemption.objects.values_list(
-            'total_discount',  flat=True)
-        return Response({'status': 3, 'total_discount': total_discount})
+        user_id=user_id).filter(coupon_code=coupon_code).filter(is_used=False)
+    cpn = CouponRedemption.objects.get(user_id=user_id)
+    print("Coupon ######### ----->>>>> : ", cpn.total_discount)
+    if coupon_redemption:    
+        total_discount = cpn.total_discount
+        codee = cpn.id
+        print(codee)
+        return Response({'status': 3, 'total_discount': total_discount, 'coupon_id': codee})
     else:
         return Response({'status': 2, 'total_discount': 0})
     
@@ -199,7 +198,6 @@ def createProduct(request):
 def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
-
     product.category = data['category']
     product.brand = data['brand']
     product.name = data['name']

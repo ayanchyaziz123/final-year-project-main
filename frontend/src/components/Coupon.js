@@ -31,7 +31,7 @@ function Coupon() {
                     
                     
                 {
-                        coupon_redemptions.map(coupon => coupon.user_id == userInfo._id ? (
+                        coupon_redemptions.map(coupon => coupon.user_id == userInfo._id  ? (
                             <>
                                 <Countdown date={coupon.redemption_date} className=" h4"/>
                                 

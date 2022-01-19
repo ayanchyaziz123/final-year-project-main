@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Product, Order, OrderItem, ShippingAddress, UserProfile
+from base.models import Product, Order, OrderItem, ShippingAddress, UserProfile, CouponRedemption
 from base.serializers import ProductSerializer, OrderSerializer
 
 from rest_framework import status
@@ -16,6 +16,18 @@ from datetime import datetime
 def addOrderItems(request):
     user = request.user
     data = request.data
+    left_coins = data['left_coins']
+    profile = UserProfile.objects.get(user=user)
+    profile.coins = left_coins
+    profile.save()
+    coupon_id = data['coupon_id']
+    if coupon_id:
+        coupon_redemption = CouponRedemption.objects.get(id=coupon_id)
+        coupon_redemption.is_used = True
+        coupon_redemption.status = False
+        coupon_redemption.save()
+        
+    
 
     orderItems = data['orderItems']
 
