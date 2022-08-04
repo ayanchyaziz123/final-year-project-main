@@ -1,10 +1,16 @@
 # Final year project ecommerce with machine learning
 
-## tools for bakend
+## Machine Learning
+1. [pandas](https://pandas.pydata.org/docs/)
+2. [numpy](https://numpy.org/doc/)
+3. [scikit-learn](https://scikit-learn.org/stable/)
+4. [Matplotlib](https://matplotlib.org/)
+
+## Bakend
 1. [django](https://www.djangoproject.com/)
 2. [django rest framework](http://www.django-rest-framework.org/)
 
-## tools for frontend
+## Frontend
 1. [react](https://reactjs.org/)
 2. [react-bootstrap](https://react-bootstrap.github.io/)
 
@@ -37,7 +43,7 @@ npm i
 ## Predict laptop price
 ![predict](https://github.com/ayanchyaziz123/final-year-project-main/blob/master/screenshoot/16.Predict%20Laptop%20Price.png?raw=true)
 ## Predict
-![predict] (https://github.com/ayanchyaziz123/final-year-project-main/blob/master/screenshoot/17.%20Prediction.png?raw=true)
+![predict](https://github.com/ayanchyaziz123/final-year-project-main/blob/master/screenshoot/17.%20Prediction.png?raw=true)
 ## Product Screen
 ![product](https://github.com/ayanchyaziz123/final-year-project-main/blob/master/screenshoot/2.Product%20page.png?raw=true)
 ## Product Compare SCreen
