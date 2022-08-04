@@ -1,4 +1,7 @@
-# Final year project ecommerce with machine learning
+## Final year project ecommerce with machine learning
+Hi folks, This is an ecommerce website where I used some machine learning concepts to predicat future price of laptops.<br></br>
+for this project i used python-3.8.5. if you use others version of python then you might be got some errors.
+
 
 ## Machine Learning
 1. [pandas](https://pandas.pydata.org/docs/)
